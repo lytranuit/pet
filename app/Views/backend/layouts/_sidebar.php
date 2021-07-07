@@ -1,6 +1,6 @@
 <div class="app-sidebar sidebar-shadow">
     <div class="app-header__logo">
-        <div><img src="<?= base_url() ?>public/img/logo.png" width="150" /></div>
+        <div><img src="<?= base_url("assets/images/logo.png") ?>" width="150" /></div>
         <div class="header__pane ml-auto">
             <div>
                 <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">

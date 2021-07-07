@@ -11,13 +11,13 @@
     <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url() ?>assets/img/favicon.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url("assets/images/favicon.png") ?>" />
     <title>
         <?= $title ?>
     </title>
-    <link rel="stylesheet" href="<?= base_url("assets/css/main.css") ?>" ?>
+    <link rel="stylesheet" href="<?= base_url("assets/admin/css/main.css") ?>" ?>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-  
+
     <?= $this->renderSection('style') ?>
     <script>
         var path = '<?= base_url() ?>/';
@@ -50,14 +50,14 @@
         </div>
 
     </div>
-    <script src="<?= base_url('assets/js/jquery.min.js') ?>"></script>
+    <script src="<?= base_url("assets/lib/jquery/jquery.min.js") ?>"></script>
     <script src="<?= base_url('assets/lib/jquery-ui/jquery-ui.js') ?>"></script>
 
-    <script src="<?= base_url('assets/js/all.js') ?>"></script>
+    <script src="<?= base_url('assets/admin/js/all.js') ?>"></script>
     <script src="<?= base_url('assets/lib/jquery-validation/jquery.validate.js') ?>"></script>
     <script src="<?= base_url('assets/lib/inputmask/js/jquery.inputmask.bundle.js') ?>"></script>
     <script src="<?= base_url('assets/lib/moment/js/moment.js') ?>"></script>
-    <script src="<?= base_url('assets/js/admin.js') ?>"></script>
+    <script src="<?= base_url('assets/admin/js/admin.js') ?>"></script>
     <?= $this->renderSection('script') ?>
 </body>
 
