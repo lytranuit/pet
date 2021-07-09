@@ -4,7 +4,7 @@ use CodeIgniter\Model;
 
 class LoginModel extends Model
 {
-    protected $table = 'auth_logins';
+    protected $table = 'pet_auth_logins';
     protected $primaryKey = 'id';
 
     protected $returnType = 'object';
@@ -39,7 +39,7 @@ class LoginModel extends Model
     {
         $expires = new \DateTime($expires);
 
-        return $this->db->table('auth_tokens')->insert([
+        return $this->db->table('pet_auth_tokens')->insert([
             'user_id' => $userID,
             'selector' => $selector,
             'hashedValidator' => $validator,
@@ -56,7 +56,7 @@ class LoginModel extends Model
      */
     public function getRememberToken(string $selector)
     {
-        return $this->db->table('auth_tokens')
+        return $this->db->table('pet_auth_tokens')
             ->where('selector', $selector)
             ->get()
             ->getRow();
@@ -72,7 +72,7 @@ class LoginModel extends Model
      */
     public function updateRememberValidator(string $selector, string $validator)
     {
-        return $this->db->table('auth_tokens')
+        return $this->db->table('pet_auth_tokens')
             ->where('selector', $selector)
             ->update(['hashedValidator' => hash('sha256', $validator)]);
     }
@@ -88,11 +88,11 @@ class LoginModel extends Model
      */
     public function purgeRememberTokens(int $id)
     {
-        return $this->builder('auth_tokens')->where(['user_id' => $id])->delete();
+        return $this->builder('pet_auth_tokens')->where(['user_id' => $id])->delete();
     }
 
     /**
-     * Purges the 'auth_tokens' table of any records that are past
+     * Purges the 'pet_auth_tokens' table of any records that are past
      * their expiration date already.
      */
     public function purgeOldRememberTokens()
@@ -104,7 +104,7 @@ class LoginModel extends Model
             return;
         }
 
-        $this->db->table('auth_tokens')
+        $this->db->table('pet_auth_tokens')
                  ->where('expires <=', date('Y-m-d H:i:s'))
                  ->delete();
     }

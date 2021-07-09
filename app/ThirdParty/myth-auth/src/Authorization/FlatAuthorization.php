@@ -472,7 +472,7 @@ class FlatAuthorization implements AuthorizeInterface
 
 		$validation = Services::validation(null, false);
 		$validation->setRules([
-			'name'		=> 'required|max_length[255]|is_unique[auth_groups.name]',
+			'name'		=> 'required|max_length[255]|is_unique[pet_auth_groups.name]',
 			'description' => 'max_length[255]',
 		]);
 
@@ -618,7 +618,7 @@ class FlatAuthorization implements AuthorizeInterface
 
 		$validation = Services::validation(null, false);
 		$validation->setRules([
-			'name'		=> 'required|max_length[255]|is_unique[auth_permissions.name]',
+			'name'		=> 'required|max_length[255]|is_unique[pet_auth_permissions.name]',
 			'description' => 'max_length[255]',
 		]);
 

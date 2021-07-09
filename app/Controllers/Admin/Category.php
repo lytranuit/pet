@@ -7,7 +7,6 @@ use App\Models\FileModel;
 class Category extends BaseController
 {
 
-    public $is_menu = 0;
     public function index()
     {
         return view($this->data['content'], $this->data);
@@ -22,7 +21,6 @@ class Category extends BaseController
             $data = $this->request->getPost();
             $data['user_id'] = user_id();
             $data['slug'] = str_slug($data['name_vi']);
-            $data['is_menu'] = $this->is_menu;
             $obj = new \App\Entities\Category();
             $obj->fill($data);
             $obj->date = date("Y-m-d H:i:s");
@@ -41,7 +39,6 @@ class Category extends BaseController
             $Category_model = model("CategoryModel");
             $data = $this->request->getPost();
             $obj = $Category_model->find($id);
-            $data['is_menu'] = $this->is_menu;
             //echo "<pre>";
             //print_r($obj);
             //die();
@@ -50,14 +47,23 @@ class Category extends BaseController
             return redirect()->to(base_url('admin/category'));
         } else {
             $Category_model = model("CategoryModel");
+            $product_model = model("ProductModel");
+            $product_category_model = model("ProductCategoryModel");
             $tin = $Category_model->where(array('id' => $id))->asObject()->first();
-            $Category_model->image($tin);
             $this->data['tin'] = $tin;
             //echo "<pre>";
             //print_r($tin);
-            //die();
-            //load_editor($this->data);
-            //            load_chossen($this->data);
+            //die();   
+            // $this->data['products'] = $product_category_model->where(array('category_id' => $id))->orderby('order', "ASC")->asObject()->findAll();
+
+            $this->data['products'] = $product_category_model->product_by_category($id);
+            // echo "<pre>";
+            // print_r($this->data['products']);
+            // die();
+            $this->data['products_add'] = $product_model->where(array("status" => 1, 'is_foodzone' => 1))->asObject()->findAll();
+
+
+
             return view($this->data['content'], $this->data);
         }
     }
@@ -86,7 +92,7 @@ class Category extends BaseController
         $limit = $this->request->getVar('length');
         $start = $this->request->getVar('start');
         $page = ($start / $limit) + 1;
-        $where = $Category_model->where("is_menu", $this->is_menu);
+        $where = $Category_model;
 
         $totalData = $where->countAllResults();
         //echo "<pre>";
@@ -94,24 +100,19 @@ class Category extends BaseController
         //die();
         $totalFiltered = $totalData;
 
-        $where = $Category_model->where("is_menu", $this->is_menu);
+        $where = $Category_model;
 
         $posts = $where->asObject()->orderby("date", "DESC")->paginate($limit, '', $page);
         //echo "<pre>";
         //print_r($posts);
         //die();
-
-        $posts = $Category_model->image($posts);
         $data = array();
         if (!empty($posts)) {
             foreach ($posts as $post) {
                 $nestedData['id'] = $post->id;
                 $nestedData['name_vi'] = $post->name_vi;
-                $nestedData['description_vi'] = $post->description_vi;
-                $image = isset($post->image->src) ? base_url($post->image->src) : "";
-                $nestedData['image'] = "<img src='$image' width='100'/>";
-                // $image = isset($post->image->src) ? base_url() . $post->image->src : "";
-                $nestedData['date'] =  date("d/m/Y", strtotime($post->date));
+                $nestedData['description_vi'] = split_string($post->description_vi, 100);
+                $nestedData['image'] = "<img src='$post->image_url' width='100'/>";
                 $nestedData['action'] = '<a href="' . base_url("admin/category/up/" . $post->id) . '" class="btn btn-primary btn-sm mr-2" data-type="confirm" title="Up to Top">'
                     . '<i class="fas fa-arrow-alt-circle-up"></i>'
                     . '</i>'
@@ -136,5 +137,34 @@ class Category extends BaseController
         );
 
         echo json_encode($json_data);
+    }
+    public function addproductcategory()
+    {
+        $ProductCategoryModel = model("ProductCategoryModel");
+        $data = json_decode($this->request->getVar('data'), true);
+        $category_id = $this->request->getVar('category_id');
+
+        $list = $ProductCategoryModel->where(array("category_id" => $category_id))->asObject()->findAll();
+        $max_order = 0;
+        foreach ($list as $row) {
+            if ($max_order < $row->order) {
+                $max_order = $row->order;
+            }
+        }
+        $list_product = array_map(function ($item) {
+            return $item->product_id;
+        }, (array) $list);
+        $data = array_diff($data, $list_product);
+        $max_order++;
+        foreach ($data as $key => $product_id) {
+
+            $array = array(
+                'product_id' => $product_id,
+                'category_id' => $category_id,
+                'order' => $max_order
+            );
+            $ProductCategoryModel->insert($array);
+        }
+        echo json_encode(1);
     }
 }

@@ -4,7 +4,7 @@ namespace App\Controllers\Admin;
 
 use App\Models\FileModel;
 
-class Slider extends BaseController
+class Banner extends BaseController
 {
 
     public function index()
@@ -17,14 +17,14 @@ class Slider extends BaseController
         if (isset($_POST['dangtin'])) {
             helper("auth");
 
-            $Slider_model = model("SliderModel");
+            $Banner_model = model("BannerModel");
             $data = $this->request->getPost();
             $data['user_id'] = user_id();
-            $obj = new \App\Entities\Slider();
+            $obj = new \App\Entities\Banner();
             $obj->fill($data);
             $obj->date = date("Y-m-d H:i:s");
-            $Slider_model->save($obj);
-            return redirect()->to(base_url('admin/slider'));
+            $Banner_model->save($obj);
+            return redirect()->to(base_url('admin/Banner'));
         } else {
             //load_editor($this->data);
             return view($this->data['content'], $this->data);
@@ -35,18 +35,18 @@ class Slider extends BaseController
     { /////// trang ca nhan
         if (isset($_POST['dangtin'])) {
 
-            $Slider_model = model("SliderModel");
+            $Banner_model = model("BannerModel");
             $data = $this->request->getPost();
-            $obj = $Slider_model->find($id);
+            $obj = $Banner_model->find($id);
             //echo "<pre>";
             //print_r($obj);
             //die();
             $obj->fill($data);
-            $Slider_model->save($obj);
-            return redirect()->to(base_url('admin/slider'));
+            $Banner_model->save($obj);
+            return redirect()->to(base_url('admin/Banner'));
         } else {
-            $Slider_model = model("SliderModel");
-            $tin = $Slider_model->where(array('id' => $id))->asObject()->first();
+            $Banner_model = model("BannerModel");
+            $tin = $Banner_model->where(array('id' => $id))->asObject()->first();
             $this->data['tin'] = $tin;
             //echo "<pre>";
             //print_r($tin);
@@ -59,19 +59,19 @@ class Slider extends BaseController
 
     public function remove($id)
     { /////// trang ca nhan
-        $Slider_model = model("SliderModel");
-        $Slider_model->delete($id);
+        $Banner_model = model("BannerModel");
+        $Banner_model->delete($id);
         header('Location: ' . $_SERVER['HTTP_REFERER']);
         exit;
     }
 
     public function table()
     {
-        $Slider_model = model("SliderModel");
+        $Banner_model = model("BannerModel");
         $limit = $this->request->getVar('length');
         $start = $this->request->getVar('start');
         $page = ($start / $limit) + 1;
-        $where = $Slider_model;
+        $where = $Banner_model;
 
         $totalData = $where->countAllResults();
         //echo "<pre>";
@@ -79,7 +79,7 @@ class Slider extends BaseController
         //die();
         $totalFiltered = $totalData;
 
-        $where = $Slider_model;
+        $where = $Banner_model;
         $posts = $where->asObject()->orderby("id", "DESC")->paginate($limit, '', $page);
         //echo "<pre>";
         //print_r($posts);
@@ -90,11 +90,11 @@ class Slider extends BaseController
                 $nestedData['id'] = $post->id;
                 $nestedData['order'] = $post->order;
                 $nestedData['image'] = "<img src='$post->image_url' width='100'/>";
-                $nestedData['action'] = '<a href="' . base_url("admin/slider/edit/" . $post->id) . '" class="btn btn-warning btn-sm mr-2" title="edit">'
+                $nestedData['action'] = '<a href="' . base_url("admin/Banner/edit/" . $post->id) . '" class="btn btn-warning btn-sm mr-2" title="edit">'
                     . '<i class="fas fa-pencil-alt">'
                     . '</i>'
                     . '</a>'
-                    . '<a href="' . base_url("admin/slider/remove/" . $post->id) . '" class="btn btn-danger btn-sm" data-type="confirm" title="remove">'
+                    . '<a href="' . base_url("admin/Banner/remove/" . $post->id) . '" class="btn btn-danger btn-sm" data-type="confirm" title="remove">'
                     . '<i class="far fa-trash-alt">'
                     . '</i>'
                     . '</a>';

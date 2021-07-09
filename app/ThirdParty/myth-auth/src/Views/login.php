@@ -68,7 +68,7 @@
     <!-- ============================================================== -->
     <div class="splash-container">
         <div class="card">
-            <div class="card-header text-center"><span><?= lang('login_heading') ?></span></div>
+            <div class="card-header text-center"><span><?= lang('Custom.login') ?></span></div>
             <div class="card-body">
 
                 <?= view('Myth\Auth\Views\_message_block') ?>
@@ -76,12 +76,12 @@
                 <form action="<?= route_to('login') ?>" method="post">
                     <?= csrf_field() ?>
                     <div class="form-group">
-                        <input class="form-control" id="username" name="login" type="text" placeholder="<?= lang('login_identity_label') ?>" autocomplete="off">
+                        <input class="form-control" id="username" name="login" type="text" placeholder="<?= lang('Custom.login_identity_label') ?>" autocomplete="off">
                     </div>
                     <div class="form-group">
-                        <input class="form-control" id="password" name="password" type="password" placeholder="<?= lang('login_password_label') ?>">
+                        <input class="form-control" id="password" name="password" type="password" placeholder="<?= lang('Custom.login_password_label') ?>">
                     </div>
-                    <button type="submit" class="btn btn-primary btn-lg btn-block" id="button_login"><?= lang('login_heading') ?> </button>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" id="button_login"><?= lang('Custom.login') ?> </button>
                 </form>
             </div>
         </div>

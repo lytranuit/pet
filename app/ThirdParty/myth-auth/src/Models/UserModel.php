@@ -8,7 +8,7 @@ use Myth\Auth\Entities\User;
 
 class UserModel extends Model
 {
-    protected $table = 'users';
+    protected $table = 'pet_auth_users';
     protected $primaryKey = 'id';
 
     protected $returnType = User::class;
@@ -49,7 +49,7 @@ class UserModel extends Model
      */
     public function logResetAttempt(string $email, string $token = null, string $ipAddress = null, string $userAgent = null)
     {
-        $this->db->table('auth_reset_attempts')->insert([
+        $this->db->table('pet_auth_reset_attempts')->insert([
             'email' => $email,
             'ip_address' => $ipAddress,
             'user_agent' => $userAgent,
@@ -67,7 +67,7 @@ class UserModel extends Model
      */
     public function logActivationAttempt(string $token = null, string $ipAddress = null, string $userAgent = null)
     {
-        $this->db->table('auth_activation_attempts')->insert([
+        $this->db->table('pet_auth_activation_attempts')->insert([
             'ip_address' => $ipAddress,
             'user_agent' => $userAgent,
             'token' => $token,
@@ -84,7 +84,7 @@ class UserModel extends Model
      */
     public function withGroup(string $groupName)
     {
-        $group = $this->db->table('auth_groups')->where('name', $groupName)->get()->getFirstRow();
+        $group = $this->db->table('pet_auth_groups')->where('name', $groupName)->get()->getFirstRow();
 
         $this->assignGroup = $group->id;
 

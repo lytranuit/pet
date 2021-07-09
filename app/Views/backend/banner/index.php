@@ -9,17 +9,15 @@
     <div class="col-12">
         <section class="card card-fluid">
             <h5 class="card-header drag-handle">
-                <a class="btn btn-success btn-sm" href="<?= base_url("admin/news/add") ?>">Thêm</a>
+                <a class="btn btn-success btn-sm" href="<?= base_url("admin/banner/add") ?>">Thêm</a>
             </h5>
             <div class="card-body">
                 <table id="quanlytin" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Hình đại diện</th>
-                            <th>Tiêu đề</th>
-                            <th>Nội dung</th>
-                            <th>Ngày đăng</th>
+                            <th>Image</th>
+                            <th>Thứ tự</th>
                             <th>Hành động</th>
                         </tr>
                     </thead>
@@ -51,21 +49,18 @@
             "processing": true,
             "serverSide": true,
             "ajax": {
-                "url": path + "admin/news/table",
+                "url": path + "admin/banner/table",
                 "dataType": "json",
                 "type": "POST",
             },
             "columns": [{
                     "data": "id"
-                }, {
-                    "data": "image"
-                }, {
-                    "data": "title_vi"
-                }, {
-                    "data": "content_vi"
                 },
                 {
-                    "data": "date"
+                    "data": "image"
+                },
+                {
+                    "data": "order"
                 },
                 {
                     "data": "action"

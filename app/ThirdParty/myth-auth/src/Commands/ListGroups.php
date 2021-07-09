@@ -15,7 +15,7 @@ class ListGroups extends BaseCommand
 		$db = db_connect();
 		
 		// get all groups
-		$rows = $db->table('auth_groups')
+		$rows = $db->table('pet_auth_groups')
 			->select('id, name, description')
 			->orderBy('name', 'asc')
 			->get()->getResultArray();

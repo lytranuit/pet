@@ -38,13 +38,7 @@
                                     <div class="form-group row">
                                         <b class="col-12 col-lg-2 col-form-label">Mô tả:<i class="text-danger">*</i></b>
                                         <div class="col-12">
-                                            <textarea class="form-control" name="description_vi"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <b class="col-12 col-lg-2 col-form-label">Nội dung:<i class="text-danger">*</i></b>
-                                        <div class="col-12">
-                                            <textarea class="edit" name="content_vi"></textarea>
+                                            <textarea class="edit" name="description_vi"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -58,13 +52,7 @@
                                     <div class="form-group row">
                                         <b class="col-12 col-lg-2 col-form-label">Mô tả:<i class="text-danger">*</i></b>
                                         <div class="col-12">
-                                            <textarea class="form-control" name="description_en"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <b class="col-12 col-lg-2 col-form-label">Nội dung:<i class="text-danger">*</i></b>
-                                        <div class="col-12">
-                                            <textarea class="edit" name="content_en"></textarea>
+                                            <textarea class="edit" name="description_en"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -78,13 +66,7 @@
                                     <div class="form-group row">
                                         <b class="col-12 col-lg-2 col-form-label">Mô tả:<i class="text-danger">*</i></b>
                                         <div class="col-12">
-                                            <textarea class="form-control" name="description_jp"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <b class="col-12 col-lg-2 col-form-label">Nội dung:<i class="text-danger">*</i></b>
-                                        <div class="col-12">
-                                            <textarea class="edit" name="content_jp"></textarea>
+                                            <textarea class="edit" name="description_jp"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -112,6 +94,7 @@
 
 <script src="<?= base_url("assets/lib/mustache/mustache.min.js") ?>"></script>
 <script src="<?= base_url("assets/lib/image_feature/jquery.image.js") ?>"></script>
+<script src="<?= base_url("assets/lib/ckfinder/ckfinder.js") ?>"></script>
 <script src="<?= base_url("assets/lib/ckeditor/ckeditor.js") ?>"></script>
 
 <script type='text/javascript'>

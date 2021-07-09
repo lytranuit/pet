@@ -94,6 +94,7 @@
 <!-- Script --->
 <?= $this->section('script') ?>
 
+<script src="<?= base_url("assets/lib/ckfinder/ckfinder.js") ?>"></script>
 <script src="<?= base_url("assets/lib/mustache/mustache.min.js") ?>"></script>
 <script src="<?= base_url("assets/lib/image_feature/jquery.image.js") ?>"></script>
 

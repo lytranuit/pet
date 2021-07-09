@@ -7,13 +7,13 @@ use CodeIgniter\Model;
 
 class ProductImageModel extends Model
 {
-    protected $table      = 'cf_product_image';
+    protected $table      = 'pet_product_image';
     protected $primaryKey = 'id';
 
     protected $returnType     = 'array';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['product_id', 'image_id'];
+    protected $allowedFields = ['product_id', 'image_url'];
 
     //protected $useTimestamps = false;
     //protected $createdField  = 'created_at';

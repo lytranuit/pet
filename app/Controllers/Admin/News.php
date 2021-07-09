@@ -96,7 +96,6 @@ class News extends BaseController
             $tag_model = model("TagModel");
             $news_tag_model = model("NewsTagModel");
             $tin = $news_model->where(array('id' => $id))->asObject()->first();
-            $news_model->image($tin);
             /*TAG*/
             $category = $news_tag_model->where(array('news_id' => $id))->findAll();
             //print_r($category);
@@ -153,8 +152,9 @@ class News extends BaseController
             foreach ($posts as $post) {
                 $nestedData['id'] = $post->id;
                 $nestedData['title_vi'] = $post->title_vi;
-                $nestedData['title_en'] = $post->title_en;
-                $nestedData['title_jp'] = $post->title_jp;
+                $nestedData['image'] = "<img src='$post->image_url' width='100'/>";
+
+                $nestedData['content_vi'] = split_string($post->content_vi, 100);
                 // $image = isset($post->image->src) ? base_url() . $post->image->src : "";
                 // $nestedData['image'] = "<img src='$image' width='100'/>";
                 $nestedData['date'] =  date("d/m/Y", strtotime($post->date));

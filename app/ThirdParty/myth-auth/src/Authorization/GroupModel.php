@@ -4,7 +4,7 @@ use CodeIgniter\Model;
 
 class GroupModel extends Model
 {
-    protected $table = 'auth_groups';
+    protected $table = 'pet_auth_groups';
     protected $primaryKey = 'id';
 
     protected $returnType = 'object';
@@ -15,7 +15,7 @@ class GroupModel extends Model
     protected $useTimestamps = false;
 
     protected $validationRules = [
-        'name' => 'required|max_length[255]|is_unique[auth_groups.name,name,{name}]',
+        'name' => 'required|max_length[255]|is_unique[pet_auth_groups.name,name,{name}]',
         'description' => 'max_length[255]',
     ];
     protected $validationMessages = [];
@@ -43,7 +43,7 @@ class GroupModel extends Model
             'group_id'  => (int)$groupId
         ];
 
-        return $this->db->table('auth_groups_users')->insert($data);
+        return $this->db->table('pet_auth_groups_users')->insert($data);
     }
 
     /**
@@ -59,7 +59,7 @@ class GroupModel extends Model
         cache()->delete("{$userId}_groups");
         cache()->delete("{$userId}_permissions");
 
-        return $this->db->table('auth_groups_users')
+        return $this->db->table('pet_auth_groups_users')
             ->where([
                 'user_id' => (int)$userId,
                 'group_id' => (int)$groupId
@@ -78,7 +78,7 @@ class GroupModel extends Model
         cache()->delete("{$userId}_groups");
         cache()->delete("{$userId}_permissions");
 
-        return $this->db->table('auth_groups_users')
+        return $this->db->table('pet_auth_groups_users')
             ->where('user_id', (int)$userId)
             ->delete();
     }
@@ -95,8 +95,8 @@ class GroupModel extends Model
         if (! $found = cache("{$userId}_groups"))
         {
             $found = $this->builder()
-                ->select('auth_groups_users.*, auth_groups.name, auth_groups.description')
-                ->join('auth_groups_users', 'auth_groups_users.group_id = auth_groups.id', 'left')
+                ->select('pet_auth_groups_users.*, pet_auth_groups.name, pet_auth_groups.description')
+                ->join('pet_auth_groups_users', 'pet_auth_groups_users.group_id = pet_auth_groups.id', 'left')
                 ->where('user_id', $userId)
                 ->get()->getResultArray();
 
@@ -118,10 +118,10 @@ class GroupModel extends Model
         if (! $found = cache("{$groupId}_users"))
         {
             $found = $this->builder()
-                ->select('auth_groups_users.*, users.*')
-                ->join('auth_groups_users', 'auth_groups_users.group_id = auth_groups.id', 'left')
-                ->join('users', 'auth_groups_users.user_id = users.id', 'left')
-                ->where('auth_groups.id', $groupId)
+                ->select('pet_auth_groups_users.*, users.*')
+                ->join('pet_auth_groups_users', 'pet_auth_groups_users.group_id = pet_auth_groups.id', 'left')
+                ->join('users', 'pet_auth_groups_users.user_id = users.id', 'left')
+                ->where('pet_auth_groups.id', $groupId)
                 ->get()->getResultArray();
 
             cache()->save("{$groupId}_users", $found, 300);
@@ -151,8 +151,8 @@ class GroupModel extends Model
     {
         $permissionModel = model(PermissionModel::class);
         $fromGroup = $permissionModel
-            ->select('auth_permissions.*')
-            ->join('auth_groups_permissions', 'auth_groups_permissions.permission_id = auth_permissions.id', 'inner')
+            ->select('pet_auth_permissions.*')
+            ->join('pet_auth_groups_permissions', 'pet_auth_groups_permissions.permission_id = pet_auth_permissions.id', 'inner')
             ->where('group_id', $groupId)
             ->findAll();
 
@@ -180,7 +180,7 @@ class GroupModel extends Model
             'group_id'      => (int)$groupId
         ];
 
-        return $this->db->table('auth_groups_permissions')->insert($data);
+        return $this->db->table('pet_auth_groups_permissions')->insert($data);
     }
 
     //--------------------------------------------------------------------
@@ -196,7 +196,7 @@ class GroupModel extends Model
      */
     public function removePermissionFromGroup(int $permissionId, int $groupId)
     {
-        return $this->db->table('auth_groups_permissions')
+        return $this->db->table('pet_auth_groups_permissions')
             ->where([
                 'permission_id' => $permissionId,
                 'group_id'      => $groupId
@@ -214,7 +214,7 @@ class GroupModel extends Model
      */
     public function removePermissionFromAllGroups(int $permissionId)
     {
-        return $this->db->table('auth_groups_permissions')
+        return $this->db->table('pet_auth_groups_permissions')
             ->where('permission_id', $permissionId)
             ->delete();
     }

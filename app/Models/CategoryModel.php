@@ -6,13 +6,13 @@ use CodeIgniter\Model;
 
 class CategoryModel extends Model
 {
-    protected $table      = 'cf_category';
+    protected $table      = 'pet_category';
     protected $primaryKey = 'id';
 
     protected $returnType     = 'App\Entities\Category';
     protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['slug', 'is_menu', 'name_vi', 'name_en', 'name_jp', 'description_vi', 'description_en', 'description_jp', 'content_vi', 'content_en', 'content_jp', 'date', 'user_id', 'image_id'];
+    protected $allowedFields = ['slug', 'is_home', 'name_vi', 'name_en', 'name_jp', 'description_vi', 'description_en', 'description_jp', 'content_vi', 'content_en', 'content_jp', 'order', 'parent_id', 'active', 'image_url', 'date'];
 
 
 
@@ -22,11 +22,7 @@ class CategoryModel extends Model
         if ($type == "array" && !isset($data['id'])) {
             foreach ($data as &$row) {
                 if (gettype($row) == "object") {
-                    if (in_array("image", $relation)) {
-                        $image_id = $row->image_id;
-                        $builder = $this->db->table('cf_file');
-                        $row->image = $builder->where('id', $image_id)->limit(1)->get()->getFirstRow();
-                    }
+
 
                     if (in_array("product", $relation)) {
                         $category_id = $row->id;
@@ -34,11 +30,6 @@ class CategoryModel extends Model
                         $row->products = $builder->where('category_id', $category_id)->get()->getResult();
                     }
                 } else {
-                    if (in_array("image", $relation)) {
-                        $image_id = $row['image_id'];
-                        $builder = $this->db->table('cf_file');
-                        $row['image'] = $builder->where('id', $image_id)->limit(1)->get()->getFirstRow("array");
-                    }
 
                     //if (in_array("image_other", $relation)) {
                     //    $news_id = $row['id'];
@@ -53,11 +44,7 @@ class CategoryModel extends Model
                 }
             }
         } elseif ($type == "array" && isset($data['id'])) {
-            if (in_array("image", $relation)) {
-                $image_id = $data['image_id'];
-                $builder = $this->db->table('cf_file');
-                $data['image'] = $builder->where('id', $image_id)->limit(1)->get()->getFirstRow('array');
-            }
+
             //if (in_array("image_other", $relation)) {
             //    $news_id = $data['id'];
             //    $builder = $this->db->table('cf_news_image')->join("cf_file", "cf_news_image.image_id = cf_file.id");
@@ -69,11 +56,7 @@ class CategoryModel extends Model
                 $data['products'] = $builder->where('category_id', $category_id)->get()->getResult("array");
             }
         } else {
-            if (in_array("image", $relation)) {
-                $image_id = $data->image_id;
-                $builder = $this->db->table('cf_file');
-                $data->image = $builder->where('id', $image_id)->limit(1)->get()->getFirstRow();
-            }
+
             //if (in_array("image_other", $relation)) {
             //    $news_id = $data->id;
             //    $builder = $this->db->table('cf_news_image')->join("cf_file", "cf_news_image.image_id = cf_file.id");
@@ -87,32 +70,7 @@ class CategoryModel extends Model
         }
         return $data;
     }
-    public function image(&$data)
-    {
-        $type = gettype($data);
-        if ($type == "array" && !isset($data['id'])) {
-            foreach ($data as &$row) {
-                if (gettype($row) == "object") {
-                    $image_id = $row->image_id;
-                    $builder = $this->db->table('cf_file');
-                    $row->image = $builder->where('id', $image_id)->limit(1)->get()->getFirstRow();
-                } else {
-                    $image_id = $row['image_id'];
-                    $builder = $this->db->table('cf_file');
-                    $row['image'] = $builder->where('id', $image_id)->limit(1)->get()->getFirstRow("array");
-                }
-            }
-        } elseif ($type == "array" && isset($data['id'])) {
-            $image_id = $data['image_id'];
-            $builder = $this->db->table('cf_file');
-            $data['image'] = $builder->where('id', $image_id)->limit(1)->get()->getFirstRow('array');
-        } else {
-            $image_id = $data->image_id;
-            $builder = $this->db->table('cf_file');
-            $data->image = $builder->where('id', $image_id)->limit(1)->get()->getFirstRow();
-        }
-        return $data;
-    }
+
     function create_object($data)
     {
         $db = $this->db;

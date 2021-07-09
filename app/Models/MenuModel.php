@@ -6,13 +6,13 @@ use CodeIgniter\Model;
 
 class MenuModel extends Model
 {
-    protected $table      = 'cf_menu';
+    protected $table      = 'pet_menu';
     protected $primaryKey = 'id';
 
     protected $returnType     = 'App\Entities\Menu';
     protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['deleted', 'order', 'parent_id', 'name_vi', 'name_en', 'name_jp', 'type', "link", 'category_id'];
+    protected $allowedFields = ['order', 'parent_id', 'name_vi', 'name_en', 'name_jp', 'type', "link", 'category_id'];
 
     //protected $useTimestamps = false;
     //protected $createdField  = 'created_at';

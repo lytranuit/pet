@@ -91,6 +91,7 @@
 <!-- Script --->
 <?= $this->section('script') ?>
 
+<script src="<?= base_url("assets/lib/ckfinder/ckfinder.js") ?>"></script>
 <script src="<?= base_url("assets/lib/mustache/mustache.min.js") ?>"></script>
 <script src="<?= base_url("assets/lib/image_feature/jquery.image.js") ?>"></script>
 <script type='text/javascript'>
@@ -116,8 +117,8 @@
             success: "valid"
         });
 
-        if (tin.image) {
-            $(".image_ft").imageFeature("set_image", tin.image);
+        if (tin.image_url) {
+            $(".image_ft").imageFeature("set_image", tin.image_url);
         }
         $("#form-dang-tin").validate({
             highlight: function(input) {

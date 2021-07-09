@@ -4,16 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class TagModel extends Model
+class BannerModel extends Model
 {
-    protected $table      = 'pet_tag';
+    protected $table      = 'pet_banner';
     protected $primaryKey = 'id';
 
-    protected $returnType     = 'App\Entities\Tag';
+    protected $returnType     = 'App\Entities\Banner';
     protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['slug', 'name_vi', 'name_en', 'name_jp', 'description_vi', 'description_en', 'description_jp', 'date', 'user_id', 'image_url'];
-
+    protected $allowedFields = ['order', 'text', 'url', 'image_url'];
 
 
     //protected $useTimestamps = false;

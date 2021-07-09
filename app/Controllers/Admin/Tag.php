@@ -47,7 +47,6 @@ class Tag extends BaseController
         } else {
             $Tag_model = model("TagModel");
             $tin = $Tag_model->where(array('id' => $id))->asObject()->first();
-            $Tag_model->image($tin);
             $this->data['tin'] = $tin;
             //echo "<pre>";
             //print_r($tin);
