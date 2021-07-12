@@ -29,4 +29,26 @@ class Settings extends BaseController
             return view($this->data['content'], $this->data);
         }
     }
+    public function sendemail()
+    { /////// trang ca nhan
+        $option_model = model("OptionModel");
+        if (isset($_POST['settings'])) {
+            $data = $_POST;
+            foreach ($data['id'] as $key => $id) {
+                $value = $data['value'][$key];
+                $option_model->update($id, array('value' => $value));
+            }
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            exit;
+        } else {
+            $tins = $option_model->where("group", 'send_mail')->orderBy("order", "asc")->asObject()->findAll();
+            $this->data['tins'] = $tins;
+
+            load_editor($this->data);
+            //            echo "<pre>";
+            //            print_r($tins);
+            //            die();
+            return view($this->data['content'], $this->data);
+        }
+    }
 }

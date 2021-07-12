@@ -13,4 +13,5 @@ class Language extends BaseController
         $url = base_url();
         return redirect()->to($url);
     }
+    
 }

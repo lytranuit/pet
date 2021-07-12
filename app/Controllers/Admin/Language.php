@@ -11,10 +11,7 @@ class Language extends BaseController
 
     public function index()
     {
-        //$translations = $this->_load_language();
-        $language_model = model("LanguageModel");
-
-        $translations = $language_model->findAll();
+        $translations = $this->_load_language();
 
         $this->data['moduleData'] = $translations;
 
@@ -32,7 +29,6 @@ class Language extends BaseController
         //print_r($_POST['data']);
         //die();
         $data = json_decode($_POST['data'], true);
-        $language_model = model("LanguageModel");
 
         foreach ($data as $lang => $row) {
             //print_r($row);
@@ -48,16 +44,6 @@ class Language extends BaseController
             $master = array();
             $master[] = "<?php \n\n";
             foreach ($row as $key => $value) {
-                $language = $language_model->where("key", $key)->first();
-
-                $data_up = array($lang => $value, 'key' => $key);
-                if (!empty($language)) {
-                    $language_model->update($language['id'], $data_up);
-                } else {
-                    // $data_up['key'] = $key;
-                    // print_r($data_up);
-                    $language_model->insert($data_up);
-                }
                 $master[] = "\$lang['" . $key . "'] = \"$value\";";
             }
             // Add closing PHP tag
@@ -73,8 +59,8 @@ class Language extends BaseController
             }
             // Check syntax and attempt to save file
             $php = implode($master);
-                        //echo $php;
-                        //die();
+            //echo $php;
+            //die();
             if (!$this->_invalid_php_syntax($php)) {
                 $fp = @fopen($path, 'w');
                 if (fwrite($fp, $php) !== FALSE) {
@@ -92,7 +78,7 @@ class Language extends BaseController
         //print_r($array_lang);
         //die();
         foreach ($array_lang as $k) {
-            $path = APPPATH . "Language/" . $k . "/custom_lang.php";
+            $path = APPPATH . "Language/" . $k . "/Custom.php";
             //            echo $path;
             $masterModule = $this->_load_module($path);
             foreach ($masterModule as $lineNumber => $line) {

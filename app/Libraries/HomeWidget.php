@@ -5,15 +5,18 @@ namespace App\Libraries;
 class HomeWidget
 {
     private $data = array();
+    private $view = "";
     public function __construct()
     {
+        $router = service('router');
     }
     public function slider()
     {
         $slider_model = model("SliderModel");
+        $banner_model = model("BannerModel");
         $this->data['sliders'] = $slider_model->orderby("order", "Asc")->findAll();
-        $slider_model->image($this->data['sliders']);
-        return view("lib/home/slider", $this->data);
+        $this->data['banners'] = $banner_model->orderby("order", "Asc")->findAll();
+        return view("lib/home/" . __FUNCTION__, $this->data);
     }
 
     public function page()
@@ -136,23 +139,26 @@ class HomeWidget
     {
         //return 1;
         $category_model = model("CategoryModel");
-        $this->data['category'] = $category_model->orderby("id", "ASC")->limit(7)->findAll();
+        $product_model = model("ProductModel");
+        $list_category = $category_model->where(array('is_home' => 1, 'parent_id' => 0))->orderBy('order', 'ASC')->asObject()->findAll();
+        foreach ($list_category as &$row) {
+            $proudct_info = $product_model->get_product_by_category($row->id);
+            $row->products = $proudct_info['products'];
+            $row->count_product = $proudct_info['count_product'];
+            // $row->products = $this->->with_units()->with_price_km()->with_image()->limit(10)->get_all();
 
-        $category_model->image($this->data['category']);
-        //echo "<pre>";
-        //print_r($this->data['category']);
-        //die();
-        return view("lib/home/category", $this->data);
-    }
-    public function member()
-    {
-        $user_model = model("UserModel");
-        $this->data['users'] = $user_model->orderby("id", "DESC")->limit(10)->findAll();
-
-        $user_model->relation($this->data['users'], array("image"));
-        //echo "<pre>";
-        //print_r($this->data['news']);
-        //die();
-        return view("lib/home/member", $this->data);
+            // if (!empty($row->products)) {
+            //     foreach ($row->products as &$row_format) {
+            //         $row_format = $this->product_model->format($row_format);
+            //     }
+            // }
+            /* COUNT PRODUCT */
+            // $row->count_product = $this->product_model->where("status = 1 and is_foodzone = 1 and FIND_IN_SET('$my_region',region) AND category_id = $row->id", null, null, null, null, true)->join("fz_product_category", "id", "product_id")->count_rows();
+        }
+        $this->data['categories'] = $list_category;
+        // echo "<pre>";
+        // print_r($list_category);
+        // die();
+        return view("lib/home/" . __FUNCTION__, $this->data);
     }
 }

@@ -38,11 +38,13 @@ $routes->add('lang/(:any)', 'Language::index/$1');
 $routes->add('gioi-thieu', 'Home::about');
 $routes->add('lien-he', 'Home::contact');
 $routes->add('thu-vien', 'Home::library');
+
+$routes->add('dang-nhap.html', 'Home::login');
 $routes->add('thu-vien/(:any)-c(:num).html', 'Library::view/$2');
 $routes->add('danh-muc', 'Product::index');
-$routes->add('danh-muc/(:any)-c(:num).html', 'Product::category/$2');
+$routes->add('danh-muc/c(:num).html', 'Category::view/$1');
 $routes->add('bang-tin', 'News::index');
-$routes->add('san-pham/(:any)-c(:num).html', 'Product::view/$2');
+$routes->add('san-pham/c(:num).html', 'Product::view/$1');
 $routes->add('tin-tuc/(:any)-c(:num).html', 'News::view/$2');
 $routes->add('page/(:any)-c(:num).html', 'Page::view/$2');
 

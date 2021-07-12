@@ -147,6 +147,20 @@ if (!function_exists('str_plural_studly')) {
 
 
 
+if (!function_exists('area_current')) {
+
+    function area_current()
+    {
+
+        helper("cookie");
+
+        // store a cookie value
+
+        $area_current = get_cookie("area_current");
+
+        return $area_current;
+    }
+}
 if (!function_exists('html_nestable')) {
 
     function html_nestable($array, $column, $parent, $controller = '')
@@ -169,32 +183,43 @@ if (!function_exists('html_nestable')) {
                 if ($row['type'] == 1) {
                     $sub_html = "<span class='text-info mr-1'>[Link='" . $row['link'] . "']</span>";
                 } elseif ($row['type'] == 2) {
-                    $category_id = $row['category_id'];
-                    if ($category_id == 0) {
+                    $related_id = $row['related_id'];
+                    if ($related_id == 0) {
                         $sub_html = "<span class='text-success mr-1'>[Danh mục sản phẩm='Tất cả']</span>";
                     } else {
                         $category_model = model("CategoryModel");
-                        $obj = $category_model->find($category_id);
+                        $obj = $category_model->where('id', $related_id)->asObject()->first();
                         $sub_html = "<span class='text-success mr-1'>[Danh mục sản phẩm='" . $obj->name_vi . "']</span>";
                     }
                 } elseif ($row['type'] == 3) {
-                    $category_id = $row['category_id'];
-                    if ($category_id == 0) {
+                    $related_id = $row['related_id'];
+                    if ($related_id == 0) {
                         $sub_html = "<span class='text-warning mr-1'>[Danh mục tin tức='Tất cả']</span>";
                     } else {
                         $tag_model = model("TagModel");
-                        $obj = $tag_model->find($category_id);
+                        $obj = $tag_model->where('id', $related_id)->asObject()->first();
                         $sub_html = "<span class='text-warning mr-1'>[Danh mục tin tức='" . $obj->name_vi . "']</span>";
                     }
                 } elseif ($row['type'] == 4) {
-                    $page_id = $row['category_id'];
-                    if ($page_id == 0) {
-                        $sub_html = "<span class='text-primary mr-1'>[Trang='Tất cả']</span>";
+                    $related_id = $row['related_id'];
+                    if ($related_id == 0) {
+                        $sub_html = "<span class='text-primary mr-1'>[Sản phẩm='Tất cả']</span>";
                     } else {
-                        $page_model = model("PageModel");
-                        $obj = $page_model->find($page_id);
-                        $sub_html = "<span class='text-primary mr-1'>[Trang='" . $obj->title_vi . "']</span>";
+                        $product_model = model("ProductModel");
+                        $obj = $product_model->where('id', $related_id)->asObject()->first();
+                        $sub_html = "<span class='text-primary mr-1'>[Sản phẩm='" . $obj->name_vi . "']</span>";
                     }
+                } elseif ($row['type'] == 5) {
+                    $related_id = $row['related_id'];
+                    if ($related_id == 0) {
+                        $sub_html = "<span class='text-primary mr-1'>[Tin tức='Tất cả']</span>";
+                    } else {
+                        $news_model = model("NewsModel");
+                        $obj = $news_model->where('id', $related_id)->asObject()->first();
+                        $sub_html = "<span class='text-primary mr-1'>[Tin tức='" . $obj->title_vi . "']</span>";
+                    }
+                } elseif ($row['type'] == 6) {
+                    $sub_html = "<span class='text-danger mr-1'>[Khuyến mãi]</span>";
                 }
             }
             $html .= '<li class="dd-item" id="menuItem_' . $row['id'] . '" data-id="' . $row['id'] . '">
@@ -304,13 +329,11 @@ if (!function_exists('url_page_list')) {
 
 if (!function_exists('url_product')) {
 
-    function url_product($id)
+    function url_product($product)
     {
         $url = base_url();
-        if ($id > 0) {
-            $product_model = model("ProductModel");
-            $product = $product_model->find($id);
-            $url = base_url("san-pham/" . ($product->slug != '' ? $product->slug : str_slug($product->name_vi)) . "-c$id.html");
+        if ($product) {
+            $url = base_url("san-pham/c$product->id.html");
         }
         return $url;
     }
@@ -354,6 +377,18 @@ if (!function_exists('url_library')) {
             $library_model = model("LibraryModel");
             $library = $library_model->find($id);
             $url = base_url("thu-vien/" . ($library->slug != '' ? $library->slug : str_slug($library->title_vi)) . "-c$id.html");
+        }
+        return $url;
+    }
+}
+
+if (!function_exists('url_category')) {
+
+    function url_category($category = NULL)
+    {
+        $url = base_url();
+        if ($category) {
+            $url = base_url("danh-muc/c$category->id.html");
         }
         return $url;
     }

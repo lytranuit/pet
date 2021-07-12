@@ -55,11 +55,41 @@ class BaseController extends Controller
         $explode = explode("\\", $controller);
         $content = "frontend" . "/" . strtolower($explode[count($explode) - 1]) . "/" . $method;
 
-
+        // $language = \Config\Services::language();
+        // $short_lang =  $language->getLocale();
+        // print_r($short_lang);
+        // die();
+        // echo "<pre>";
+        // print_r(user());
+        // die();
         //echo $content;
         //die();
         $this->data['content'] = $content;
         $this->data['template'] = "main";
-        $this->data['title'] = " | Huy tùng Coffee";
+        $this->data['title'] = " | Simba Pet";
+        /*
+        MENU
+        */
+        $menu_model = model("MenuModel");
+        $list_menu = $menu_model->orderBy('order', 'ASC')->asObject()->findAll();
+        $list_parent = array_filter((array) $list_menu, function ($item) {
+            return $item->parent_id == 0;
+        });
+        foreach ($list_parent as &$row) {
+            $child = array_filter((array) $list_menu, function ($item) use ($row) {
+                return $item->parent_id == $row->id;
+            });
+            foreach ($child as &$row2) {
+                $child2 = array_filter((array) $list_menu, function ($item) use ($row2) {
+                    return $item->parent_id == $row2->id;
+                });
+                $row2->child = $child2;
+            }
+            $row->child = $child;
+        }
+        // echo "<pre>";
+        // print_r($list_menu);
+        // die();
+        $this->data['list_menu'] = $list_parent;
     }
 }

@@ -15,6 +15,18 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-8">
+                            <div class="form-group row">
+                                <b class="col-12 col-lg-2 col-form-label">Hiển thị ở trang chủ:</b>
+                                <div class="col-12 col-lg-4 pt-1">
+                                    <div class="switch-button switch-button-xs switch-button-success">
+                                        <input type="hidden" class="input-tmp" checked="" name="is_home" value="0">
+                                        <input type="checkbox" checked="" id="switch3" name="is_home" value="1">
+                                        <span>
+                                            <label for="switch3"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                             <ul class="nav nav-tabs">
                                 <li class="nav-item">
                                     <a class="nav-link active" data-toggle="tab" href="#menu0">Tiếng Việt</a>
@@ -38,7 +50,13 @@
                                     <div class="form-group row">
                                         <b class="col-12 col-lg-2 col-form-label">Mô tả:<i class="text-danger">*</i></b>
                                         <div class="col-12">
-                                            <textarea class="edit" name="description_vi"></textarea>
+                                            <textarea class="form-control" name="description_vi"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <b class="col-12 col-lg-2 col-form-label">Nội dung:<i class="text-danger">*</i></b>
+                                        <div class="col-12">
+                                            <textarea class="edit" name="content_vi"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -52,7 +70,13 @@
                                     <div class="form-group row">
                                         <b class="col-12 col-lg-2 col-form-label">Mô tả:<i class="text-danger">*</i></b>
                                         <div class="col-12">
-                                            <textarea class="edit" name="description_en"></textarea>
+                                            <textarea class="form-control" name="description_en"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <b class="col-12 col-lg-2 col-form-label">Nội dung:<i class="text-danger">*</i></b>
+                                        <div class="col-12">
+                                            <textarea class="edit" name="content_en"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -66,7 +90,13 @@
                                     <div class="form-group row">
                                         <b class="col-12 col-lg-2 col-form-label">Mô tả:<i class="text-danger">*</i></b>
                                         <div class="col-12">
-                                            <textarea class="edit" name="description_jp"></textarea>
+                                            <textarea class="form-control" name="description_jp"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <b class="col-12 col-lg-2 col-form-label">Nội dung:<i class="text-danger">*</i></b>
+                                        <div class="col-12">
+                                            <textarea class="edit" name="content_jp"></textarea>
                                         </div>
                                     </div>
                                 </div>

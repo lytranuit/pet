@@ -1,0 +1,45 @@
+.price-prev {
+    color: gray;
+    text-decoration: line-through;
+}
+
+.slick-next {
+    width: 30px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    box-shadow: 0 0 4px 0 rgb(0 0 0 / 20%);
+    color: #707070;
+    top: 40%;
+    transition: .3s;
+    outline: none;
+    opacity: .9;
+    position: absolute;
+    padding-left: 7px;
+    border-radius: 100px 0 0 100px;
+    right: 0;
+    cursor: pointer;
+}
+
+.slick-prev {
+    width: 30px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    box-shadow: 0 0 4px 0 rgb(0 0 0 / 20%);
+    color: #707070;
+    top: 40%;
+    transition: .3s;
+    outline: none;
+    opacity: .9;
+    position: absolute;
+    padding-right: 7px;
+    border-radius: 0 100px 100px 0;
+    left: 0;
+    z-index: 1;
+    cursor: pointer;
+}

@@ -54,8 +54,8 @@ class BaseController extends Controller
         $explode = explode("\\", $controller);
         $content = "backend" . "/" . strtolower($explode[count($explode) - 1]) . "/" . $method;
 
-        //echo $content;
-        //die();
+        $this->data['stylesheet_tag'] = array();
+        $this->data['javascript_tag'] = array();
         $this->data['content'] = $content;
         $this->data['template'] = "main";
         $this->data['title'] = "";

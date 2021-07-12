@@ -12,7 +12,7 @@ class MenuModel extends Model
     protected $returnType     = 'App\Entities\Menu';
     protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['order', 'parent_id', 'name_vi', 'name_en', 'name_jp', 'type', "link", 'category_id'];
+    protected $allowedFields = ['order', 'parent_id', 'name_vi', 'name_en', 'name_jp', 'type', "link", 'related_id'];
 
     //protected $useTimestamps = false;
     //protected $createdField  = 'created_at';

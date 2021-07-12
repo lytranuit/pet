@@ -86,6 +86,14 @@ class Category extends BaseController
         exit;
     }
 
+    public function remove_product($id)
+    { /////// trang ca nhan
+        $ProductCategoryModel = model("ProductCategoryModel");
+        $ProductCategoryModel->where(array("id" => $id))->delete();
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        exit;
+    }
+
     public function table()
     {
         $Category_model = model("CategoryModel");

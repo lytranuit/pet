@@ -150,8 +150,8 @@
                                     <div class="dd-handle">
                                         <div><?= $row->code ?> - <?= $row->name_vi ?></div>
                                         <div class="dd-nodrag btn-group ml-auto">
-                                            <a class="btn btn-sm btn-outline-light" href="<?= base_url() ?>product/edit/<?= $row->product_id ?>">Edit</a>
-                                            <a class="btn btn-sm btn-outline-light" href="<?= base_url() ?>eat/remove_product/<?= $row->pc_id ?>" data-type="confirm" title="Xóa ra khỏi dạnh mục">
+                                            <a class="btn btn-sm btn-outline-light" href="<?= base_url() ?>/admin/product/edit/<?= $row->product_id ?>">Edit</a>
+                                            <a class="btn btn-sm btn-outline-light" href="<?= base_url() ?>/admin/category/remove_product/<?= $row->pc_id ?>" data-type="confirm" title="Xóa ra khỏi dạnh mục">
                                                 <i class="far fa-trash-alt"></i>
                                             </a>
                                         </div>

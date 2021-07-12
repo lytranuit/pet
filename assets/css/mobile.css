@@ -1601,7 +1601,6 @@
     font-weight: 700;
     color: #f00;
     margin: 0;
-    height: 32px;
     overflow: hidden;
   }
   .p-old-price {
@@ -3886,5 +3885,8 @@
     height: 50px;
     overflow: hidden;
     border-radius: 50%;
+  }
+  footer {
+    margin-top: 30px;
   }
 }

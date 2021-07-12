@@ -33,7 +33,7 @@
                                 <?php $i++ ?>
                                 <tr>
                                     <td><?= $i ?></td>
-                                    <td class="key"><?= $row['key'] ?></td>
+                                    <td class="key"><?= $key ?></td>
                                     <td><input type='text' style="width:100%;" class="form-control vietnamese" value='<?= $row['vi'] ?>' /></td>
                                     <td><input type='text' style="width:100%;" class="form-control english" value='<?= $row['en'] ?>' /></td>
                                     <td><input type='text' style="width:100%;" class="form-control japanese" value='<?= $row['jp'] ?>' /></td>

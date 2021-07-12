@@ -29,11 +29,12 @@
 
     <link rel="stylesheet" href="<?= base_url("assets/lib/slick/slick.css") ?>" />
 
+    <link rel="stylesheet" href="<?= base_url("assets/lib/fancybox/jquery.fancybox.css") ?>" />
 
     <link rel="stylesheet" href="<?= base_url("assets/css/style.css") ?>" />
     <link rel="stylesheet" href="<?= base_url("assets/css/mobile.css") ?>" />
 
-    <link rel="stylesheet" href="<?= base_url("assets/lib/fancybox/jquery.fancybox.css") ?>" />
+    <link rel="stylesheet" href="<?= base_url("assets/css/custom.css") ?>" />
 
 
 
@@ -45,7 +46,7 @@
 
     <script src="<?= base_url("assets/lib/slick/slick.js") ?>"></script>
     <script src="<?= base_url("assets/lib/cookie/jquery.cookies.2.2.0.min.js") ?>"></script>
-    <script src="<?= base_url("assets/js/cart.js") ?>"></script>
+    <script src="<?= base_url("assets/js/main.js") ?>"></script>
     <!-- CSS -->
     <?= $this->renderSection('style') ?>
     <script>

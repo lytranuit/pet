@@ -18,11 +18,17 @@
     <link rel="stylesheet" href="<?= base_url("assets/admin/css/main.css") ?>" ?>
     <link rel="stylesheet" href="<?= base_url("assets/admin/css/custom.css") ?>" ?>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <?php if (!empty($stylesheet_tag)) : ?>
+        <?php foreach ($stylesheet_tag as $url) : ?>
+            <link href="<?= $url ?>" rel="stylesheet" />
+        <?php endforeach ?>
+    <?php endif ?>
 
     <?= $this->renderSection('style') ?>
     <script>
         var path = '<?= base_url() ?>/';
     </script>
+
 </head>
 
 <body>
@@ -59,6 +65,11 @@
     <script src="<?= base_url('assets/lib/inputmask/js/jquery.inputmask.bundle.js') ?>"></script>
     <script src="<?= base_url('assets/lib/moment/js/moment.js') ?>"></script>
     <script src="<?= base_url('assets/admin/js/admin.js') ?>"></script>
+    <?php if (!empty($javascript_tag)) : ?>
+        <?php foreach ($javascript_tag as $url) : ?>
+            <script src="<?= $url ?>" type="text/javascript"></script>
+        <?php endforeach ?>
+    <?php endif ?>
     <?= $this->renderSection('script') ?>
 </body>
 

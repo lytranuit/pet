@@ -6,11 +6,11 @@ use CodeIgniter\Model;
 
 class OptionModel extends Model
 {
-    protected $table      = 'cf_options';
+    protected $table      = 'pet_options';
     protected $primaryKey = 'id';
 
     protected $returnType     = 'array';
-    protected $useSoftDeletes = true;
+    protected $useSoftDeletes = false;
 
     protected $allowedFields = ['value'];
 

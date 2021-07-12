@@ -12,13 +12,13 @@ class Menu extends BaseController
 
         // load_datatable($this->data);
         $menu_model = model("MenuModel");
-        $category = $menu_model->orderby('order', "ASC")->asArray()->findAll();
+        $menus = $menu_model->orderby('order', "ASC")->asArray()->findAll();
         //echo "<pre>";
         //print_r($category);
         //die();
-        if (empty($category))
-            $category = array();
-        $this->data['html_nestable'] = html_nestable($category, 'parent_id', 0, 'menu');
+        if (empty($menus))
+            $menus = array();
+        $this->data['html_nestable'] = html_nestable($menus, 'parent_id', 0, 'menu');
         return view($this->data['content'], $this->data);
     }
 
@@ -40,10 +40,13 @@ class Menu extends BaseController
 
             $category_model = model("CategoryModel");
             $tag_model = model("TagModel");
-            $page_model = model("PageModel");
+            $news_model = model("NewsModel");
+            $product_model = model("ProductModel");
             $this->data['categories'] = $category_model->orderby('id', "DESC")->findAll();
             $this->data['tags'] = $tag_model->orderby('id', "DESC")->findAll();
-            $this->data['pages'] = $page_model->orderby('id', "DESC")->findAll();
+            $this->data['product'] = $product_model->where(array('status' => 1, 'is_pet' => 1))->orderby('id', "DESC")->findAll();
+
+            $this->data['news'] = $news_model->orderby('id', "DESC")->findAll();
             return view($this->data['content'], $this->data);
         }
     }
@@ -65,14 +68,17 @@ class Menu extends BaseController
             $Menu_model = model("MenuModel");
             $tin = $Menu_model->where(array('id' => $id))->asObject()->first();
             $this->data['tin'] = $tin;
-            
+
+
             $category_model = model("CategoryModel");
             $tag_model = model("TagModel");
-            $page_model = model("PageModel");
+            $news_model = model("NewsModel");
+            $product_model = model("ProductModel");
             $this->data['categories'] = $category_model->orderby('id', "DESC")->findAll();
             $this->data['tags'] = $tag_model->orderby('id', "DESC")->findAll();
-            $this->data['pages'] = $page_model->orderby('id', "DESC")->findAll();
-            return view($this->data['content'], $this->data);
+            $this->data['news'] = $news_model->orderby('id', "DESC")->findAll();
+            $this->data['product'] = $product_model->where(array('status' => 1, 'is_pet' => 1))->orderby('id', "DESC")->findAll();
+ return view($this->data['content'], $this->data);
         }
     }
 
@@ -101,13 +107,10 @@ class Menu extends BaseController
         }
     }
 
-    public function savemenu()
+    public function deletemenu()
     {
+        $id = $this->request->getPost('id');
         $Menu_model = model("MenuModel");
-        $data = json_decode($this->request->getPost('data'), true);
-        $id = $data['id'];
-        $data_up = $Menu_model->create_object($data);
-        unset($data_up['id']);
-        $Menu_model->update($id, $data_up);
+        $Menu_model->delete($id);
     }
 }

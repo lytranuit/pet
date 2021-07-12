@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class LanguageModel extends Model
 {
-    protected $table      = 'cf_language';
+    protected $table      = 'pet_language';
     protected $primaryKey = 'id';
 
     protected $returnType     = 'array';
