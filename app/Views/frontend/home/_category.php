@@ -58,9 +58,9 @@
                         <div class="box-pro-home floor-1" id="box-pro-home131">
                             <div class="row g-1">
                                 <div class="col-md-3">
-                                    <div class="title-product-list-2">
+                                    <a class="title-product-list-2 d-block" href="<?= url_category($category) ?>">
                                         <h2><?= $category->{pick_language($category)} ?></h2>
-                                    </div>
+                                    </a>
 
                                     <?php if (!empty($category->child)) : ?>
                                         <div class="sub-cat-pro-home d-none d-lg-block">
@@ -72,7 +72,7 @@
                                         </div>
                                     <?php endif ?>
                                     <div class="banner-left-cat-pro-home text-center d-none d-lg-block">
-                                        <a href="https://www.petcity.vn/cho-131.html"><img class="img-fluid" src="https://www.petcity.vn/media/banner/20_Maya16f779002f7bc582b44b7de773be4e2.jpg"></a>
+                                        <a href="<?= url_category($category) ?>"><img class="img-fluid" src="<?= $category->image_url ?>"></a>
                                     </div>
                                 </div>
                                 <!--pro-home-left-->

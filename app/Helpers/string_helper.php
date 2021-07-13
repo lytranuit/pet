@@ -354,15 +354,24 @@ if (!function_exists('url_page')) {
     }
 }
 
-if (!function_exists('url_news')) {
+if (!function_exists('url_tag')) {
 
-    function url_news($id)
+    function url_tag($tag)
     {
         $url = base_url();
-        if ($id > 0) {
-            $news_model = model("NewsModel");
-            $news = $news_model->find($id);
-            $url = base_url("tin-tuc/" . ($news->slug != '' ? $news->slug : str_slug($news->title_vi)) . "-c$id.html");
+        if ($tag) {
+            $url = base_url("tin-tuc/c$tag->id.html");
+        }
+        return $url;
+    }
+}
+if (!function_exists('url_news')) {
+
+    function url_news($news)
+    {
+        $url = base_url();
+        if ($news) {
+            $url = base_url("post/" . ($news->slug != '' ? $news->slug : str_slug($news->title_vi)) . "-c$news->id.html");
         }
         return $url;
     }

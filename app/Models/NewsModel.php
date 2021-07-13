@@ -24,7 +24,7 @@ class NewsModel extends Model
         if ($type == "array" && !isset($data['id'])) {
             foreach ($data as &$row) {
                 if (gettype($row) == "object") {
-                  
+
                     if (in_array("user", $relation)) {
                         $user_id = $row->user_id;
                         $builder = $this->db->table('users');
@@ -69,7 +69,7 @@ class NewsModel extends Model
                 }
             }
         } elseif ($type == "array" && isset($data['id'])) {
-          
+
             if (in_array("user", $relation)) {
                 $user_id = $data['user_id'];
                 $builder = $this->db->table('users');
@@ -91,7 +91,7 @@ class NewsModel extends Model
                 $data['tags'] = $builder->where('news_id', $news_id)->get()->getResult("array");
             }
         } else {
-          
+
             if (in_array("user", $relation)) {
                 $user_id = $data->user_id;
                 $builder = $this->db->table('users');
@@ -116,7 +116,7 @@ class NewsModel extends Model
         return $data;
     }
 
-   
+
     public function get_news_related($id, $tags)
     {
         if (empty($tags)) {
@@ -146,6 +146,28 @@ class NewsModel extends Model
         //print_r($builder->where("deleted_at", NULL)->where("deleted", 0)->orderBy("id", "DESC")->limit($limit, $offset)->getCompiledSelect());
         //die();
         return $builder->where("deleted_at", NULL)->where("deleted", 0)->orderBy("id", "DESC")->limit($limit, $offset)->get()->getResult();
+    }
+    function get_news_by_tag($tag_id)
+    {
+        $builder = $this->db->table('pet_news')->join("pet_news_tag", "pet_news_tag.news_id = pet_news.id");
+        $count = $builder->where("tag_id = $tag_id and deleted_at IS NULL")->countAllResults();
+
+
+
+
+        $builder = $this->db->table('pet_news')->join("pet_news_tag", "pet_news_tag.news_id = pet_news.id");
+        $news = $builder->where("tag_id = $tag_id and deleted_at IS NULL")->orderBy("pet_news.date", "DESC")->limit(8)->get()->getResult();
+
+
+
+        // echo "<pre>";
+        // print_r($count);
+        // die();
+        $return = array(
+            'count' => $count,
+            'news' => $news,
+        );
+        return $return;
     }
     function create_object($data)
     {
