@@ -139,6 +139,10 @@ class ProductModel extends Model
         $builder = $this->db->table('product')->join("pet_product_category", "pet_product_category.product_id = product.id")->select("product.*");
         $products = $builder->where("status = 1 and is_pet = 1 and FIND_IN_SET('$my_region',region) AND category_id = $category_id")->orderBy("pet_product_category.order", "ASC")->limit(10)->get()->getResult();
 
+        ////CateGory con
+        $builder = $this->db->table('pet_category');
+        $category = $builder->where("is_home = 1 and parent_id = $category_id")->orderBy("pet_category.date", "DESC")->get()->getResult();
+
         foreach ($products as &$product) {
             $this->format_product($product);
         }
@@ -148,7 +152,8 @@ class ProductModel extends Model
         // die();
         $return = array(
             'count_product' => $count,
-            'products' => $products
+            'products' => $products,
+            'child' => $category
         );
         return $return;
     }

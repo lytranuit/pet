@@ -18,9 +18,9 @@
 </div>
 <div class="clear">
     <div class="container">
-        <div class="row text-center">
+        <div class="row">
             <div class="clear">
-                <h4 class="home-title ocean"><a href="https://www.petcity.vn/thong-tin-huu-ich-ve-thu-cung/ac7.html"><span>Pet Blog</span></a></h4>
+                <h4 class="home-title ocean"><a href="https://www.petcity.vn/thong-tin-huu-ich-ve-thu-cung/ac7.html"><span class="text-white">Pet Blog</span></a></h4>
             </div>
             <section id="row_ar7" class="ajax-home">
                 <article class="news-box">

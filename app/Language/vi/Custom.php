@@ -180,6 +180,7 @@ $lang['sales'] = "Đơn hàng";
 $lang['contact'] = "Liên hệ";
 $lang['product_menu'] = "Danh mục thực đơn";
 $lang['feedback'] = "Feedback";
+$lang['more'] = "Xem thêm";
 return $lang;
 
 

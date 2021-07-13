@@ -33,6 +33,13 @@
                                         </span>
                                     </div>
                                 </div>
+                                <b class="col-12 col-lg-2 col-form-label">Loại:</b>
+                                <div class="col-12 col-lg-4 pt-1">
+                                    <select name="type" class="form-control form-control-sm">
+                                        <option value="1">Loại 1</option>
+                                        <option value="2">Loại 2</option>
+                                    </select>
+                                </div>
                             </div>
                             <ul class="nav nav-tabs">
                                 <li class="nav-item">

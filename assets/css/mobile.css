@@ -548,9 +548,6 @@
     color: #fff;
     box-shadow: 0 0 10px #999;
   }
-  .row {
-    margin: 0 -10px;
-  }
   .img-responsive, .img-responsive img {
     max-width: 100%;
     height: auto;

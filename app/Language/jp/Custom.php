@@ -180,6 +180,7 @@ $lang['sales'] = "";
 $lang['contact'] = "";
 $lang['product_menu'] = "";
 $lang['feedback'] = "";
+$lang['more'] = "More";
 return $lang;
 
 

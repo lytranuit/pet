@@ -145,6 +145,7 @@ class HomeWidget
             $proudct_info = $product_model->get_product_by_category($row->id);
             $row->products = $proudct_info['products'];
             $row->count_product = $proudct_info['count_product'];
+            $row->child = $proudct_info['child'];
             // $row->products = $this->->with_units()->with_price_km()->with_image()->limit(10)->get_all();
 
             // if (!empty($row->products)) {

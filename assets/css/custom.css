@@ -43,3 +43,59 @@
     z-index: 1;
     cursor: pointer;
 }
+
+/*LIST-PRODUCT*/
+
+.title-product-list {
+    position: relative;
+    padding: 0;
+    margin: 0 0 20px;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 400;
+    top: 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.title-product-list h2 {
+    margin: 0;
+    line-height: 32px;
+    color: #4c4c4c;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 24px;
+    background: #ffffff;
+    padding: 5px 10px;
+    border-radius: 10px;
+    position: relative;
+    top: 22px;
+}
+
+.title-product-list-2 {
+    position: relative;
+    padding: 19px 0;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0 0 20px;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.floor-1 .title-product-list-2 {
+    background: url(https://www.petcity.vn/media/lib/shopcho.png);
+}
+
+.title-product-list-2 h2 {
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.border-product {
+    padding-bottom: 10px;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}

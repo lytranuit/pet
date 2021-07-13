@@ -58,6 +58,6 @@ class BaseController extends Controller
         $this->data['javascript_tag'] = array();
         $this->data['content'] = $content;
         $this->data['template'] = "main";
-        $this->data['title'] = "";
+        $this->data['title'] = "Admin | Simba Pet";
     }
 }
