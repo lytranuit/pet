@@ -90,7 +90,7 @@
             </div>
         </div>
         <div class="col-md-4">
-            <?= view_cell("\App\Libraries\SidebarWidget::product") ?>
+            <?= view_cell("\App\Libraries\SideBarWidget::product") ?>
         </div>
     </div>
 </div>

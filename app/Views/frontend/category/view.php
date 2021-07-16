@@ -145,7 +145,7 @@
             <div class="clear"></div>
             <div class="pro_left">
 
-                <?= view_cell("\App\Libraries\SidebarWidget::hot_news") ?>
+                <?= view_cell("\App\Libraries\SideBarWidget::hot_news") ?>
             </div>
 
         </div>
