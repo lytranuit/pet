@@ -91,13 +91,11 @@
 
                         <div class="line_h22" style="font-size: 13px;color: #8c8c8c;">
                             1. 10 Hàm Long, Q.Hoàn Kiếm
-                            <img src="/media/lib/ghjhj.png" alt="" title="Flagship Store" style=" ">
                             <br>
 
                             Tel: 024 3933 2727 <br>
 
                             2. 101 Núi Trúc, Kim Mã, Q.Ba Đình
-                            <img src="/media/lib/ghjhj.png" alt="" title="Flagship Store" style=" ">
                             <br>
                             Tel: 024 32444824 <br>
 
@@ -121,7 +119,7 @@
                         <p class="txt_u txt_b"><span>ĐÀ NẴNG</span></p>
 
                         <div class="line_h22" style="font-size: 13px;color: #8c8c8c;">
-                            1. Tại Đà Nẵng: 255 Trưng Nữ Vương, Q.Hải Châu<img src="/media/lib/ghjhj.png" alt="" title="Flagship Store" style=" "><br>
+                            1. Tại Đà Nẵng: 255 Trưng Nữ Vương, Q.Hải Châu<br>
                             Tel: 023 6364 6727- 056 547 8159 <br>
 
                         </div>

@@ -8,7 +8,7 @@
 
             <div class="main_container col-lg-12 padding-col-left-0" wfd-id="77">
                 <div class="box-heading relative heading" wfd-id="243">
-                    <h2 style="font-size:33px;" class="text-center txt_violet space10px hr">Tìm kiếm : <b><?= $search ?></b></h2>
+                    <h2 style="font-size:33px;" class="text-center txt_violet space10px hr"><?= lang("Custom.khuyen_mai") ?></h2>
                 </div>
                 <div class="collection product-list">
                     <div class="row">
@@ -32,7 +32,7 @@
                                                                 <?= number_format($product->units[0]->prev_price, 0, ",", ".") ?>đ
                                                             <?php endif ?>
                                                         </div>
-                                                        <input type="hidden" value="1" class="number" />
+                                                         <input type="hidden" value="1" class="number" />
                                                     </td>
 
                                                     <td class="dropdown" style="vertical-align: middle;">

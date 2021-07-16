@@ -27,19 +27,6 @@
   }
   a {
     text-decoration: none;
-    color: #555;
-    cursor: pointer;
-    transition: color .2s;
-    -webkit-transition: color .2s;
-    -moz-transition: color .2s;
-    -o-transition: color .2s;
-  }
-  a:hover {
-    color: #4c4c4c;
-    transition: color .2s;
-    -webkit-transition: color .2s;
-    -moz-transition: color .2s;
-    -o-transition: color .2s;
   }
   img {
     border: none;
@@ -3323,6 +3310,9 @@
     background: #eee;
     border-radius: 10px;
     padding: 3px 10px;
+  }
+  .paging .active a {
+    background: transparent;
   }
   .paging a.current {
     background: #e51f28;

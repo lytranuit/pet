@@ -147,8 +147,10 @@ class NewsModel extends Model
         //die();
         return $builder->where("deleted_at", NULL)->where("deleted", 0)->orderBy("id", "DESC")->limit($limit, $offset)->get()->getResult();
     }
-    function get_news_by_tag($tag_id)
+    function get_news_by_tag($tag_id, $perPage = 10, $page = 1)
     {
+
+        $offset = ($page - 1) * $perPage;
         $builder = $this->db->table('pet_news')->join("pet_news_tag", "pet_news_tag.news_id = pet_news.id");
         $count = $builder->where("tag_id = $tag_id and deleted_at IS NULL")->countAllResults();
 
@@ -156,7 +158,7 @@ class NewsModel extends Model
 
 
         $builder = $this->db->table('pet_news')->join("pet_news_tag", "pet_news_tag.news_id = pet_news.id");
-        $news = $builder->where("tag_id = $tag_id and deleted_at IS NULL")->orderBy("pet_news.date", "DESC")->limit(8)->get()->getResult();
+        $news = $builder->where("tag_id = $tag_id and deleted_at IS NULL")->orderBy("pet_news.date", "DESC")->limit($perPage, $offset)->get()->getResult();
 
 
 

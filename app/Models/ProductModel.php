@@ -96,11 +96,11 @@ class ProductModel extends Model
         if (empty($categories)) {
             return array();
         }
-        $builder = $this->db->table("cf_product");
+        $builder = $this->db->table("product");
         $builder->whereIn('id', function (BaseBuilder $builder) use ($categories) {
-            return $builder->select('product_id')->from('cf_product_category')->whereIn('category_id', $categories);
+            return $builder->select('product_id')->from('pet_product_category')->whereIn('category_id', $categories);
         });
-        return $builder->where("deleted_at", NULL)->where("deleted", 0)->where('id !=', $id)->get()->getResult();
+        return $builder->where("status", 1)->where("is_pet", 1)->where('id !=', $id)->get()->getResult();
     }
 
     public function get_product($category_id = 0, $keyword = "", $offset = 0, $limit = 20)
@@ -127,8 +127,10 @@ class ProductModel extends Model
         return $builder->where("deleted_at", NULL)->where("deleted", 0)->orderBy("date", "DESC")->get()->getResult();
     }
 
-    function get_product_by_category($category_id)
+    function get_product_by_category($category_id, $perPage = 20, $page = 1, $sort = "")
     {
+
+        $offset = ($page - 1) * $perPage;
         $my_region = area_current();
         $builder = $this->db->table('product')->join("pet_product_category", "pet_product_category.product_id = product.id");
         $count = $builder->where("status = 1 and is_pet = 1 and FIND_IN_SET('$my_region',region) AND category_id = $category_id")->orderBy("pet_product_category.order", "ASC")->countAllResults();
@@ -137,7 +139,15 @@ class ProductModel extends Model
 
 
         $builder = $this->db->table('product')->join("pet_product_category", "pet_product_category.product_id = product.id")->select("product.*");
-        $products = $builder->where("status = 1 and is_pet = 1 and FIND_IN_SET('$my_region',region) AND category_id = $category_id")->orderBy("pet_product_category.order", "ASC")->limit(20)->get()->getResult();
+        if ($sort == "price-asc") {
+
+            $builder->orderBy('product.retail_price', "ASC");
+        } elseif ($sort == "price-desc") {
+            $builder->orderBy('product.retail_price', "DESC");
+        } else {
+            $builder->orderBy("pet_product_category.order", "ASC");
+        }
+        $products = $builder->where("status = 1 and is_pet = 1 and FIND_IN_SET('$my_region',region) AND category_id = $category_id")->limit($perPage, $offset)->get()->getResult();
 
         ////CateGory con
         $builder = $this->db->table('pet_category');

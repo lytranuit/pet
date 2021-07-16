@@ -7,16 +7,16 @@ use CodeIgniter\Model;
 
 class SaleModel extends Model
 {
-    protected $table      = 'cf_sale';
+    protected $table      = 'sale_order';
     protected $primaryKey = 'id';
 
     protected $returnType     = 'App\Entities\Sale';
-    protected $useSoftDeletes = true;
+    protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['code', 'order_date', 'name', 'phone', 'email', 'address', 'amount', 'notes', 'user_id', 'total_amount', 'status'];
+    protected $allowedFields = ['code', 'address_id', 'order_date', 'customer_name', 'customer_phone', 'customer_email', 'customer_address', 'receiver_name', 'receiver_phone', 'receiver_email', 'receiver_address', 'receiver_area', 'inv_tax_code', 'inv_name', 'inv_address', 'customer_id', 'amount', 'discount', 'service_fee', 'total_amount', 'paid_amount', 'notes', 'status', 'payment_type', 'delivery_date', 'type', 'region', 'language'];
 
 
-    
+
 
     function create_object($data)
     {

@@ -181,6 +181,7 @@ $lang['contact'] = "";
 $lang['product_menu'] = "";
 $lang['feedback'] = "";
 $lang['more'] = "More";
+$lang['news_lien_quan'] = "Bài viết liên quan";
 return $lang;
 
 

@@ -7,13 +7,13 @@ use CodeIgniter\Model;
 
 class SaleLineModel extends Model
 {
-    protected $table      = 'cf_sale_line';
+    protected $table      = 'sale_order_line';
     protected $primaryKey = 'id';
 
     protected $returnType     = 'App\Entities\SaleLine';
     protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['order_id', 'product_id', 'quantity', 'data'];
+    protected $allowedFields = ['order_id', 'product_id', 'quantity', 'unit_id', 'unit_price', 'subtotal', 'name', 'code', 'image_url', 'status', 'special_unit', 'volume_order', 'volume_order_en', 'volume_order_jp', 'volume'];
 
 
 

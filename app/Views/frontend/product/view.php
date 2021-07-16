@@ -2,274 +2,268 @@
 
 
 <?= $this->section('content') ?>
-<div class="breadcrumb_nobackground margin-bottom-40">
-    <section class="bread-crumb">
-        <span class="crumb-border"></span>
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 a-left">
-                    <ul class="breadcrumb">
-                        <li class="home">
-                            <a href="<?= base_url() ?>"><span>Trang chủ</span></a>
-                            <span class="mr_lr"><i class="fas fa-circle"></i></span>
-                        </li>
-                        <li><strong><span><?= $info->{pick_language($info, "name_")} ?></span></strong></li>
-                    </ul>
-                </div>
+<div class="container">
+
+
+    <!--breadcrumb-->
+    <div class="row">
+        <div id="breadcrumb" class="col-md-12">
+            <div itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                <a href="/" itemprop="url" class="nopad-l">
+                    <span itemprop="title"><?= lang("Custom.home") ?></span>
+                </a> /
+            </div>
+
+            <div itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                <a href="#" itemprop="url">
+                    <span itemprop="title"><?= $info->{pick_language($info)} ?></span>
+                </a> <i class="fa fa-caret-down"></i>
+
+
             </div>
         </div>
-    </section>
-</div>
-<section class="product margin-top-5 f-left w_100">
-    <div class="container">
-        <div class="row">
-            <div class="details-product">
-                <div class="product-detail-left product-images col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="col-md-8">
 
-                    <div class="swiper-container gallery-top swiper-container-initialized swiper-container-horizontal">
-                        <div class="swiper-wrapper" id="lightgallery" aria-live="polite">
-                            <a class="swiper-slide" title="Click để xem" role="group">
-                                <img src="<?= base_url(isset($info->image->src) ? $info->image->src : "assets/images/placeholder.png") ?>" data-src="<?= base_url(isset($info->image->src) ? $info->image->src : "assets/images/placeholder.png") ?>" alt="Cà phê Trứng" data-image="<?= base_url(isset($info->image->src) ? $info->image->src : "assets/images/placeholder.png") ?>" class="img-responsive mx-auto d-block lazyload loaded" data-was-processed="true">
+            <section id="content" class="">
+                <div id="img-detail" class="row">
+                    <ul id="img-thumbs" class="slider-nav-view ul productThumb col-md-2">
+                        <li>
+                            <a class="img_thumb mz-thumb" title="Bọt tắm khô dưỡng lông hương phấn thơm 130ml ">
+                                <img src="https://simbaeshop.com/<?= $info->image_url ?>" alt="Bọt tắm khô dưỡng lông hương phấn thơm 130ml ">
                             </a>
+                        </li>
+                        <?php if (!empty($info->image_other)) : ?>
                             <?php foreach ($info->image_other as $row) : ?>
-                                <a class="swiper-slide" title="Click để xem" role="group">
-                                    <img src="<?= base_url(isset($row->src) ? $row->src : "assets/images/placeholder.png") ?>" data-src="<?= base_url(isset($row->src) ? $row->src : "assets/images/placeholder.png") ?>" alt="Cà phê Trứng" data-image="<?= base_url(isset($row->src) ? $row->src : "assets/images/placeholder.png") ?>" class="img-responsive mx-auto d-block lazyload loaded" data-was-processed="true">
-                                </a>
-                            <?php endforeach ?>
-                        </div>
-                        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
-                    </div>
-                    <div class="swiper-container gallery-thumbs swiper-container-initialized swiper-container-horizontal swiper-container-thumbs">
-                        <div class="swiper-wrapper" id="swiper-wrapper-7123e85545c32ce7" aria-live="polite">
-                            <div class="swiper-slide swiper-slide-visible swiper-slide-active swiper-slide-thumb-active" role="group">
-                                <img src="<?= base_url(isset($info->image->src) ? $info->image->src : "assets/images/placeholder.png") ?>" data-src="<?= base_url(isset($info->image->src) ? $info->image->src : "assets/images/placeholder.png") ?>" alt="Cà phê Trứng" data-image="<?= base_url(isset($info->image->src) ? $info->image->src : "assets/images/placeholder.png") ?>" class="lazyload loaded" data-was-processed="true">
-                            </div>
-                            <?php foreach ($info->image_other as $row) : ?>
-                                <div class="swiper-slide swiper-slide-visible swiper-slide-active swiper-slide-thumb-active" role="group">
-                                    <img src="<?= base_url(isset($row->src) ? $row->src : "assets/images/placeholder.png") ?>" data-src="<?= base_url(isset($row->src) ? $row->src : "assets/images/placeholder.png") ?>" alt="Cà phê Trứng" data-image="<?= base_url(isset($row->src) ? $row->src : "assets/images/placeholder.png") ?>" class="lazyload loaded" data-was-processed="true">
-                                </div>
-                            <?php endforeach ?>
-                        </div>
-
-                        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
-                    </div>
-
-
-                </div>
-                <div class="product-detail-left product-images col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                    <div class="product-single-gallery">
-                        <div class="content--slide-images-2">
-                            <div class="single-image">
-                                <a href="<?= base_url(isset($info->image->src) ? $info->image->src : "assets/images/placeholder.png") ?>" data-fancybox="product-log-gallery-01" tabindex="0">
-                                    <span class="h-rectangle"><span class="h-rectangle__inner h-bg-cover" style="background-image: url(<?= base_url(isset($info->image->src) ? $info->image->src : "assets/images/placeholder.png") ?>);"></span></span>
-                                </a>
-                            </div>
-                            <?php foreach ($info->image_other as $row) : ?>
-                                <div class="single-image">
-                                    <a href="<?= base_url(isset($row->src) ? $row->src : "assets/images/placeholder.png") ?>" data-fancybox="product-log-gallery-01" tabindex="0">
-                                        <span class="h-rectangle"><span class="h-rectangle__inner h-bg-cover" style="background-image: url(<?= base_url(isset($row->src) ? $row->src : "assets/images/placeholder.png") ?>);"></span></span>
+                                <li>
+                                    <a class="img_thumb mz-thumb" title="Bọt tắm khô dưỡng lông hương phấn thơm 130ml " rel="zoom-id:Zoomer;">
+                                        <img src="<?= base_url($row->image_url) ?>" alt="Bọt tắm khô dưỡng lông hương phấn thơm 130ml ">
                                     </a>
-                                </div>
+                                </li>
                             <?php endforeach ?>
-                        </div>
+                        <?php endif ?>
+                    </ul>
+
+                    <div id="img-large" class="slider-for-view col-md-10">
+                        <a class="fancybox" data-fancybox="group2" id="Zoomer" href="https://simbaeshop.com/<?= $info->image_url ?>">
+                            <figure class="mz-figure mz-hover-zoom mz-ready">
+                                <img src="https://simbaeshop.com/<?= $info->image_url ?>" title="Bọt tắm khô dưỡng lông hương phấn thơm 130ml " alt="Bọt tắm khô dưỡng lông hương phấn thơm 130ml ">
+                            </figure>
+                        </a>
+                        <?php if (!empty($info->image_other)) : ?>
+                            <?php foreach ($info->image_other as $row) : ?>
+                                <a class="fancybox" data-fancybox="group2" id="Zoomer" href="<?= base_url($row->image_url) ?>">
+                                    <figure class="mz-figure mz-hover-zoom mz-ready">
+                                        <img src="<?= base_url($row->image_url) ?>" title="Bọt tắm khô dưỡng lông hương phấn thơm 130ml " alt="Bọt tắm khô dưỡng lông hương phấn thơm 130ml ">
+                                    </figure>
+                                </a>
+                            <?php endforeach ?>
+                        <?php endif ?>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5 col-md-offset-1 col-lg-offset-1 details-pro style_product">
-                    <div class="f-left w_100">
-                        <h1 class="title-product"><?= $info->{pick_language($info, "name_")} ?></h1>
-                        <div class="product-code">
-                            <div class="product-code__label">Mã sản phẩm: <b><?= $info->code ?></b></div>
-                        </div>
-                        <div class="price-box">
+                <!--img-detail-->
+            </section>
 
-                            <div class="special-price"><span class="price product-price"><?= number_format($info->price, 0, ",", "."); ?>₫</span>
-                            </div> <!-- Giá -->
+            <div class="clear space10px"></div>
+        </div>
+        <!--pDetail-->
+        <div class="col-md-4" style="">
+            <div id="overview" class="product">
+                <h1 id="detail-name" class="txt_20 txt_pink"><?= $info->{pick_language($info)} ?></h1>
 
-                        </div>
+                <div class="row">
+
+                    <div class="col-md-6 pull-left">
+                        <p> <?= lang("Custom.code") ?>: <span class="pink"><?= $info->code ?></span></p>
                     </div>
-                    <div class="form-product col-sm-12 product" data-id="<?= $info->id ?>">
-                        <div id="add-to-cart-form" class="form-inline margin-bottom-0">
-                            <div class="form-group form_button_details">
-                                <div class="form_product_content f-left w_100 ">
-                                    <div class="count_btn_style">
-                                        <div class="custom input_number_product soluong1 show">
-                                            <button class="btn_num num_1 button button_qty" onclick="var result = document.getElementById('qtym'); var qtypro = result.value; if( !isNaN( qtypro ) &amp;&amp; qtypro > 1 ) result.value--;return false;" type="button">-</button>
-                                            <input type="text" id="qtym" value="1" class="form-control prd_quantity number" onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;" onchange="if(this.value == 0)this.value=1;">
-                                            <button class="btn_num num_2 button button_qty" onclick="var result = document.getElementById('qtym'); var qtypro = result.value; if( !isNaN( qtypro )) result.value++;return false;" type="button">+</button>
-                                        </div>
-                                        <div class="button_actions clearfix">
-                                            <button type="submit" class="btn btn_add_cart btn-cart add_to_cart btn_base">
-                                                <span class="btn-content">Đặt hàng</span>
-                                            </button>
-
-                                        </div>
-                                    </div>
+                </div>
+                <!--//-->
+                <div class="clear"></div>
+                <table>
+                    <tr>
+                        <?php if (!empty($info->units)) : ?>
+                            <td style="vertical-align: middle;">
+                                <span class="txt_red txt_30 txt_b p-price" id="price_config"><?= number_format($info->units[0]->price, 0, ",", ".") ?>đ</span>
+                                <span class="price-prev txt_30">
+                                    <?php if (isset($info->units[0]->prev_price) && $info->units[0]->prev_price > 0) : ?>
+                                        <?= number_format($info->units[0]->prev_price, 0, ",", ".") ?>đ
+                                    <?php endif ?>
+                                </span>
+                            </td>
+                            <td class="dropdown" style="vertical-align: middle;">
+                                /
+                                <span class="dropdown-toggle dvt" id="dropdownMenuButtonsb<?= $info->id ?>" data-bs-toggle="dropdown">
+                                    <?= $info->units[0]->{pick_language($info->units[0])} ?>
+                                </span>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonsb<?= $info->id ?>">
+                                    <?php foreach ($info->units as $key => $unit) : ?>
+                                        <a class="dropdown-item unit_product <?= $key == 0 ? "active" : "" ?>" data-id="<?= $unit->id ?>" data-price="<?= $unit->price ?>" data-prev_price="<?= isset($unit->prev_price) && $unit->prev_price > 0 ? $unit->prev_price : '' ?>"><?= $unit->{pick_language($unit)} ?></a>
+                                    <?php endforeach ?>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <b class="b_infor">Thông tin:</b>
-                    <div class="product-summary product_description margin-bottom-0">
-                        <div class="rte description ">
-                            <?= $info->{pick_language($info, "element_")} ?>
-                        </div>
-                    </div>
+                            </td>
 
+                        <?php else : ?>
+                            <span class="txt_red txt_30 txt_b p-price" id="price_config"><?= number_format($info->price, 0, ",", ".") ?>đ</span>
+                        <?php endif ?>
+                    </tr>
+                </table>
+                <div class="clear"></div>
+
+                <table width="100%">
+                    <tbody>
+                        <tr>
+                            <td valign="top">
+
+                                <div class="clear space5px">
+                                    <b><?= lang("Custom.quantity") ?></b>
+                                    <select class="number" id="s_quantity" class="cor5px" style="padding:5px;margin:0 5px;">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                    <p style="font-size: 14px;color: #e51f28;font-weight: 600;">
+                                        <?= lang("Custom.policy_delivery") ?>
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="offset-top-10">
+                    <?php if ($info->{pick_language($info, "volume_")} != "") : ?>
+                        <div>
+                            - <?= lang('qui_cach') ?>: <?= $info->{pick_language($info, 'volume_')}  ?>
+                        </div>
+                    <?php endif ?>
+                    <?php if (isset($info->origin) && !empty($info->origin)) : ?>
+                        <div>
+                            - <?= lang('xuat_xu') ?>: <?= $info->origin->{pick_language($info->origin, 'name_')}  ?>
+                        </div>
+                    <?php endif ?>
+                    <?php if (isset($info->preservation) && !empty($info->preservation)) : ?>
+                        <div>
+                            - <?= lang('bao_quan') ?>: <?= $info->preservation->{pick_language($info->preservation, 'name_')}  ?>
+                        </div>
+                    <?php endif ?>
+                </div>
+                <div class="buy" style="margin-top:10px">
+                    <a href="javascript:;" class="addCartConfig btn-violet addCart mr-2 add-cart">
+                        <?= lang("Custom.add_to_cart") ?>
+                    </a>
+                    <a href="tel:098 761 2727" class="clear space10px txt_red text-bold txt_18 text-center" style="border: solid 0px #ddd;"><i class="fa fa-phone"></i> 098 761 2727 </a>
+
+                </div>
+
+
+                <div style="margin-top: 30px;">
+                    <!-- <div id="services-sp">
+                    <a href="/page/phuong-thuc-thanh-toan" class="item-services"><i class="newicon icon-services1"></i><span>Nhận hàng <br>Thanh toán</span></a>
+                    <a href="/page/chinh-sach-giao-hang" class="item-services"><i class="newicon icon-services2"></i><span style="margin-left: 57px;">Giao hàng <br> Miễn phí</span></a>
+                    <a href="/page/chinh-sach-doi-tra-hang" class="item-services"><i class="newicon icon-services3"></i><span>30 Ngày <br>Đổi trả</span></a>
+
+                </div> -->
+                </div>
+
+            </div>
+            <!--//-->
+            <div class="clear space10px"></div>
+        </div>
+
+        <div class="col-md-8">
+            <div id="tab-pro-info">
+                <div class="title-tab-pro tabs">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"><?= lang("Custom.details_mo_ta") ?></button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false"><?= lang("Custom.details_huong_dan") ?></button>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><?= $info->{pick_language($info, 'detail_')} ?></div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"> <?= $info->{pick_language($info, 'guide_')} ?></div>
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- SP LIÊN QUAN -->
-    <div class="bg_related">
-        <div class="container">
-            <div class="row">
-                <div class="related-product margin-bottom-40 col-lg-12">
-                    <div class="section_prd_feature body_recent_base">
-                        <div class="module-header a-center">
-                            <div class="heading title_product_base">
-                                <h2>
-                                    <span0 href="/" title="Cafe cùng loại">Sản phẩm cùng loại</span>
-                                </h2>
-                            </div>
-                        </div>
 
-                        <div class="products product_related products-view-grid-bb swiper-container">
-                            <div class="swiper-wrapper" id="swiper-wrapper-cdd07ff5d6b63769" aria-live="polite">
-                                <?php foreach ($products as $row) : ?>
-                                    <div class="swiper-slide">
-                                        <div class="product-item position-relative product-item-main mb-3">
-                                            <a href="<?= url_product($row->id) ?>" class="thumb flip effect-ming d-block" title="<?= $row->{pick_language($row, 'name_')} ?>">
-                                                <div class="item-image position-relative w-100 m-0 aspect ratio1by1" wfd-id="602">
-                                                    <img src="<?= base_url(isset($row->image->src) ? $row->image->src : "assets/images/placeholder.png") ?>" data-src="<?= base_url(isset($row->image->src) ? $row->image->src : "assets/images/placeholder.png") ?>" class="d-block image-1 img img-contain position-absolute w-100 h-100 lazy" alt="<?= $row->{pick_language($row, 'name_')} ?>">
-                                                    <div class="w-100 h-100 overlay" wfd-id="603"></div>
-                                                </div>
-                                            </a>
-                                            <div class="item-info text-left p-2" wfd-id="593">
-                                                <div class="item-title font-weight-bold m-0 line_1 mt-1">
-                                                    <a class="d-block name_product" href="<?= url_product($row->id) ?>" title="<?= $row->{pick_language($row, 'name_')} ?>"><?= $row->{pick_language($row, 'name_')} ?></a>
-                                                </div>
-                                                <div class="item-content" wfd-id="594">
-                                                    <div class="item-price mt-1" wfd-id="595">
-                                                        <span class="special-price font-weight-bold" wfd-id="596"><?= number_format($row->price, 0, ",", "."); ?>₫</span>
+            <div class="clear space10px"></div>
+        </div>
+
+        <div class="col-md-4 detail-right">
+
+            <div class="clear"></div>
+            <div class="bestView">
+                <p class="txt_blue new-title title-product-list"><?= lang("Custom.details_sp_lien_quan") ?></p>
+                <div class="row border-start">
+                    <?php foreach ($products as $product) : ?>
+                        <div class="col-6 border-product">
+                            <div class="p_container product text-center" data-id="<?= $product->id ?>">
+                                <a href="<?= url_product($product) ?>" class="newp-img">
+                                    <img src="https://simbaeshop.com<?= $product->image_url ?>" alt="<?= $product->{pick_language($product)} ?>">
+                                </a>
+
+                                <a href="<?= url_product($product) ?>" class="p-code text-dark fw-bold"><?= $product->code ?> </a>
+                                <a href="<?= url_product($product) ?>" class="p-name"><?= $product->{pick_language($product)} ?> </a>
+                                <div class="d-inline-block" style="min-width: 130px;">
+                                    <table class="m-2">
+                                        <tr>
+                                            <?php if (!empty($product->units)) : ?>
+                                                <td style="vertical-align: middle;">
+                                                    <div class="p-price"><?= number_format($product->units[0]->price, 0, ",", ".") ?>đ</div>
+                                                    <div class="price-prev">
+                                                        <?php if (isset($product->units[0]->prev_price) && $product->units[0]->prev_price > 0) : ?>
+                                                            <?= number_format($product->units[0]->prev_price, 0, ",", ".") ?>đ
+                                                        <?php endif ?>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <?php endforeach ?>
-                            </div>
-                            <div class="swiper-button-prev b1_prev" tabindex="-1" role="button" aria-label="Previous slide" aria-disabled="true" wfd-id="496"></div>
-                            <div class="swiper-button-next b1_next" tabindex="0" role="button" aria-label="Next slide" aria-disabled="false" wfd-id="495"></div>
+                                                    <input type="hidden" value="1" class="number" />
+                                                </td>
 
-                            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
-                        </div>
+                                                <td class="dropdown" style="vertical-align: middle;">
+                                                    /
+                                                    <span class="dropdown-toggle dvt" id="dropdownMenuButtonsb<?= $product->id ?>" data-bs-toggle="dropdown">
+                                                        <?= $product->units[0]->{pick_language($product->units[0])} ?>
+                                                    </span>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonsb<?= $product->id ?>">
+                                                        <?php foreach ($product->units as $key => $unit) : ?>
+                                                            <a class="dropdown-item unit_product <?= $key == 0 ? "active" : "" ?>" data-id="<?= $unit->id ?>" data-price="<?= $unit->price ?>" data-prev_price="<?= isset($unit->prev_price) && $unit->prev_price > 0 ? $unit->prev_price : '' ?>"><?= $unit->{pick_language($unit)} ?></a>
+                                                        <?php endforeach ?>
+                                                    </div>
+                                                </td>
 
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <!-- END SP LIÊN QUAN -->
-
-
-    <script>
-        var swiper = new Swiper('.product_related', {
-            slidesPerView: 5,
-            spaceBetween: 30,
-            grabCursor: false,
-            navigation: {
-                nextEl: '.product_related .swiper-button-next',
-                prevEl: '.product_related .swiper-button-prev',
-            },
-            breakpoints: {
-                1199: {
-                    slidesPerView: 5,
-                    spaceBetween: 30,
-                    touchRatio: 1,
-                    loop: false,
-                },
-                991: {
-                    slidesPerView: 4,
-                    spaceBetween: 40,
-                    touchRatio: 1,
-                    loop: false,
-                },
-                767: {
-                    slidesPerView: 2,
-                    spaceBetween: 35,
-                    touchRatio: 1,
-                    loop: false,
-                },
-                480: {
-                    slidesPerView: 2,
-                    spaceBetween: 10,
-                    touchRatio: 1,
-                    loop: false,
-                },
-                320: {
-                    slidesPerView: 2,
-                    spaceBetween: 10,
-                    touchRatio: 1,
-                    loop: false,
-                }
-            }
-        });
-    </script>
-
-
-    <div class="container">
-        <div class="row">
-            <div class="tab_h">
-
-                <div class="col-xs-12 col-lg-12 col-sm-12 col-md-12">
-                    <!-- Nav tabs -->
-                    <div class="product-tab e-tabs">
-                        <ul class="tabs tabs-title clearfix">
-
-                            <li class="tab-link current" data-tab="tab-1">
-                                <h3><span>Mô tả sản phẩm</span></h3>
-                            </li>
-
-
-                            <li class="tab-link" data-tab="tab-2">
-                                <h3><span>Đánh giá</span></h3>
-                            </li>
-
-                        </ul>
-
-
-                        <div id="tab-1" class="tab-content current">
-                            <div class="rte">
-
-                                <?= $info->{pick_language($info, "desciption_")} ?>
-                            </div>
-                        </div>
-
-
-                        <div id="tab-2" class="tab-content">
-                            <div class="rte">
-                                <div id="bizweb-product-reviews" class="bizweb-product-reviews" data-id="14026015">
-                                    <div>
-                                        <div class="title-bl">
-                                            <h4>Đánh giá sản phẩm</h4>
-                                        </div>
-                                        <div id="bizweb-product-reviews-sub">
-
-                                        </div>
-                                    </div>
+                                            <?php else : ?>
+                                                <span class="p-price"><?= number_format($product->price, 0, ",", ".") ?>đ</span>
+                                            <?php endif ?>
+                                        </tr>
+                                    </table>
                                 </div>
+                                <a href="javascript:;" class="btn-violet add home add-cart"><?= lang("Custom.add_to_cart") ?></a>
                             </div>
                         </div>
-
-                    </div>
+                    <?php endforeach ?>
                 </div>
+                <!--product-list-->
 
             </div>
+            <!--bestView-->
+            <div class="clear"></div>
+
         </div>
     </div>
-</section>
+    <!--overview-->
+
+
+    <div class="clear space10px"></div>
+
+</div>
 <?= $this->endSection() ?>
 
 
@@ -280,72 +274,36 @@
 <?= $this->endSection() ?>
 <?= $this->section("script") ?>
 <script>
-    var galleryThumbs = new Swiper('.gallery-thumbs', {
-        spaceBetween: 5,
-        slidesPerView: 10,
-        lazy: true,
-        hashNavigation: true,
-        watchSlidesVisibility: true,
-        watchSlidesProgress: true,
-        loop: false,
-        loopAdditionalSlides: 0,
-        breakpoints: {
-            300: {
-                slidesPerView: 4,
-                spaceBetween: 10
-            },
-            500: {
-                slidesPerView: 4,
-                spaceBetween: 10
-            },
-            640: {
-                slidesPerView: 5,
-                spaceBetween: 10
-            },
-            768: {
-                slidesPerView: 4,
-                spaceBetween: 10
-            },
-            1024: {
-                slidesPerView: 5,
-                spaceBetween: 10
-            },
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
+    $('.slider-for-view').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        swipe: false,
+        fade: true,
+        adaptiveHeight: true,
+        asNavFor: '.slider-nav-view'
     });
-    var galleryTop = new Swiper('.gallery-top', {
-        spaceBetween: 0,
-        lazy: true,
-        hashNavigation: true,
-        thumbs: {
-            swiper: galleryThumbs
-        }
-    });
-
-
-    jQuery(function($) {
-
-
-
-        $('.selector-wrapper').hide();
-
-        $('.selector-wrapper').css({
-            'text-align': 'left',
-            'margin-bottom': '15px'
-        });
-    });
-    jQuery('.swatch :radio').change(function() {
-        var optionIndex = jQuery(this).closest('.swatch').attr('data-option-index');
-        var optionValue = jQuery(this).val();
-        jQuery(this)
-            .closest('form')
-            .find('.single-option-selector')
-            .eq(optionIndex)
-            .val(optionValue)
-            .trigger('change');
+    $('.slider-nav-view').slick({
+        infinite: true,
+        slidesToShow: 3,
+        arrows: false,
+        slidesToScroll: 1,
+        swipe: false,
+        asNavFor: '.slider-for-view',
+        dots: false,
+        focusOnSelect: true,
+        vertical: true,
+        responsive: [{
+                breakpoint: 600,
+                settings: {
+                    vertical: false
+                }
+            },
+            // You can unslick at a given breakpoint now by adding:
+            // settings: "unslick"
+            // instead of a settings object
+        ]
     });
 </script>
 <?= $this->endSection() ?>

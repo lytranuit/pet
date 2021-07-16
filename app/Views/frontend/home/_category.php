@@ -11,12 +11,12 @@
                             <div class="product-list-home">
 
                                 <?php foreach ($category->products as $product) : ?>
-                                    <div class="p_container product text-center">
+                                    <div class="p_container product text-center" data-id="<?= $product->id ?>">
                                         <a href="<?= url_product($product) ?>" class="newp-img">
                                             <img src="https://simbaeshop.com<?= $product->image_url ?>" alt="<?= $product->{pick_language($product)} ?>">
                                         </a>
 
-                                        <a href="<?= url_product($product) ?>" class="p-code fw-bold"><?= $product->code ?></a>
+                                        <a href="<?= url_product($product) ?>" class="p-code text-dark fw-bold"><?= $product->code ?></a>
                                         <a href="<?= url_product($product) ?>" class="p-name"><?= $product->{pick_language($product)} ?></a>
                                         <div class="d-inline-block" style="min-width: 130px;">
                                             <table class="m-2">
@@ -29,6 +29,7 @@
                                                                     <?= number_format($product->units[0]->prev_price, 0, ",", ".") ?>đ
                                                                 <?php endif ?>
                                                             </div>
+                                                            <input type="hidden" value="1" class="number" />
                                                         </td>
 
                                                         <td class="dropdown" style="vertical-align: middle;">
@@ -38,7 +39,7 @@
                                                             </span>
                                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton<?= $category->id . $product->id ?>">
                                                                 <?php foreach ($product->units as $key => $unit) : ?>
-                                                                    <a class="dropdown-item unit_product" data-id="<?= $unit->id ?>" data-price="<?= $unit->price ?>" data-prev_price="<?= isset($unit->prev_price) && $unit->prev_price > 0 ? $unit->prev_price : '' ?>"><?= $unit->{pick_language($unit)} ?></a>
+                                                                    <a class="dropdown-item unit_product <?= $key == 0 ? "active" : "" ?>" data-id="<?= $unit->id ?>" data-price="<?= $unit->price ?>" data-prev_price="<?= isset($unit->prev_price) && $unit->prev_price > 0 ? $unit->prev_price : '' ?>"><?= $unit->{pick_language($unit)} ?></a>
                                                                 <?php endforeach ?>
                                                             </div>
                                                         </td>
@@ -49,7 +50,7 @@
                                                 </tr>
                                             </table>
                                         </div>
-                                        <a href="javascript:;" class="btn-violet add home"><?= lang("Custom.add_to_cart") ?></a>
+                                        <a href="javascript:;" class="btn-violet add home add-cart"><?= lang("Custom.add_to_cart") ?></a>
                                     </div>
                                 <?php endforeach ?>
                             </div>
@@ -88,12 +89,12 @@
                                         <div class="row" id="row_131">
                                             <?php foreach ($category->products as $product) : ?>
                                                 <div class="col-md-3 col-6 border-product">
-                                                    <div class="p_container product text-center">
+                                                    <div class="p_container product text-center" data-id="<?= $product->id ?>">
                                                         <a href="<?= url_product($product) ?>" class="newp-img">
                                                             <img src="https://simbaeshop.com<?= $product->image_url ?>" alt="<?= $product->{pick_language($product)} ?>">
                                                         </a>
 
-                                                        <a href="<?= url_product($product) ?>" class="p-code fw-bold"><?= $product->code ?> </a>
+                                                        <a href="<?= url_product($product) ?>" class="p-code text-dark fw-bold"><?= $product->code ?> </a>
                                                         <a href="<?= url_product($product) ?>" class="p-name"><?= $product->{pick_language($product)} ?> </a>
                                                         <div class="d-inline-block" style="min-width: 130px;">
                                                             <table class="m-2">
@@ -106,6 +107,7 @@
                                                                                     <?= number_format($product->units[0]->prev_price, 0, ",", ".") ?>đ
                                                                                 <?php endif ?>
                                                                             </div>
+                                                                            <input type="hidden" value="1" class="number" />
                                                                         </td>
 
                                                                         <td class="dropdown" style="vertical-align: middle;">
@@ -115,7 +117,7 @@
                                                                             </span>
                                                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton<?= $category->id . $product->id ?>">
                                                                                 <?php foreach ($product->units as $key => $unit) : ?>
-                                                                                    <a class="dropdown-item unit_product" data-id="<?= $unit->id ?>" data-price="<?= $unit->price ?>" data-prev_price="<?= isset($unit->prev_price) && $unit->prev_price > 0 ? $unit->prev_price : '' ?>"><?= $unit->{pick_language($unit)} ?></a>
+                                                                                    <a class="dropdown-item unit_product <?= $key == 0 ? "active" : "" ?>" data-id="<?= $unit->id ?>" data-price="<?= $unit->price ?>" data-prev_price="<?= isset($unit->prev_price) && $unit->prev_price > 0 ? $unit->prev_price : '' ?>"><?= $unit->{pick_language($unit)} ?></a>
                                                                                 <?php endforeach ?>
                                                                             </div>
                                                                         </td>
@@ -126,7 +128,7 @@
                                                                 </tr>
                                                             </table>
                                                         </div>
-                                                        <a href="javascript:;" class="btn-violet add home"><?= lang("Custom.add_to_cart") ?></a>
+                                                        <a href="javascript:;" class="btn-violet add home add-cart"><?= lang("Custom.add_to_cart") ?></a>
                                                     </div>
                                                 </div>
                                             <?php endforeach ?>
@@ -261,27 +263,7 @@
                     // instead of a settings object
                 ]
             });
-            $(".unit_product").click(function(e) {
-                e.preventDefault();
-                let parent = $(this).closest(".product");
-                var name = $(this).text();
-                $(".dvt", parent).text(name);
 
-                $(".unit_product", parent).removeClass("btn-primary active");
-                $(this).addClass("btn-primary active");
-
-                let price = $(this).data("price");
-                let prev_price = $(this).data("prev_price");
-                let down_per = Math.round((parseInt(price) - parseInt(prev_price)) * 100 / parseInt(prev_price));
-                console.log(price)
-                $(".p-price", parent).text(number_format(price, 0, ",", ".") + "đ");
-                if (prev_price > 0) {
-                    $(".price-prev", parent).text(number_format(prev_price, 0, ",", ".") + "đ");
-                    $(".sale-flash", parent).text(down_per + "%");
-                } else {
-                    $(".price-prev", parent).empty();
-                }
-            });
         })
     </script>
 </section>

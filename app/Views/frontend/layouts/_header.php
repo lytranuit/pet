@@ -56,7 +56,7 @@
                     <h1 class="format inline-block"><img src="<?= base_url("assets/images/logo.png") ?>" alt=""></h1>
                 </a>
                 <div id="search" class="col-5">
-                    <form method="get" name="searchForm" action="/tim" enctype="multipart/form-data">
+                    <form method="get" name="searchForm" action="<?= base_url("product/search") ?>">
                         <input type="text" class="text-search" name="q" id="text_search" autocomplete="off" placeholder="<?= lang("Custom.search_text") ?>">
                         <button id="submit-search"><i class="fa fa-search"></i></button>
                     </form>
@@ -69,8 +69,8 @@
                     </a>
                 </div>
                 <div class="cart-box col-1">
-                    <a id="cart-header" href="<?= route_to("cart") ?>" class="newicon iconnew-cart" rel="nofollow">
-                        <b id="count_shopping_cart_store">0</b>
+                    <a id="cart-header" href="<?= base_url("cart") ?>" class="newicon iconnew-cart" rel="nofollow">
+                        <b id="count_shopping_cart_store" class="cartCount">0</b>
                     </a>
                 </div>
                 <div class="icon_hotline col-1">
@@ -92,7 +92,7 @@
                             <?php if ($row->type == 1) : ?>
                                 <a href="<?= $row->link ?>"><span class="span-root"><?= $row->{pick_language($row, 'name_')}  ?><?= (!empty($row->child)) ? '<i class="fa fa-angle-down"></i>' : '' ?></span></a>
                             <?php elseif ($row->type == 6) : ?>
-                                <a href="<?= base_url() ?>index/khuyen_mai"><span class="span-root"><?= $row->{pick_language($row, 'name_')}  ?> <i class="fa fa-star text-red" style="color:#f4b514;"></i><?= (!empty($row->child)) ? '<i class="fa fa-angle-down"></i>' : '' ?></span></a>
+                                <a href="<?= base_url("khuyen-mai.html") ?>"><span class="span-root"><?= $row->{pick_language($row, 'name_')}  ?> <i class="fa fa-star text-red" style="color:#f4b514;"></i><?= (!empty($row->child)) ? '<i class="fa fa-angle-down"></i>' : '' ?></span></a>
                             <?php endif ?>
                             <?php if (!empty($row->child)) : ?>
                                 <div class="level2">
@@ -101,14 +101,14 @@
                                             <?php if ($row2->type == 1) : ?>
                                                 <a class='cat1' href="<?= $row->link ?>"><?= $row2->{pick_language($row2, 'name_')}  ?></a>
                                             <?php elseif ($row2->type == 6) : ?>
-                                                <a class='cat1' href="<?= base_url() ?>index/khuyen_mai"><?= $row->{pick_language($row, 'name_')}  ?> <i class="fa fa-star text-red" style="color:#f4b514;"></i></a>
+                                                <a class='cat1' href="<?= base_url("khuyen-mai.html") ?>"><?= $row->{pick_language($row, 'name_')}  ?> <i class="fa fa-star text-red" style="color:#f4b514;"></i></a>
                                             <?php endif ?>
                                             <?php if (!empty($row2->child)) : ?>
                                                 <?php foreach ($row2->child as $row3) : ?>
                                                     <?php if ($row3->type == 1) : ?>
                                                         <a class='cat2' href="<?= $row->link ?>"><?= $row3->{pick_language($row3, 'name_')}  ?></a>
                                                     <?php elseif ($row3->type == 6) : ?>
-                                                        <a class='cat2' href="<?= base_url() ?>index/khuyen_mai"><?= $row->{pick_language($row, 'name_')}  ?> <i class="fa fa-star text-red" style="color:#f4b514;"></i></a>
+                                                        <a class='cat2' href="<?= base_url("khuyen-mai.html") ?>"><?= $row->{pick_language($row, 'name_')}  ?> <i class="fa fa-star text-red" style="color:#f4b514;"></i></a>
                                                     <?php endif ?>
                                                 <?php endforeach ?>
                                             <?php endif ?>
@@ -144,10 +144,10 @@
 
 
                         <a href="/" id="logo"><img src="<?= base_url("assets/images/logo.png") ?>" alt=""></a>
-                        <a id="cart-header" href="/gio-hang" class="">
+                        <a id="cart-header" href="<?= base_url("cart") ?>" class="">
                             <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size: 24px;color: #e51f28;"></i>
 
-                            <b id="count_shopping_cart_store">0</b>
+                            <b id="count_shopping_cart_store" class="cartCount">0</b>
                         </a>
                     </div>
 
@@ -184,7 +184,7 @@
                                         <?= (!empty($row->child)) ? '<i class="fa fa-angle-right" data-id="#mnu' . $row->id . '"></i>' : '' ?>
                                     </span>
                                 <?php elseif ($row->type == 6) : ?>
-                                    <a href="<?= base_url() ?>index/khuyen_mai"><span class="span-root"><?= $row->{pick_language($row, 'name_')}  ?> <i class="fa fa-star text-red" style="color:#f4b514;"></i>
+                                    <a href="<?= base_url("khuyen-mai.html") ?>"><span class="span-root"><?= $row->{pick_language($row, 'name_')}  ?> <i class="fa fa-star text-red" style="color:#f4b514;"></i>
                                     </a>
                                     <span>
                                         <?= (!empty($row->child)) ? '<i class="fa fa-angle-right" data-id="#mnu' . $row->id . '"></i>' : '' ?>
@@ -197,7 +197,7 @@
                                                 <?php if ($row2->type == 1) : ?>
                                                     <a href="<?= $row->link ?>"><?= $row2->{pick_language($row2, 'name_')}  ?></a>
                                                 <?php elseif ($row2->type == 6) : ?>
-                                                    <a href="<?= base_url() ?>index/khuyen_mai"><?= $row->{pick_language($row, 'name_')}  ?> <i class="fa fa-star text-red" style="color:#f4b514;"></i></a>
+                                                    <a href="<?= base_url("khuyen-mai.html") ?>"><?= $row->{pick_language($row, 'name_')}  ?> <i class="fa fa-star text-red" style="color:#f4b514;"></i></a>
                                                 <?php endif ?>
                                             </li>
                                         <?php endforeach ?>
@@ -247,7 +247,7 @@
                     <a class="mnu-bar hide"><i class="fa fa-bars"></i></a>
 
                     <div id="search">
-                        <form method="get" name="searchForm" action="/tim" enctype="multipart/form-data">
+                        <form method="get" name="searchForm" action="<?= base_url("product/search") ?>">
                             <input type="text" class="text-search" id="text_search" name="q" autocomplete="off" placeholder="Bạn muốn tìm gì hôm nay?">
                             <button id="submit-search"><i class="fa fa-search"></i></button>
                         </form>

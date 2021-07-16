@@ -2,144 +2,236 @@
 
 
 <?= $this->section('content') ?>
+<section class="py-5 cart bg-gray-lighter">
+    <div class="container">
+        <div class="card d-none d-lg-block">
+            <div class="card-body">
+                <div class="row no-gutters">
+                    <div class="col-lg-1">
+                        <span><?= lang("Custom.product_name") ?></span>
+                    </div>
+                    <div class="col-lg-11 col-9">
+                        <div class="row no-gutters">
+                            <div class="col-lg-4">
 
-<div class="breadcrumb_nobackground margin-bottom-40" wfd-id="111">
-    <section class="bread-crumb" wfd-id="112">
-        <span class="crumb-border" wfd-id="122"></span>
-        <div class="container" wfd-id="113">
-            <div class="row" wfd-id="114">
-                <div class="col-xs-12 a-left" wfd-id="115">
-                    <ul class="breadcrumb" wfd-id="116">
-                        <li class="home" wfd-id="119">
-                            <a href="/"><span wfd-id="121">Trang chủ</span></a>
-                            <span class="mr_lr" wfd-id="120"><i class="fas fa-circle"></i></span>
-                        </li>
-
-                        <li wfd-id="117"><strong><span wfd-id="118">Giỏ hàng</span></strong></li>
-
-                    </ul>
+                            </div>
+                            <div class="col-lg-2 text-center">
+                                <span><?= lang("Custom.dvt") ?></span>
+                            </div>
+                            <div class="col-lg-2 text-center">
+                                <span><?= lang("Custom.quantity") ?></span>
+                            </div>
+                            <div class="col-lg-2 text-center">
+                                <span><?= lang("Custom.amount") ?></span>
+                            </div>
+                            <div class="col-lg-2 text-center">
+                                <span><?= lang("Custom.action") ?></span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
-</div>
-<section class="main-cart-page main-container col1-layout page_background" wfd-id="74">
-    <div class="main container hidden-xs hidden-sm" wfd-id="76">
-        <div class="wrap_background_aside padding-top-15 margin-bottom-40" wfd-id="77">
-            <div class="header-cart" wfd-id="108">
-                <h1 class="title_cart hidden">
-                    <span wfd-id="110">Giỏ hàng</span>
-                </h1>
-                <div class="header-cart title_cart_pc hidden-sm hidden-xs" wfd-id="109">
+        <?php foreach ($cart['details'] as $row) : ?>
+            <div class="card mt-2 product" data-id="<?= $row->id ?>">
+                <div class="card-body">
+                    <div class="row no-gutters">
+                        <div class="col-lg-1 col-3">
+                            <img class="img-responsive" src="http://simbaeshop.com<?= $row->image_url ?>" />
+                        </div>
+                        <div class="col-lg-11 col-9">
+                            <div class="row no-gutters">
+                                <div class="col-lg-4">
+                                    <a href="<?= base_url() ?>index/details/<?= $row->id ?>" class="text-dark font-weight-bold"><?= $row->{pick_language($row, 'name_')}  ?></a>
+                                    <div><?= lang("Custom.code") ?>: <span class="font-weight-bold"><?= $row->code ?></span></div>
+                                    <div><?= lang("Custom.qui_cach") ?>: <span class="font-weight-bold"><?= $row->{pick_language($row, 'volume_')}  ?></span></div>
+                                </div>
+                                <div class="col-lg-2 text-lg-center mt-3">
 
-                </div>
-            </div>
-            <div class="col-main cart_desktop_page cart-page" wfd-id="78">
-                <div class="cart page_cart hidden-xs hidden-sm" wfd-id="79">
-                    <form action="/cart" method="post" novalidate="" class="margin-bottom-0" wfd-id="86">
-                        <div class="bg-scroll" wfd-id="87">
-                            <div class="cart-thead" wfd-id="101">
-                                <div style="width: 18%" class="a-center" wfd-id="107">Hình ảnh</div>
-                                <div style="width: 37%" class="a-center" wfd-id="106">Thông tin sản phẩm</div>
-                                <div style="width: 17%" class="a-center" wfd-id="104"><span class="nobr" wfd-id="105">Đơn giá</span></div>
-                                <div style="width: 14%" class="a-center" wfd-id="103">Số lượng</div>
-                                <div style="width: 14%" class="a-center" wfd-id="102">Thành tiền</div>
-                            </div>
-                            <div class="cart-tbody" wfd-id="88">
-                                <?php foreach ($cart['details'] as $row) : ?>
-                                    <div class="item-cart productid-23679264 product" wfd-id="89" data-id="<?= $row->id ?>">
-                                        <div style="width: 18%" class="image" wfd-id="100"><a class="product-image" title="<?= $row->{pick_language($row)} ?>" href="<?= url_product($row->id) ?>"><img width="75" height="auto" alt="<?= $row->{pick_language($row)} ?>" src="<?= base_url(isset($row->image->src) ? $row->image->src : "assets/images/placeholder.png") ?>"></a></div>
-                                        <div style="width: 37%" class="a-center" wfd-id="98">
-                                            <h3 class="product-name"> <a class="text2line" href="<?= url_product($row->id) ?>" title="<?= $row->{pick_language($row)} ?>"><?= $row->{pick_language($row)} ?></a> </h3><span class="variant-title" style="display: none;" wfd-id="99">Default Title</span><a class="remove remove_product" title="Xóa" href="javascript:;" data-id="23679264">Xóa</a>
-                                        </div>
-                                        <div style="width: 17%" class="a-center" wfd-id="95"><span class="item-price" wfd-id="96"> <span class="price" wfd-id="97"><?= number_format($row->price, 0, ",", ".") ?>₫</span></span></div>
-                                        <div style="width: 14%" class="a-center" wfd-id="93">
-                                            <div class="input_qty_pr number-widget" wfd-id="94">
-                                                <input type="text" readonly="" min="1" class="check_number_here input-text number-sidebar input_pop input_pop input_qty" id="qtyItem23679264" name="Lines" size="4" value="<?= $row->qty ?>" wfd-id="184">
-                                                <button class="increase_pop items-count btn-plus up" type="button" wfd-id="194">
-                                                    <i class="fa fa-caret-up"></i></button>
-                                                <button class="reduced_pop items-count btn-minus down" type="button" wfd-id="193"><i class="fa fa-caret-down"></i></button>
+                                    <?php if (!empty($row->units)) : ?>
+                                        <select class="unit_select" style="padding: 5px;">
+                                            <?php foreach ($row->units as $unit) : ?>
+                                                <option value="<?= $unit->id ?>" <?= ($unit->id == $row->unit_id) ? 'selected' : '' ?>>
+                                                    <?= $unit->{pick_language($unit, 'name_')}  ?>
+                                                </option>
+                                            <?php endforeach ?>
+                                        </select>
+                                    <?php endif ?>
+                                </div>
+                                <div class="col-lg-2 text-lg-center mt-3">
+                                    <div style="max-width:100px;display: inline-block;">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button class="btn btn-down" type="button">-</button>
+                                            </div>
+                                            <input type="text" class="form-control-custom text-center quantity" value="<?= $row->qty ?>">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-up" type="button">+</button>
                                             </div>
                                         </div>
-                                        <div style="width: 14%" class="a-center" wfd-id="90"><span class="cart-price" wfd-id="91"> <span class="price" wfd-id="92"><?= number_format($row->amount, 0, ",", ".") ?>₫</span> </span></div>
                                     </div>
-                                <?php endforeach ?>
-                            </div>
-                        </div>
-                    </form>
-                    <div class="rows pagee_checkout" wfd-id="80">
-                        <div class="col-lg-5 col-md-5" wfd-id="83">
-                            <div class="form-cart-button" wfd-id="84">
-                                <div class="" wfd-id="85"><a href="/" class="form-cart-continue">Tiếp tục mua hàng</a></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-7 col-md-7 bg_cart shopping-cart-table-total" wfd-id="81">
-                            <div class="table-total" wfd-id="82">
-                                <table class="table ">
-                                    <tbody>
-                                        <tr>
-                                            <td class="total-text">Tổng tiền thanh toán</td>
-                                            <td class="txt-right totals_price price_end"><?= number_format($cart['amount_product'], 0, ",", ".") ?>₫</td>
-                                            <td class="thanhtoan"><a onclick="window.location.href='/cart/checkout'" class="btn-checkout-cart button_checkfor_buy">Tiến hành thanh toán</a></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                </div>
+                                <div class="col-lg-2 col-6 text-lg-center mt-3">
+                                    <b><?= number_format($row->amount, 0, ",", ".") ?>đ</b>
+                                </div>
+                                <div class="col-lg-2 col-6 text-lg-center text-right mt-3">
+                                    <a href="#" class="text-danger remove_product"><i class="fa fa-trash"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="wrap_background_aside padding-top-15 margin-bottom-40 padding-left-0 padding-right-0 hidden-md hidden-lg" wfd-id="75">
-        <div class="cart-mobile">
-            <div>
-                <div class="header-cart">
-
-                    <div class="title-cart title_cart_mobile">
-                        <h3>Giỏ hàng</h3>
+        <?php endforeach ?>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card mt-2">
+                    <div class="order-cart-policy">
+                        <ul class="content-block">
+                            <li>
+                                <span><i class="fa fa-bus"></i></span>
+                                <p><?= lang("Custom.policy_delivery") ?></p>
+                            </li>
+                            <li>
+                                <span><i class="fa fa-archive"></i></span>
+                                <p><?= lang("Custom.policy_vat") ?></p>
+                            </li>
+                            <li>
+                                <span><i class="fa fa-credit-card"></i></span>
+                                <p><?= lang("Custom.policy_pay") ?></p>
+                            </li>
+                            <li>
+                                <span><i class="fa fa-phone"></i></span>
+                                <p><?= lang("Custom.policy_support") ?></p>
+                            </li>
+                        </ul>
                     </div>
-
                 </div>
-
-                <div class="header-cart-content" style="background:#fff;">
-                    <div class="cart_page_mobile content-product-list">
-
-                        <?php foreach ($cart['details'] as $row) : ?>
-                            <div class="item-product item productid-23679264 product" data-id="<?= $row->id ?>">
-                                <div class="item-product-cart-mobile"><a href="<?= url_product($row->id) ?>"> </a><a class="product-images1" href="" title="<?= $row->{pick_language($row)} ?>"><img width="80" height="150" src="<?= base_url(isset($row->image->src) ? $row->image->src : "assets/images/placeholder.png") ?>" alt="<?= $row->{pick_language($row)} ?>"></a></div>
-                                <div class="title-product-cart-mobile">
-                                    <h3><a href="<?= url_product($row->id) ?>" title="<?= $row->{pick_language($row)} ?>"><?= $row->{pick_language($row)} ?></a></h3>
-                                    <p>Giá: <span><?= number_format($row->price, 0, ",", ".") ?>₫</span></p>
-                                </div>
-                                <div class="select-item-qty-mobile">
-                                    <div class="txt_center">
-                                        <div class="input_qty_pr number-widget" wfd-id="94">
-                                            <input type="text" readonly="" min="1" class="check_number_here input-text number-sidebar input_pop input_pop input_qty" id="qtyItem23679264" name="Lines" size="4" value="<?= $row->qty ?>" wfd-id="184">
-                                            <button class="increase_pop items-count btn-plus up" type="button" wfd-id="194">
-                                                <i class="fa fa-caret-up"></i></button>
-                                            <button class="reduced_pop items-count btn-minus down" type="button" wfd-id="193"><i class="fa fa-caret-down"></i></button>
-                                        </div>
-                                    </div>
-                                    <a class="button remove remove_product" href="javascript:;" data-id="23679264">Xoá</a>
-                                </div>
-                            </div>
-                        <?php endforeach ?>
-                    </div>
-                    <div class="header-cart-price" style="">
-                        <div class="title-cart">
-                            <h3 class="text-xs-left">Tổng tiền</h3><a class="text-xs-right pull-right totals_price_mobile"><?= number_format($cart['amount_product'], 0, ",", ".") ?>₫</a>
-                        </div>
-                        <div class="checkout"><button class="btn-proceed-checkout-mobile" title="Tiến hành thanh toán" type="button" onclick="window.location.href='/cart/checkout'" wfd-id="190"><span>Tiến hành thanh toán</span></button>
-                            <button class="form-cart-continue btn f-left" title="Tiếp tục mua hàng" type="button" onclick="window.location.href='/'" wfd-id="189"><span>Tiếp tục mua hàng</span></button>
-                        </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card cart-page-footer mt-2">
+                    <div class="card-body">
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <b><?= lang("Custom.total") ?></b>
+                                    </td>
+                                    <td class="text-right">
+                                        <?= number_format($cart['amount_product'], 0, ",", ".") ?>đ
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b><?= lang("Custom.amount") ?></b>
+                                    </td>
+                                    <td class="text-right">
+                                        <b class="h5 text-danger"><?= number_format($cart['amount_product'], 0, ",", ".") ?>đ</b>
+                                        <div><?= NumberToText($cart['amount_product']) ?></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="text-center border-0">
+                                        <a class="btn btn-red txt_center txt_u addCart" href="<?= base_url("cart/checkout") ?>">
+                                            <span><?= lang("Custom.order_btn") ?></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<style>
+    .form-control-custom {
+        display: block;
+        line-height: 14px;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #f4f4f4;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        position: relative;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        width: 1%;
+        margin-bottom: 0;
+    }
+
+    .input-group-prepend {
+        margin-right: -1px;
+    }
+
+    .input-group-prepend,
+    .input-group-append {
+        display: -ms-flexbox;
+        display: flex;
+        background-color: #80808045;
+    }
+
+    .btn-up,
+    .btn-down {
+        font-size: 20px;
+        padding: 0px 10px;
+        line-height: 1px;
+    }
+
+
+    .order-cart-policy .content-block {
+        text-decoration: none;
+        box-sizing: border-box;
+        list-style: none;
+        display: block;
+        padding: 0;
+        margin: 0;
+    }
+
+    ul.content-block li {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 15px 15px 10px;
+        border: 1px solid #dee2e6;
+        border-top: none;
+    }
+
+    ul.content-block li:first-child {
+        border-top: 1px solid #dee2e6;
+    }
+
+    ul.content-block li p {
+        display: inline-block;
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 0;
+        margin-left: 10px;
+        flex: 1;
+    }
+
+    ul.content-block li p>span.text-highlight {
+        color: #e62a2b;
+    }
+
+    ul.content-block li>span {
+        flex: 0 0 40px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #e62a2b;
+        background-color: #e62a2b;
+        border-radius: 100%;
+        color: #fff;
+        font-size: 20px;
+    }
+</style>
 <?= $this->endSection() ?>
+
 
 <?= $this->section("script") ?>
 <?= $this->endSection() ?>

@@ -3,128 +3,366 @@
 
 <?= $this->section('content') ?>
 
-<div class="breadcrumb_nobackground margin-bottom-40" wfd-id="111">
-    <section class="bread-crumb" wfd-id="112">
-        <span class="crumb-border" wfd-id="122"></span>
-        <div class="container" wfd-id="113">
-            <div class="row" wfd-id="114">
-                <div class="col-xs-12 a-left" wfd-id="115">
-                    <ul class="breadcrumb" wfd-id="116">
-                        <li class="home" wfd-id="119">
-                            <a href="/"><span wfd-id="121">Trang chủ</span></a>
-                            <span class="mr_lr" wfd-id="120"><i class="fas fa-circle"></i></span>
-                        </li>
+<section class="py-5 cart bg-gray-lighter">
 
-                        <li wfd-id="117"><strong><span wfd-id="118">Thanh toán</span></strong></li>
+    <form id="contactForm" name="fast_checkout_form" action="<?= base_url("cart/complete") ?>" method="post" class="cm-processed-form">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="checkout-steps cm-save-fields clearfix" id="checkout_steps">
+                        <div class="ty-step__container-active ty-step-one fast-checkout">
+                            <div id="fast_checkout_body" class="ty-step__body-active babi-ty-step--body-active">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <?= lang("Custom.cart_info_title") ?>
+                                    </div>
+                                    <div class="card-body">
+                                        <?php if (!logged_in()) : ?>
+                                            <p class="layout-flex__item">
+                                                <span aria-hidden="true"><?= lang("Custom.cart_anwser") ?> </span>
+                                                <a href="<?= base_url("dang-nhap.html?next=" . current_url()) ?>" class="link">
+                                                    <?= lang("Custom.login") ?>
+                                                </a>
+                                            </p>
 
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
-<div class="cart-container container page-wrapper page-checkout">
-    <div class="woocommerce">
-        <div class="woocommerce-notices-wrapper"></div>
-        <form name="checkout" method="post" class="checkout woocommerce-checkout " action="<?= base_url("cart/complete") ?>">
-
-            <div class="row pt-0 ">
-                <div class="col-md-7">
-
-
-                    <div id="customer_details">
-                        <div class="clear">
-                            <div class="woocommerce-billing-fields">
-
-                                <h3>Thông tin thanh toán</h3>
-                                <div class="woocommerce-billing-fields__field-wrapper">
-                                    <p class="form-row form-row-wide validate-required" id="billing_last_name_field" data-priority="10"><label for="billing_last_name" class="">Họ và tên&nbsp;<abbr class="required" title="bắt buộc">*</abbr></label><span class="woocommerce-input-wrapper"><input type="text" class="input-text " required name="name" id="billing_last_name" placeholder="Nhập đầy đủ họ và tên" value=""></span></p>
-                                    <p class="form-row form-row-last thwcfd-field-wrapper thwcfd-field-tel validate-required validate-phone" id="billing_phone_field" data-priority="20"><label for="billing_phone" class="">Số điện thoại&nbsp;<abbr class="required" title="bắt buộc">*</abbr></label><span class="woocommerce-input-wrapper"><input type="tel" required class="input-text " name="phone" id="billing_phone" placeholder="" value="" autocomplete="tel"></span></p>
-                                    <p class="form-row form-row-first thwcfd-field-wrapper thwcfd-field-email validate-required validate-email" id="billing_email_field" data-priority="21"><label for="billing_email" class="">Địa chỉ email&nbsp;<abbr class="required" title="bắt buộc">*</abbr></label><span class="woocommerce-input-wrapper"><input type="email" required class="input-text " name="email" id="billing_email" placeholder="" value="" autocomplete="email username"></span></p>
-                                    <p class="form-row form-row-wide validate-required" id="billing_address_1_field" data-priority="60"><label for="billing_address_1" class="">Địa chỉ&nbsp;<abbr class="required" title="bắt buộc">*</abbr></label><span class="woocommerce-input-wrapper"><input type="text" class="input-text " name="address" id="billing_address_1" required placeholder="Ví dụ: Số 20, ngõ 90" value="" autocomplete="address-line1"></span></p>
-                                </div>
-
-                            </div>
-
-
-                        </div>
-
-                        <div class="clear">
-                            <div class="woocommerce-additional-fields">
-                                <div class="woocommerce-additional-fields__field-wrapper">
-                                    <p class="form-row notes thwcfd-field-wrapper thwcfd-field-textarea" id="order_comments_field" data-priority=""><label for="order_comments" class="">Ghi chú đơn hàng&nbsp;<span class="optional">(tuỳ chọn)</span></label><span class="woocommerce-input-wrapper"><textarea name="notes" class="input-text " id="order_comments" placeholder="Ghi chú về đơn hàng, ví dụ: thời gian hay chỉ dẫn địa điểm giao hàng chi tiết hơn." rows="2" cols="5"></textarea></span></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                </div><!-- large-7 -->
-
-                <div class="col-md-5">
-
-                    <div class="col-inner has-border">
-                        <div class="checkout-sidebar sm-touch-scroll">
-                            <h3 id="order_review_heading">Đơn hàng của bạn</h3>
-
-
-                            <div id="order_review" class="woocommerce-checkout-review-order">
-                                <table class="shop_table woocommerce-checkout-review-order-table">
-                                    <thead>
-                                        <tr>
-                                            <th class="product-name">Sản phẩm</th>
-                                            <th class="product-total">Tạm tính</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach ($cart['details'] as $row) : ?>
-                                            <tr class="cart_item">
-                                                <td class="product-name">
-                                                    <?= $row->{pick_language($row)} ?>&nbsp; <strong class="product-quantity">×&nbsp;<?= $row->qty ?></strong> </td>
-                                                <td class="product-total">
-                                                    <span class="woocommerce-Price-amount amount"><?= number_format($row->amount, 0, ",", ".") ?>&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach ?>
-                                    </tbody>
-                                    <tfoot>
-
-
-
-
-
-                                        <tr class="order-total">
-                                            <th>Tổng</th>
-                                            <td><strong><span class="woocommerce-Price-amount amount"><?= number_format($cart['paid_amount'], 0, ",", ".") ?>&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></strong> </td>
-                                        </tr>
-
-
-                                    </tfoot>
-                                </table>
-
-                                <div id="payment" class="woocommerce-checkout-payment">
-
-                                    <div class="form-row place-order text-center">
-                                        <button type="submit" class="btn-checkout-cart" name="woocommerce_checkout_place_order" id="place_order" value="Đặt hàng" data-value="Đặt hàng">Đặt hàng</button>
+                                            <div class="form-group">
+                                                <b class="small fw-bold"><?= lang('Custom.cart_info_name') ?> :</b>
+                                                <input type="text" name="name" value="<?= isset($user) ? $user->name : ''  ?>" required="" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <b class="small fw-bold"><?= lang('Custom.login_email_label') ?> :</b>
+                                                <input type="email" name="email" required="" value="<?= isset($user) ? $user->email : '' ?>" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <b class="small fw-bold"><?= lang('Custom.login_phone_label') ?> :</b>
+                                                <input type="text" name="phone" value="<?= isset($user) ? $user->phone : '' ?>" required="" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <b class="small fw-bold"><?= lang('Custom.login_address_label') ?> :</b>
+                                                <input type="text" name="address" value="<?= isset($user) ? $user->address : '' ?>" required="" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <b class="small fw-bold"><?= lang('Custom.login_area_label') ?> :</b>
+                                                <select class="" name="area_id">
+                                                    <option value="0"><?= lang("Custom.other_area") ?> </option>
+                                                    <?php foreach ($group_area as $row) : ?>
+                                                        <option value="<?= $row['id'] ?> "><?= $row['name'] ?> </option>
+                                                    <?php endforeach ?>
+                                                </select>
+                                            </div>
+                                        <?php else : ?>
+                                            <?php if (!empty($address)) : ?>
+                                                <div class="row">
+                                                    <input type="hidden" name="address_id" value="" />
+                                                    <?php foreach ($address as $key => $row) : ?>
+                                                        <div class="col-12 mb-3">
+                                                            <div class="border rounded p-3">
+                                                                <p class="fw-bold"><?= $row->name ?> </p>
+                                                                <table>
+                                                                    <tr>
+                                                                        <td class="pr-3"><?= lang('Custom.login_email_label') ?> :</td>
+                                                                        <td><?= $row->email ?> </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="pr-3"><?= lang('Custom.login_phone_label') ?> :</td>
+                                                                        <td><?= $row->phone ?> </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="pr-3"><?= lang('Custom.login_address_label') ?> :</td>
+                                                                        <td><?= $row->address ?> </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="pr-3"><?= lang('Custom.login_area_label') ?> :</td>
+                                                                        <td><?= $row->area->name ?? lang('Custom.other_area') ?> </td>
+                                                                    </tr>
+                                                                </table>
+                                                                <div>
+                                                                    <a class="btn btn-danger text-white address txt_14" data-area="<?= $row->area_id ?> " data-id="<?= $row->id ?> " data-name="<?= $row->name ?> " data-phone="<?= $row->phone ?> " data-address="<?= $row->address ?> " data-email="<?= $row->email ?> ">
+                                                                        <?= lang("Custom.no_selected") ?>
+                                                                    </a>
+                                                                    <a class="btn btn-light txt_14" href="<?= base_url() ?> index/remove_address/<?= $row->id ?> ">
+                                                                        <?= lang("Custom.remove") ?>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    <?php endforeach ?>
+                                                </div>
+                                            <?php endif ?>
+                                            <p class="text-primary">
+                                                <u style="cursor: pointer;" class="new_address"><?= lang("Custom.new_address") ?> </u>
+                                            </p>
+                                            <div class="<?= (!empty($address)) ? 'd-none' : '' ?> box_address mb-2">
+                                                <div class="form-group">
+                                                    <b class="small fw-bold"><?= lang('Custom.cart_info_name') ?> :</b>
+                                                    <input type="text" name="name" value="<?= isset($user) ? $user->name : '' ?>" required="" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <b class="small fw-bold"><?= lang('Custom.login_email_label') ?> :</b>
+                                                    <input type="email" name="email" required="" value="<?= isset($user) ? $user->email : '' ?>" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <b class="small fw-bold"><?= lang('Custom.login_phone_label') ?> :</b>
+                                                    <input type="text" name="phone" value="<?= isset($user) ? $user->phone : '' ?>" required="" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <b class="small fw-bold"><?= lang('Custom.login_address_label') ?> :</b>
+                                                    <input type="text" name="address" value="<?= isset($user) ? $user->address : '' ?>" required="" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <b class="small fw-bold"><?= lang('Custom.login_area_label') ?> :</b>
+                                                    <select class="" name="area_id">
+                                                        <option value="0"><?= lang("Custom.other_area") ?> </option>
+                                                        <?php foreach ($group_area as $row) : ?>
+                                                            <option value="<?= $row['id'] ?> "><?= $row['name'] ?> </option>
+                                                        <?php endforeach ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        <?php endif ?>
+                                        <hr>
+                                        <div class="form-group">
+                                            <b class="small fw-bold"><?= lang('Custom.cart_info_delivery') ?> :</b>
+                                            <input type="date" name="delivery_date" value="<?= date('Y-m-d') ?>" min="<?= date('Y-m-d') ?>" class="form-control" require>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="checkbox" name="flag_inv" class="" id="inv" value="1">
+                                            <label class="form-check-label" for="inv"> <?= lang("Custom.inv_text") ?> </label>
+                                        </div>
                                     </div>
                                 </div>
 
+                                <div class="card my-3 box_inv d-none">
+                                    <div class="card-header">
+                                        <?= lang("Custom.inv_header") ?>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <b class="small fw-bold"><?= lang('Custom.inv_name') ?> :</b>
+                                            <input type="text" name="inv_name" value="" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <b class="small fw-bold"><?= lang('Custom.inv_tax_code') ?> :</b>
+                                            <input type="text" name="inv_tax_code" value="" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <b class="small fw-bold"><?= lang('Custom.inv_address') ?> :</b>
+                                            <input type="text" name="inv_address" value="" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card my-3">
+                                    <div class="card-header">
+                                        <?= lang("Custom.cart_info_note") ?>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <textarea id="fast-checkout-notes" name="notes" class="form-control" rows="4" cols="72" placeholder="<?= lang('Custom.cart_info_note') ?> " title="<?= lang('Custom.cart_info_note') ?> "></textarea>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+                        <!--checkout_steps-->
+                    </div>
+                    <!-- Inline script moved to the bottom of the page -->
+                </div>
+                <div class="col-md-6">
+                    <div class="card bg-light">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <table class="product-table table table-borderless border-bottom">
+                                        <?php foreach ($cart['details'] as $row) : ?>
+                                            <tr class="product" data-id="<?= $row->id ?> ">
+                                                <td class="product__image">
+                                                    <div class="product-thumbnail">
+                                                        <div class="product-thumbnail__wrapper">
+                                                            <img class="img-responsive" src="http://simbaeshop.com<?= $row->image_url ?> " />
+                                                        </div>
+                                                        <span class="product-thumbnail__quantity" aria-hidden="true"><?= $row->qty ?> </span>
+                                                    </div>
 
-                            <div class="woocommerce-privacy-policy-text"></div>
+                                                </td>
+                                                <td class="product__description">
+                                                    <a href='' class="fw-bold text-dark"><?= $row->{pick_language($row, 'name_')}  ?> </a>
+                                                    <div><?= lang("Custom.code") ?> : <span class="fw-bold"><?= $row->code ?> </span> </div>
+                                                    <div><?= lang('Custom.qui_cach') ?> : <span class="fw-bold"><?= $row->{pick_language($row, 'volume_')}  ?> </span></div>
+                                                </td>
+                                                <td class="product__price">
+                                                    <span class="order-summary__emphasis"><?= number_format($row->amount, 0, ",", ".") ?> đ</span>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach ?>
+                                    </table>
+                                </div>
+                                <div class="col-12" id="ajax_total">
+
+                                </div>
+                            </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
 
-                </div><!-- large-5 -->
+    </form>
+</section>
+<style>
+    .product-thumbnail {
+        width: 4.6em;
+        height: 4.6em;
+        border-radius: 8px;
+        background: #fff;
+        position: relative
+    }
 
-            </div><!-- row -->
-        </form>
+    .product-thumbnail::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        border-radius: 8px;
+        border: 1px rgba(0, 0, 0, 0.1) solid;
+        z-index: 2
+    }
 
-    </div>
-</div>
+    .product-thumbnail__wrapper {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        z-index: 1
+    }
 
+    .product-thumbnail__image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        max-width: 100%;
+        max-height: 100%;
+        margin: auto
+    }
+
+    .product-thumbnail__quantity {
+        font-size: 0.85714em;
+        font-weight: 500;
+        line-height: 1.75em;
+        white-space: nowrap;
+        text-align: center;
+        border-radius: 1.75em;
+        background-color: rgba(114, 114, 114, 0.9);
+        color: #fff;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        min-width: 1.75em;
+        height: 1.75em;
+        padding: 0 0.58333em;
+        position: absolute;
+        right: -0.75em;
+        top: -0.75em;
+        z-index: 3
+    }
+
+    .table-borderless td,
+    .table-borderless th {
+        border: none;
+    }
+
+    .form-control {
+        display: block;
+        width: 100%;
+        padding: .375rem .75rem;
+        font-size: 12px;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .product_remove {
+        font-size: 10px;
+        white-space: nowrap;
+        text-align: center;
+        border-radius: 1.75em;
+        background-color: red;
+        color: #fff;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        min-width: 1.75em;
+        height: 1.75em;
+        padding: 0 0.58333em;
+        position: absolute;
+        left: -0.75em;
+        top: -0.75em;
+        z-index: 3;
+        cursor: pointer;
+    }
+</style>
 <?= $this->endSection() ?>
 
 <?= $this->section("script") ?>
+<script>
+    $(document).ready(function() {
+        $("#inv").change(function() {
+            $(".box_inv").toggleClass("d-none");
+        })
+        $(".new_address").click(function() {
+            $(".box_address").removeClass("d-none");
+            $(".address").addClass("btn-danger").removeClass("btn-success").text(no_selected);
+            $("[name=address_id]").val(0);
+        });
+        $("[name=area_id]").change(async function() {
+            let area_id = $(this).val();
+
+            $.cookies.set('AREA_ID', area_id);
+            $(".loading-modal").addClass("show");
+            $("#cboxOverlay").show();
+            let html = await $.ajax({
+                url: path + "cart/total_order",
+                dataType: "HTML"
+            });
+            $("#ajax_total").html(html);
+
+            $(".loading-modal").removeClass("show");
+            $("#cboxOverlay").hide();
+        })
+        $(".address").click(function() {
+            $(".address").addClass("btn-danger").removeClass("btn-success").text(no_selected);
+            $(this).addClass("btn-success").removeClass("btn-danger").text(selected);
+            $(".box_address").addClass("d-none");
+            let id = $(this).data("id");
+            let name = $(this).data("name");
+            let email = $(this).data("email");
+            let phone = $(this).data("phone");
+            let address = $(this).data("address");
+            let area = $(this).data("area");
+            $("[name=address_id]").val(id);
+            $("[name=phone]").val(phone);
+            $("[name=address]").val(address);
+            $("[name=email]").val(email);
+            $("[name=name]").val(name);
+            $("[name=area_id]").val(area).trigger("change");
+        });
+        ///TRigger Click
+        if ($(".address").length)
+            $(".address").first().trigger("click");
+        else
+            $("[name=area_id]").trigger("change");
+
+    })
+</script>
 <?= $this->endSection() ?>

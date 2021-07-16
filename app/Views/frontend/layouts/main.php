@@ -31,9 +31,9 @@
 
     <link rel="stylesheet" href="<?= base_url("assets/lib/fancybox/jquery.fancybox.css") ?>" />
 
+    <link rel="stylesheet" href="<?= base_url("assets/lib/toast/jquery.toast.min.css") ?>" />
     <link rel="stylesheet" href="<?= base_url("assets/css/style.css") ?>" />
     <link rel="stylesheet" href="<?= base_url("assets/css/mobile.css") ?>" />
-
     <link rel="stylesheet" href="<?= base_url("assets/css/custom.css") ?>" />
 
 
@@ -43,7 +43,7 @@
     <script src="<?= base_url("assets/lib/jquery/jquery.min.js") ?>"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="<?= base_url("assets/lib/fancybox/jquery.fancybox.js") ?>"></script>
-
+    <script src="<?= base_url("assets/lib/toast/jquery.toast.min.js") ?>"></script>
     <script src="<?= base_url("assets/lib/slick/slick.js") ?>"></script>
     <script src="<?= base_url("assets/lib/cookie/jquery.cookies.2.2.0.min.js") ?>"></script>
     <script src="<?= base_url("assets/js/main.js") ?>"></script>
@@ -51,6 +51,10 @@
     <?= $this->renderSection('style') ?>
     <script>
         var path = '<?= base_url() ?>/';
+        var cart_alert = '<?= lang("Custom.cart_alert") ?>'
+        var remove_cart = '<?= lang("Custom.remove_cart") ?>'
+        var no_selected = '<?= lang("Custom.no_selected") ?>'
+        var selected = '<?= lang("Custom.selected") ?>'
         $(document).ready(function() {
             $(".fancybox").fancybox()
         })
