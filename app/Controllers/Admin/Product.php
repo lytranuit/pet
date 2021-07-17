@@ -266,7 +266,7 @@ class Product extends BaseController
         $limit = $this->request->getVar('length');
         $start = $this->request->getVar('start');
         $page = ($start / $limit) + 1;
-        $where = $Product_model;
+        $where = $Product_model->where('status', 1);
 
         $totalData = $where->countAllResults();
         //echo "<pre>";

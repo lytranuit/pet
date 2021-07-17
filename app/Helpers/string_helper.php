@@ -269,6 +269,14 @@ if (!function_exists('pick_language')) {
     }
 }
 
+if (!function_exists('language_current')) {
+
+    function language_current()
+    {
+        $language = \Config\Services::language();
+        return $language->getLocale();
+    }
+}
 
 if (!function_exists('split_string')) {
 
