@@ -1,25 +1,64 @@
 [
     {
-        "name": "4spacesdk/ci4ormextension",
-        "version": "0.6",
-        "version_normalized": "0.6.0.0",
+        "name": "4spacesdk/ci4debugtool",
+        "version": "1.0.8",
+        "version_normalized": "1.0.8.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/4spacesdk/CI4OrmExtension.git",
-            "reference": "e0bb00eb2ffbe6b4de9c5b98d481621271b71718"
+            "url": "https://github.com/4spacesdk/CI4DebugTool.git",
+            "reference": "f91c1429de616037248e2cf5d63d9e00945bbc41"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/4spacesdk/CI4OrmExtension/zipball/e0bb00eb2ffbe6b4de9c5b98d481621271b71718",
-            "reference": "e0bb00eb2ffbe6b4de9c5b98d481621271b71718",
+            "url": "https://api.github.com/repos/4spacesdk/CI4DebugTool/zipball/f91c1429de616037248e2cf5d63d9e00945bbc41",
+            "reference": "f91c1429de616037248e2cf5d63d9e00945bbc41",
             "shasum": ""
         },
         "require": {
             "php": ">=7.1"
         },
-        "time": "2018-10-02T15:47:37+00:00",
+        "time": "2019-11-02T11:03:24+00:00",
         "type": "library",
         "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "DebugTool\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Martin Hansen",
+                "email": "martin@4spaces.dk"
+            }
+        ],
+        "description": "Debug Tool for CodeIgniter 4"
+    },
+    {
+        "name": "4spacesdk/ci4ormextension",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/4spacesdk/CI4OrmExtension.git",
+            "reference": "56c3091cfb471ca80046db8df41e279f6980bee3"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/4spacesdk/CI4OrmExtension/zipball/56c3091cfb471ca80046db8df41e279f6980bee3",
+            "reference": "56c3091cfb471ca80046db8df41e279f6980bee3",
+            "shasum": ""
+        },
+        "require": {
+            "4spacesdk/ci4debugtool": ">=1.0.0",
+            "php": ">=7.1"
+        },
+        "time": "2021-05-18T11:04:57+00:00",
+        "type": "library",
+        "installation-source": "source",
         "autoload": {
             "psr-4": {
                 "OrmExtension\\": ""
@@ -75,6 +114,37 @@
         "description": "CodeIgniter 4 Standard for PHP_CodeSniffer 3."
     },
     {
+        "name": "denis303/codeigniter4-recaptcha",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/denis303/codeigniter4-recaptcha.git",
+            "reference": "db8b828cfc9d8e1879a4568ecf0a8d9e09a64c0d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/denis303/codeigniter4-recaptcha/zipball/db8b828cfc9d8e1879a4568ecf0a8d9e09a64c0d",
+            "reference": "db8b828cfc9d8e1879a4568ecf0a8d9e09a64c0d",
+            "shasum": ""
+        },
+        "require": {
+            "google/recaptcha": "^1.2"
+        },
+        "time": "2020-10-24T07:07:49+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Denis303\\ReCaptcha\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ]
+    },
+    {
         "name": "doctrine/instantiator",
         "version": "1.4.0",
         "version_normalized": "1.4.0.0",
@@ -125,20 +195,6 @@
         "keywords": [
             "constructor",
             "instantiate"
-        ],
-        "funding": [
-            {
-                "url": "https://www.doctrine-project.org/sponsorship.html",
-                "type": "custom"
-            },
-            {
-                "url": "https://www.patreon.com/phpdoctrine",
-                "type": "patreon"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/doctrine%2Finstantiator",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -193,6 +249,55 @@
             "fixtures"
         ],
         "abandoned": true
+    },
+    {
+        "name": "google/recaptcha",
+        "version": "1.2.4",
+        "version_normalized": "1.2.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/google/recaptcha.git",
+            "reference": "614f25a9038be4f3f2da7cbfd778dc5b357d2419"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/google/recaptcha/zipball/614f25a9038be4f3f2da7cbfd778dc5b357d2419",
+            "reference": "614f25a9038be4f3f2da7cbfd778dc5b357d2419",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5"
+        },
+        "require-dev": {
+            "friendsofphp/php-cs-fixer": "^2.2.20|^2.15",
+            "php-coveralls/php-coveralls": "^2.1",
+            "phpunit/phpunit": "^4.8.36|^5.7.27|^6.59|^7.5.11"
+        },
+        "time": "2020-03-31T17:50:54+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.2.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "ReCaptcha\\": "src/ReCaptcha"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "description": "Client library for reCAPTCHA, a free service that protects websites from spam and abuse.",
+        "homepage": "https://www.google.com/recaptcha/",
+        "keywords": [
+            "Abuse",
+            "captcha",
+            "recaptcha",
+            "spam"
+        ]
     },
     {
         "name": "kint-php/kint",
@@ -365,12 +470,6 @@
             "autoloading",
             "laminas",
             "zf"
-        ],
-        "funding": [
-            {
-                "url": "https://funding.communitybridge.org/projects/laminas-project",
-                "type": "community_bridge"
-            }
         ]
     },
     {
@@ -469,12 +568,6 @@
             "duplicate",
             "object",
             "object graph"
-        ],
-        "funding": [
-            {
-                "url": "https://tidelift.com/funding/github/packagist/myclabs/deep-copy",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -864,12 +957,6 @@
             "coverage",
             "testing",
             "xunit"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
         ]
     },
     {
@@ -922,12 +1009,6 @@
         "keywords": [
             "filesystem",
             "iterator"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
         ]
     },
     {
@@ -1022,12 +1103,6 @@
         "homepage": "https://github.com/sebastianbergmann/php-timer/",
         "keywords": [
             "timer"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
         ]
     },
     {
@@ -1079,12 +1154,6 @@
         "homepage": "https://github.com/sebastianbergmann/php-token-stream/",
         "keywords": [
             "tokenizer"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
         ],
         "abandoned": true
     },
@@ -1171,16 +1240,6 @@
             "phpunit",
             "testing",
             "xunit"
-        ],
-        "funding": [
-            {
-                "url": "https://phpunit.de/donate.html",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
         ]
     },
     {
@@ -1252,12 +1311,6 @@
             "nosql",
             "predis",
             "redis"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/sponsors/tillkruss",
-                "type": "github"
-            }
         ]
     },
     {
@@ -1354,13 +1407,7 @@
             }
         ],
         "description": "Looks up which function or method a line of code belongs to",
-        "homepage": "https://github.com/sebastianbergmann/code-unit-reverse-lookup/",
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
-        ]
+        "homepage": "https://github.com/sebastianbergmann/code-unit-reverse-lookup/"
     },
     {
         "name": "sebastian/comparator",
@@ -1426,12 +1473,6 @@
             "comparator",
             "compare",
             "equality"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
         ]
     },
     {
@@ -1490,12 +1531,6 @@
             "udiff",
             "unidiff",
             "unified diff"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
         ]
     },
     {
@@ -1551,12 +1586,6 @@
             "Xdebug",
             "environment",
             "hhvm"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
         ]
     },
     {
@@ -1626,12 +1655,6 @@
         "keywords": [
             "export",
             "exporter"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
         ]
     },
     {
@@ -1688,12 +1711,6 @@
         "homepage": "http://www.github.com/sebastianbergmann/global-state",
         "keywords": [
             "global state"
-        ],
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
         ]
     },
     {
@@ -1743,13 +1760,7 @@
             }
         ],
         "description": "Traverses array structures and object graphs to enumerate all referenced objects",
-        "homepage": "https://github.com/sebastianbergmann/object-enumerator/",
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
-        ]
+        "homepage": "https://github.com/sebastianbergmann/object-enumerator/"
     },
     {
         "name": "sebastian/object-reflector",
@@ -1796,13 +1807,7 @@
             }
         ],
         "description": "Allows reflection of object attributes, including inherited and non-public ones",
-        "homepage": "https://github.com/sebastianbergmann/object-reflector/",
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
-        ]
+        "homepage": "https://github.com/sebastianbergmann/object-reflector/"
     },
     {
         "name": "sebastian/recursion-context",
@@ -1857,13 +1862,7 @@
             }
         ],
         "description": "Provides functionality to recursively process PHP variables",
-        "homepage": "http://www.github.com/sebastianbergmann/recursion-context",
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
-        ]
+        "homepage": "http://www.github.com/sebastianbergmann/recursion-context"
     },
     {
         "name": "sebastian/resource-operations",
@@ -1907,13 +1906,7 @@
             }
         ],
         "description": "Provides a list of PHP built-in functions that operate on resources",
-        "homepage": "https://www.github.com/sebastianbergmann/resource-operations",
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
-        ]
+        "homepage": "https://www.github.com/sebastianbergmann/resource-operations"
     },
     {
         "name": "sebastian/type",
@@ -1961,13 +1954,7 @@
             }
         ],
         "description": "Collection of value objects that represent the types of the PHP type system",
-        "homepage": "https://github.com/sebastianbergmann/type",
-        "funding": [
-            {
-                "url": "https://github.com/sebastianbergmann",
-                "type": "github"
-            }
-        ]
+        "homepage": "https://github.com/sebastianbergmann/type"
     },
     {
         "name": "sebastian/version",
@@ -2129,20 +2116,6 @@
             "ctype",
             "polyfill",
             "portable"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
         ]
     },
     {
@@ -2185,13 +2158,7 @@
                 "role": "Developer"
             }
         ],
-        "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
-        "funding": [
-            {
-                "url": "https://github.com/theseer",
-                "type": "github"
-            }
-        ]
+        "description": "A small library for converting tokenized PHP source code into XML and potentially other formats"
     },
     {
         "name": "webmozart/assert",
@@ -2199,12 +2166,12 @@
         "version_normalized": "1.9.1.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/webmozart/assert.git",
+            "url": "https://github.com/webmozarts/assert.git",
             "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/webmozart/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389",
+            "url": "https://api.github.com/repos/webmozarts/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389",
             "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389",
             "shasum": ""
         },

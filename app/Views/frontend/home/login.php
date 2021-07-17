@@ -5,12 +5,13 @@
 <div class="container my-5">
     <div class="row justify-content-md-center">
         <div class="col-lg-6">
-            <div class="register login">
+            <div class="register">
                 <div class="regRight fl">
+                    <?= view('Myth\Auth\Views\_message_block') ?>
                     <form action="<?= route_to('login') ?>" method="post" name="loginForm">
-
+                        <?= csrf_field() ?>
                         <h3 class="format txt_18 txt_center"><?= lang('Custom.login') ?></h3>
-                        <p class="txt_center"><?= lang("Custom.title_login") ?> <a href="<?= base_url("dang-ky.hml") ?>"><?= lang("Custom.sign_up") ?></a></p>
+                        <p class="txt_center"><?= lang("Custom.title_login") ?> <a href="<?= base_url("dang-ky.html") ?>"><?= lang("Custom.sign_up") ?></a></p>
 
                         <div class="clear space10px"></div>
 
@@ -38,4 +39,9 @@
     </div>
 </div>
 
+<style>
+    li {
+        list-style: none;
+    }
+</style>
 <?= $this->endSection() ?>

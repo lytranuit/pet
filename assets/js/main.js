@@ -246,5 +246,4 @@ function init_cart_icon() {
   var cart = data_cart["details"] || [];
   let count = cart.length;
   $(".cartCount").text(count);
-  console.log(count);
 }

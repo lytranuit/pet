@@ -46,8 +46,19 @@
     <script src="<?= base_url("assets/lib/toast/jquery.toast.min.js") ?>"></script>
     <script src="<?= base_url("assets/lib/slick/slick.js") ?>"></script>
     <script src="<?= base_url("assets/lib/cookie/jquery.cookies.2.2.0.min.js") ?>"></script>
+
+    <?php if (!empty($javascript_tag)) : ?>
+        <?php foreach ($javascript_tag as $url) : ?>
+            <script src="<?= $url ?>" type="text/javascript"></script>
+        <?php endforeach ?>
+    <?php endif ?>
     <script src="<?= base_url("assets/js/main.js?ver=" . $ver) ?>"></script>
     <!-- CSS -->
+    <?php if (!empty($stylesheet_tag)) : ?>
+        <?php foreach ($stylesheet_tag as $url) : ?>
+            <link href="<?= $url ?>" rel="stylesheet" />
+        <?php endforeach ?>
+    <?php endif ?>
     <?= $this->renderSection('style') ?>
     <script>
         var path = '<?= base_url() ?>/';
@@ -72,7 +83,6 @@
 
         <!-- Site Header -->
         <?= $this->include('frontend/layouts/_footer') ?>
-
 
         <?= $this->renderSection('script') ?>
     </div>

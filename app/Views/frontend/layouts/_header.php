@@ -30,8 +30,8 @@
                         <div class="dropdown d-inline-block">
                             <a class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><?= user()->username ?></a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <a class="dropdown-item text-dark" href="<?= route_to("info") ?>"><?= lang("Custom.info") ?></a>
-                                <a class="dropdown-item text-dark" href="<?= route_to("history") ?>"><?= lang("Custom.history_order") ?></a>
+                                <a class="dropdown-item text-dark" href="<?= base_url("member") ?>"><?= lang("Custom.info") ?></a>
+                                <a class="dropdown-item text-dark" href="<?= base_url("member/history") ?>"><?= lang("Custom.history_order") ?></a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item logout text-dark" href="<?= route_to("logout") ?>"><?= lang("Custom.logout") ?></a>
                             </div>
@@ -57,8 +57,8 @@
                 </a>
                 <div id="search" class="col-5">
                     <form method="get" name="searchForm" action="<?= base_url("product/search") ?>">
-                        <input type="text" class="text-search" name="q" id="text_search" autocomplete="off" placeholder="<?= lang("Custom.search_text") ?>">
-                        <button id="submit-search"><i class="fa fa-search"></i></button>
+                        <input type="text" class="text-search" name="q" autocomplete="off" placeholder="<?= lang("Custom.search_text") ?>">
+                        <button class="submit-search"><i class="fa fa-search"></i></button>
                     </form>
                     <div id="suggestions" class="autocomplete-suggestions"></div>
                 </div>
@@ -218,7 +218,7 @@
             <div class="header3">
                 <ul class="mb-location">
                     <li class="is-location" onclick="$('#ul-location').slideToggle();">
-                        <a href="javascript:;"><i class="fa fa-map-marker text-violet text-20 icon"></i>
+                        <a href="javascript:;" class="text-dark"><i class="fa fa-map-marker text-violet text-20 icon"></i>
                             <span id="cLoc" class="txt_violet">
                                 <?php if (area_current() == "B") : ?>
                                     <?= lang("Custom.area_B") ?>
@@ -248,8 +248,8 @@
 
                     <div id="search">
                         <form method="get" name="searchForm" action="<?= base_url("product/search") ?>">
-                            <input type="text" class="text-search" id="text_search" name="q" autocomplete="off" placeholder="Bạn muốn tìm gì hôm nay?">
-                            <button id="submit-search"><i class="fa fa-search"></i></button>
+                            <input type="text" class="text-search" name="q" autocomplete="off" placeholder="Bạn muốn tìm gì hôm nay?">
+                            <button class="submit-search"><i class="fa fa-search"></i></button>
                         </form>
 
                     </div>

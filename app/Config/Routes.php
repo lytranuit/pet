@@ -40,8 +40,8 @@ $routes->add('lien-he', 'Home::contact');
 $routes->add('thu-vien', 'Home::library');
 $routes->add('khuyen-mai.html', 'Product::promotion');
 
-$routes->add('dang-nhap.html', 'Home::login');
-$routes->add('dang-ky.html', 'Home::register');
+$routes->add('dang-nhap.html', 'Home::login', ['as' => 'loginhome']);
+$routes->add('dang-ky.html', 'Home::register', ['as' => 'registerhome']);
 
 
 $routes->add('danh-muc/c(:num).html', 'Category::view/$1');

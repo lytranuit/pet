@@ -1,6 +1,6 @@
 <?php namespace OrmExtension\DataMapper;
 
-use OrmExtension\Data;
+use DebugTool\Data;
 use OrmExtension\Extensions\Model;
 
 trait QueryBuilder {
@@ -11,19 +11,21 @@ trait QueryBuilder {
 
     /**
      * @param string|array $relationName
+     * @param null $fields
      * @return Model
      */
-    public function includeRelated($relationName): Model {
+    public function includeRelated($relationName, $fields = null): Model {
         $parent = $this->_getModel();
         $relations = $this->getRelation($relationName);
 
         // Handle deep relations
         $last = $this;
         $table = null;
-        $prefix = '';
+        $prefix = ''; $relationPrefix = '';
         foreach($relations as $relation) {
-            $table = $last->addRelatedTable($relation, $prefix, $table);
+            $table = $last->addRelatedTable($relation, $prefix, $table, $fields);
             $prefix .= plural($relation->getSimpleName()).'_';
+            $relationPrefix .= plural($relation->getSimpleName()).'/';
 
             // Prepare next
             $builder = $last->_getBuilder();
@@ -34,8 +36,10 @@ trait QueryBuilder {
             $last->setSelecting($selecting);
             $last->relatedTablesAdded =& $relatedTablesAdded;
 
-            $parent->addIncludedRelation($prefix, $relation);
-            $this->selectIncludedRelated($parent, $relation, $table, $prefix);
+            if(!$parent->hasIncludedRelation($relationPrefix)) {
+                $parent->addIncludedRelation($relationPrefix, $relation);
+                $this->selectIncludedRelated($parent, $relation, $table, $prefix, $fields);
+            }
         }
 
         return $parent;
@@ -46,15 +50,16 @@ trait QueryBuilder {
      * @param RelationDef $relation
      * @param string $table
      * @param string $prefix
+     * @param null $fields
      */
-    private function selectIncludedRelated($parent, $relation, $table, $prefix) {
+    private function selectIncludedRelated($parent, $relation, $table, $prefix, $fields = null) {
         $selection = [];
 
         $relationClassName = $relation->getClass();
         /** @var Model $related */
         $related = new $relationClassName();
 
-        $fields = $related->getTableFields();
+        if(is_null($fields)) $fields = $related->getTableFields();
         foreach($fields as $field) {
             $new_field = $prefix . $field;
 
@@ -64,7 +69,7 @@ trait QueryBuilder {
             $selection[] = "{$table}.{$field} AS {$new_field}";
         }
 
-        $this->select(implode(', ',$selection));
+        $this->select(implode(', ', $selection));
     }
 
     // </editor-fold>
@@ -196,10 +201,10 @@ trait QueryBuilder {
 
         $query->bindReplace('${parent}', $this->getTableName());
 
-        $sql = $query->get(0, 0, true);
+        $sql = $query->compileSelect_();
         $sql = "({$sql})";
 
-        //Data::sql($sql);
+//        Data::sql($sql);
 
         $this->bindMerging($sql, $query->getBinds());
 
@@ -231,7 +236,7 @@ trait QueryBuilder {
         $sql = preg_replace($pattern, $replacement, $sql);
         $sql = str_replace("\n", "\n\t", $sql);
 
-        //Data::sql($sql);
+//        Data::sql($sql);
 
         return str_replace('${parent}', $this->getTableName(), $sql);
     }
@@ -275,9 +280,7 @@ trait QueryBuilder {
     // <editor-fold desc="Fields">
 
     public function getTableFields() {
-        $entityName = $this->_getModel()->getEntityName();
-        $fields = ModelDefinitionCache::getFields($entityName);
-        return $fields;
+        return $this->_getModel()->allowedFields;
     }
 
     // </editor-fold>
@@ -328,6 +331,8 @@ trait QueryBuilder {
         // If no selects, select this table
         if(!$this->isSelecting()) $this->select($this->getTableName(). '.*');
 
+        $addSoftDeletionCondition = $related->useSoftDeletes;
+        $deletedField = $related->deletedField;
 
         if(($relation->getClass() == $relation->getName()) && ($this->getTableName() != $related->getTableName())) {
             $prefixedParentTable = $prefix . $related->getTableName();
@@ -337,20 +342,22 @@ trait QueryBuilder {
             $prefixedRelatedTable = $prefix . plural($relation->getSimpleName()) . '_' . $relationShipTable;
         }
 
-
         if($relationShipTable == $this->getTableName() && in_array($relation->getJoinOtherAs(), $this->getTableFields())) {
 
             if(!in_array($prefixedParentTable, $this->relatedTablesAdded)) {
                 $cond = "{$prefixedParentTable}.id = {$this_table}.{$relation->getJoinOtherAs()}";
+                if($addSoftDeletionCondition) $cond .= " AND {$prefixedParentTable}.{$deletedField} IS NULL";
                 $this->join("{$related->getTableName()} {$prefixedParentTable}", $cond, 'LEFT OUTER');
 
                 $this->relatedTablesAdded[] = $prefixedParentTable;
+
             }
 
         } else if($relationShipTable == $related->getTableName() && in_array($relation->getJoinSelfAs(), $related->getTableFields())) {
 
             if(!in_array($prefixedParentTable, $this->relatedTablesAdded)) {
                 $cond = "{$this_table}.id = {$prefixedParentTable}.{$relation->getJoinSelfAs()}";
+                if($addSoftDeletionCondition) $cond .= " AND {$prefixedParentTable}.{$deletedField} IS NULL";
                 $this->join("{$related->getTableName()} {$prefixedParentTable}", $cond, 'LEFT OUTER');
 
                 $this->relatedTablesAdded[] = $prefixedParentTable;
@@ -379,18 +386,19 @@ trait QueryBuilder {
 
     /**
      * @param string|array $name
-     * @return RelationDef[]
+     * @param bool $useSimpleName
+     * @return RelationDef[] $result
+     * @throws \Exception
      */
-    public function getRelation($name) {
+    public function getRelation($name, $useSimpleName = false) {
         // Handle deep relations
         if(is_array($name)) {
             $last = $this;
             $result = [];
             foreach($name as $ref) {
-                $relations = $last->getRelation($ref);
+                $relations = $last->getRelation($ref, $useSimpleName);
                 if(count($relations) == 0) {
-                    // TODO
-                    //throw new \Exception("Failed to find relation $name for " . get_class($this));
+                    throw new \Exception("Failed to find relation $name for " . get_class($this));
                 }
                 $relation = $relations[0];
                 $last = $relation->getRelationClass();
@@ -400,12 +408,14 @@ trait QueryBuilder {
         }
 
         foreach($this->getRelations() as $relation) {
-            if($relation->getName() == $name)
-                return [$relation];
+            if($useSimpleName) {
+                if($relation->getSimpleName() == $name) return [$relation];
+            } else {
+                if($relation->getName() == $name) return [$relation];
+            }
         }
 
-        // TODO
-        //throw new \Exception("Failed to find relation $name for " . get_class($this));
+        throw new \Exception("Failed to find relation $name for " . get_class($this));
     }
 
     /**

@@ -1,7 +1,7 @@
 <?php namespace OrmExtension\Examples\Controllers;
 
 use CodeIgniter\Controller;
-use OrmExtension\Data;
+use DebugTool\Data;
 use OrmExtension\DataMapper\ModelDefinitionCache;
 use OrmExtension\Examples\Entities\User;
 use OrmExtension\Examples\Models\ColorModel;
@@ -23,7 +23,7 @@ class Like extends Controller {
         Data::set('user', $user->allToArray());
         Data::lastQuery();
 
-        $this->response->setJSON(Data::getData());
+        $this->response->setJSON(Data::getStore());
         $this->response->send();
     }
 
@@ -35,7 +35,7 @@ class Like extends Controller {
         Data::set('user', $user->allToArray());
         Data::lastQuery();
 
-        $this->response->setJSON(Data::getData());
+        $this->response->setJSON(Data::getStore());
         $this->response->send();
     }
 
@@ -48,7 +48,7 @@ class Like extends Controller {
         Data::set('user', $user->allToArray());
         Data::lastQuery();
 
-        $this->response->setJSON(Data::getData());
+        $this->response->setJSON(Data::getStore());
         $this->response->send();
     }
 
@@ -61,7 +61,7 @@ class Like extends Controller {
         Data::set('user', $user->allToArray());
         Data::lastQuery();
 
-        $this->response->setJSON(Data::getData());
+        $this->response->setJSON(Data::getStore());
         $this->response->send();
     }
 
@@ -73,7 +73,7 @@ class Like extends Controller {
         Data::set('user', $user->allToArray());
         Data::lastQuery();
 
-        $this->response->setJSON(Data::getData());
+        $this->response->setJSON(Data::getStore());
         $this->response->send();
     }
 
@@ -85,7 +85,7 @@ class Like extends Controller {
         Data::set('user', $user->allToArray());
         Data::lastQuery();
 
-        $this->response->setJSON(Data::getData());
+        $this->response->setJSON(Data::getStore());
         $this->response->send();
     }
 
@@ -98,7 +98,7 @@ class Like extends Controller {
         Data::set('user', $user->allToArray());
         Data::lastQuery();
 
-        $this->response->setJSON(Data::getData());
+        $this->response->setJSON(Data::getStore());
         $this->response->send();
     }
 
@@ -111,7 +111,7 @@ class Like extends Controller {
         Data::set('user', $user->allToArray());
         Data::lastQuery();
 
-        $this->response->setJSON(Data::getData());
+        $this->response->setJSON(Data::getStore());
         $this->response->send();
     }
 

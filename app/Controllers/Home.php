@@ -52,6 +52,7 @@ class Home extends BaseController
     {
         // No need to show a login form if the user
         // is already logged in.
+        $this->data['title'] = lang("Custom.login") . $this->data['title'];
         if ($this->auth->check()) {
             $redirectURL = session('redirect_url') ?? site_url('/');
             unset($_SESSION['redirect_url']);
@@ -64,7 +65,56 @@ class Home extends BaseController
 
         return view($this->data['content'], $this->data);
     }
+    /**
+     * Displays the user registration page.
+     */
+    public function register()
+    {
+        helper(['form', 'reCaptcha']);
+        // check if already logged in.
+        if ($this->auth->check()) {
+            return redirect()->back();
+        }
 
+        // Check if registration is allowed
+        if (!$this->config->allowRegistration) {
+            return redirect()->back()->withInput()->with('error', lang('Auth.registerDisabled'));
+        }
+
+        $language = \Config\Services::language();
+        $short_lang =  $language->getLocale();
+        array_push($this->data['javascript_tag'], base_url("assets/lib/jquery-validation/jquery.validate.js"));
+        if ($short_lang == "vi") {
+            array_push($this->data['javascript_tag'], base_url("assets/lib/jquery-validation/localization/messages_vi.js"));
+        } elseif ($short_lang == "jp") {
+            array_push($this->data['javascript_tag'], base_url("assets/lib/jquery-validation/localization/messages_ja.js"));
+        }
+        $this->data['title'] = lang("Custom.sign_up") . $this->data['title'];
+        return view($this->data['content'], $this->data);
+    }
+
+    public function checkregister()
+    {
+        $username = $this->request->getVar('username');
+        $email = $this->request->getVar('email');
+
+        $user_model = model("UserModel");
+        $check = $user_model->where(array("username" => $username))->asArray()->first();
+        // account_creation_duplicate_identity
+        // account_creation_duplicate_email
+        // print_r($check);
+        // die();
+        if (!empty($check)) {
+            echo json_encode(array('success' => 0, 'msg' => lang('Custom.account_creation_duplicate_identity')));
+            die();
+        }
+        $check =  $user_model->where(array("email" => $email))->asArray()->first();
+        if (!empty($check)) {
+            echo json_encode(array('success' => 0, 'msg' => lang('Custom.account_creation_duplicate_email')));
+            die();
+        }
+        echo json_encode(array('success' => 1));
+    }
     public function contact()
     {
         $this->data['title'] =  "Liên hệ" . $this->data['title'];

@@ -26,6 +26,10 @@ class ComposerStaticInit8b3f74800d70ecaca96ecf3d3ba39412
         array (
             'Symfony\\Polyfill\\Ctype\\' => 23,
         ),
+        'R' => 
+        array (
+            'ReCaptcha\\' => 10,
+        ),
         'P' => 
         array (
             'Psr\\Log\\' => 8,
@@ -52,7 +56,9 @@ class ComposerStaticInit8b3f74800d70ecaca96ecf3d3ba39412
         'D' => 
         array (
             'Doctrine\\Instantiator\\' => 22,
+            'Denis303\\ReCaptcha\\' => 19,
             'DeepCopy\\' => 9,
+            'DebugTool\\' => 10,
         ),
         'C' => 
         array (
@@ -74,6 +80,10 @@ class ComposerStaticInit8b3f74800d70ecaca96ecf3d3ba39412
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
+        'ReCaptcha\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/recaptcha/src/ReCaptcha',
         ),
         'Psr\\Log\\' => 
         array (
@@ -111,9 +121,17 @@ class ComposerStaticInit8b3f74800d70ecaca96ecf3d3ba39412
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
         ),
+        'Denis303\\ReCaptcha\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/denis303/codeigniter4-recaptcha',
+        ),
         'DeepCopy\\' => 
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
+        ),
+        'DebugTool\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/4spacesdk/ci4debugtool',
         ),
         'CodeIgniter\\' => 
         array (

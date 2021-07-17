@@ -17,7 +17,8 @@ class Validation
 		\CodeIgniter\Validation\FormatRules::class,
 		\CodeIgniter\Validation\FileRules::class,
         \CodeIgniter\Validation\CreditCardRules::class,
-        \Myth\Auth\Authentication\Passwords\ValidationRules::class
+        \Myth\Auth\Authentication\Passwords\ValidationRules::class,
+		\Denis303\ReCaptcha\Validation\ReCaptchaRules::class
 	];
 
 	/**

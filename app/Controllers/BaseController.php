@@ -64,6 +64,8 @@ class BaseController extends Controller
         // die();
         //echo $content;
         //die();
+        $this->data['stylesheet_tag'] = array();
+        $this->data['javascript_tag'] = array();
         $this->data['content'] = $content;
         $this->data['template'] = "main";
         $this->data['title'] = " | Simba Pet";

@@ -1,12 +1,12 @@
 <?php namespace OrmExtension\DataMapper;
 
-use OrmExtension\Data;
+use DebugTool\Data;
 use OrmExtension\Extensions\Entity;
 use OrmExtension\Extensions\Model;
 
 /**
  * Trait ResultBuilder
- * @package OrmExtension\DataMapper
+ * @package DebugTool\DataMapper
  * @property RelationDef[] $includedRelations
  */
 trait ResultBuilder {
@@ -21,29 +21,51 @@ trait ResultBuilder {
         $this->includedRelations[$fullName] = $relation;
     }
 
+    protected function hasIncludedRelation(string $fullName): bool {
+        return isset($this->includedRelations[$fullName]);
+    }
+
     /**
      * @param Entity[] $result
      */
     protected function arrangeIncludedRelations(&$result) {
+        //Data::debug(get_class($this), "arrangeIncludedRelations for", count($result), 'entities with', count($this->includedRelations), 'relations');
+
+        $relations = $this->includedRelations;
+        ksort($relations);
+
         foreach($result as $row) {
+            //$row->resetStoredFields(); // TODO Brug CI's
 
-            $row->resetStoredFields();
+            foreach($relations as $relationPrefix => $relation) {
+                $fullName = str_replace('/', '_', $relationPrefix);
 
-            $current = $row;
-            foreach($this->includedRelations as $fullName => $relation) {
+                // Deep relation
+                $current = $row;
+                $deepRelations = explode('/', trim($relationPrefix, '/'));
+                array_pop($deepRelations);
+                foreach($deepRelations as $prefix) {
+                    if($relation->getType() == RelationDef::HasOne) {
+                        $current = $current->{singular($prefix)};
+                    } else {
+                        $current = $current->{$prefix};
+                    }
+                }
 
                 $entityName = $relation->getEntityName();
                 /** @var Entity $entity */
                 $entity = new $entityName();
 
+                $attributes = [];
                 foreach($relation->getRelationClass()->getTableFields() as $field) {
                     $fieldName = "{$fullName}{$field}";
                     if(isset($row->{$fieldName})) {
-                        $entity->{$field} = $row->{$fieldName};
+                        $attributes[$field] = $row->{$fieldName};
                     }
                 }
+                $entity->setAttributes($attributes);
                 if(!$entity->exists()) continue;
-                $entity->resetStoredFields();
+                //$entity->resetStoredFields();
 
                 $relationName = $relation->getSimpleName();
                 switch($relation->getType()) {
@@ -60,10 +82,10 @@ trait ResultBuilder {
                         break;
                 }
 
-                $current = $entity;
             }
 
         }
+
     }
 
 }

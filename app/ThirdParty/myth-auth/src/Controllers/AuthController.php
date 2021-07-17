@@ -41,6 +41,7 @@ class AuthController extends Controller
 	 */
 	public function login()
 	{
+
 		// No need to show a login form if the user
 		// is already logged in.
 		if ($this->auth->check()) {
@@ -183,11 +184,11 @@ class AuthController extends Controller
 			}
 
 			// Success!
-			return redirect()->route('login')->with('message', lang('Auth.activationSuccess'));
+			return redirect()->route('loginhome')->with('message', lang('Auth.activationSuccess'));
 		}
 
 		// Success!
-		return redirect()->route('login')->with('message', lang('Auth.registerSuccess'));
+		return redirect()->route('loginhome')->with('message', lang('Auth.registerSuccess'));
 	}
 
 	//--------------------------------------------------------------------
