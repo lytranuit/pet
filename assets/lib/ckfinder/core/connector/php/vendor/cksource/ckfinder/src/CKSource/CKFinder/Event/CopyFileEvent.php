@@ -3,8 +3,8 @@
 /*
  * CKFinder
  * ========
- * https://ckeditor.com/ckfinder/
- * Copyright (c) 2007-2021, CKSource - Frederico Knabben. All rights reserved.
+ * https://ckeditor.com/ckeditor-4/ckfinder/
+ * Copyright (c) 2007-2018, CKSource - Frederico Knabben. All rights reserved.
  *
  * The software, this file and its contents are subject to the CKFinder
  * License. Please read the license.txt file before using, installing, copying,
@@ -23,12 +23,15 @@ use CKSource\CKFinder\Filesystem\File\CopiedFile;
 class CopyFileEvent extends CKFinderEvent
 {
     /**
-     * @var CopiedFile
+     * @var CopiedFile $copiedFile
      */
     protected $copiedFile;
 
     /**
      * Constructor.
+     *
+     * @param CKFinder     $app
+     * @param CopiedFile   $copiedFile
      */
     public function __construct(CKFinder $app, CopiedFile $copiedFile)
     {
@@ -42,7 +45,7 @@ class CopyFileEvent extends CKFinderEvent
      *
      * @return CopiedFile
      *
-     * @deprecated please use getFile() instead
+     * @deprecated Please use getFile() instead.
      */
     public function getCopiedFile()
     {

@@ -3,8 +3,8 @@
 /*
  * CKFinder
  * ========
- * https://ckeditor.com/ckfinder/
- * Copyright (c) 2007-2021, CKSource - Frederico Knabben. All rights reserved.
+ * https://ckeditor.com/ckeditor-4/ckfinder/
+ * Copyright (c) 2007-2018, CKSource - Frederico Knabben. All rights reserved.
  *
  * The software, this file and its contents are subject to the CKFinder
  * License. Please read the license.txt file before using, installing, copying,
@@ -16,20 +16,22 @@ namespace CKSource\CKFinder;
 
 /**
  * The Translator class.
+ *
+ * @copyright 2016 CKSource - Frederico Knabben
  */
 class Translator
 {
     /**
      * An array with translations.
      *
-     * @var array
+     * @var array $translations
      */
     protected $translations;
 
     /**
      * Translator constructor.
      *
-     * @param null|string $langCode
+     * @param string|null $langCode
      */
     public function __construct($langCode = null)
     {
@@ -39,14 +41,30 @@ class Translator
     }
 
     /**
+     * Sets locale for translations.
+     *
+     * @param string $locale
+     */
+    protected function setLocale($locale)
+    {
+        if (null === $locale || !preg_match('/^[a-z\-]{2,5}$/', $locale) || !file_exists(__DIR__ . "/locales/{$locale}.json")) {
+            $locale = 'en';
+        }
+
+        if (null === $this->translations) {
+            $this->translations = json_decode(file_get_contents(__DIR__ . "/locales/{$locale}.json"), true);
+        }
+    }
+
+    /**
      * Translates an error message for a given error code.
      *
      * @param int   $errorNumber  error number
-     * @param array $replacements array of replacements to use in the translated message
+     * @param array $replacements array of replacements to use in the translated message.
      *
      * @return string
      */
-    public function translateErrorMessage($errorNumber, $replacements = [])
+    public function translateErrorMessage($errorNumber, $replacements = array())
     {
         $errorMessage = '';
 
@@ -55,7 +73,7 @@ class Translator
                 $errorMessage = $this->translations['errors'][$errorNumber];
 
                 foreach ($replacements as $from => $to) {
-                    $errorMessage = str_replace('{'.$from.'}', $to, $errorMessage);
+                    $errorMessage = str_replace('{' . $from . '}', $to, $errorMessage);
                 }
             } else {
                 $errorMessage = str_replace('{number}', $errorNumber, $this->translations['errorUnknown']);
@@ -63,21 +81,5 @@ class Translator
         }
 
         return $errorMessage;
-    }
-
-    /**
-     * Sets locale for translations.
-     *
-     * @param string $locale
-     */
-    protected function setLocale($locale)
-    {
-        if (null === $locale || !preg_match('/^[a-z\-]{2,5}$/', $locale) || !file_exists(__DIR__."/locales/{$locale}.json")) {
-            $locale = 'en';
-        }
-
-        if (null === $this->translations) {
-            $this->translations = json_decode(file_get_contents(__DIR__."/locales/{$locale}.json"), true);
-        }
     }
 }

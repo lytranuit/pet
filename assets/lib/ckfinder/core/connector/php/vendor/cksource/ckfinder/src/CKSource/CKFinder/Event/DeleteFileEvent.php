@@ -3,8 +3,8 @@
 /*
  * CKFinder
  * ========
- * https://ckeditor.com/ckfinder/
- * Copyright (c) 2007-2021, CKSource - Frederico Knabben. All rights reserved.
+ * https://ckeditor.com/ckeditor-4/ckfinder/
+ * Copyright (c) 2007-2018, CKSource - Frederico Knabben. All rights reserved.
  *
  * The software, this file and its contents are subject to the CKFinder
  * License. Please read the license.txt file before using, installing, copying,
@@ -23,12 +23,15 @@ use CKSource\CKFinder\Filesystem\File\DeletedFile;
 class DeleteFileEvent extends CKFinderEvent
 {
     /**
-     * @var DeletedFile
+     * @var DeletedFile $deletedFile
      */
     protected $deletedFile;
 
     /**
      * Constructor.
+     *
+     * @param CKFinder      $app
+     * @param DeletedFile   $deletedFile
      */
     public function __construct(CKFinder $app, DeletedFile $deletedFile)
     {
@@ -42,7 +45,7 @@ class DeleteFileEvent extends CKFinderEvent
      *
      * @return DeletedFile
      *
-     * @deprecated please use getFile() instead
+     * @deprecated Please use getFile() instead.
      */
     public function getDeletedFile()
     {

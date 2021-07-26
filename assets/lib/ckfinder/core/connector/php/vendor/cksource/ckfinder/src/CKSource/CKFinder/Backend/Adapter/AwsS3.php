@@ -3,8 +3,8 @@
 /*
  * CKFinder
  * ========
- * https://ckeditor.com/ckfinder/
- * Copyright (c) 2007-2021, CKSource - Frederico Knabben. All rights reserved.
+ * https://ckeditor.com/ckeditor-4/ckfinder/
+ * Copyright (c) 2007-2018, CKSource - Frederico Knabben. All rights reserved.
  *
  * The software, this file and its contents are subject to the CKFinder
  * License. Please read the license.txt file before using, installing, copying,
@@ -32,6 +32,9 @@ class AwsS3 extends AwsS3Adapter implements ContainerAwareInterface, EmulateRena
      */
     protected $app;
 
+    /**
+     * @param CKFinder $app
+     */
     public function setContainer(CKFinder $app)
     {
         $this->app = $app;
@@ -47,7 +50,7 @@ class AwsS3 extends AwsS3Adapter implements ContainerAwareInterface, EmulateRena
      */
     public function renameDirectory($path, $newPath)
     {
-        $sourcePath = $this->applyPathPrefix(rtrim($path, '/').'/');
+        $sourcePath = $this->applyPathPrefix(rtrim($path, '/') . '/');
 
         $objectsIterator = $this->s3Client->getIterator('ListObjects', [
             'Bucket' => $this->bucket,
@@ -59,37 +62,56 @@ class AwsS3 extends AwsS3Adapter implements ContainerAwareInterface, EmulateRena
         });
 
         if (!empty($objects)) {
-            /** @var OperationManager $operation */
+
+            /* @var OperationManager $operation */
             $operation = $this->app['operation'];
 
             $operation->start();
 
-            $total = \count($objects);
+            $total = count($objects);
             $current = 0;
 
             foreach ($objects as $entry) {
-                $this->s3Client->copyObject([
-                    'Bucket' => $this->bucket,
-                    'Key' => $this->replacePath($entry['Key'], $path, $newPath),
-                    'CopySource' => urlencode($this->bucket.'/'.$entry['Key']),
-                ]);
+                $this->s3Client->copyObject(array(
+                    'Bucket'     => $this->bucket,
+                    'Key'        => $this->replacePath($entry['Key'], $path, $newPath),
+                    'CopySource' => urlencode($this->bucket . '/' . $entry['Key']),
+                ));
 
                 if ($operation->isAborted()) {
                     // Delete target folder in case if operation was aborted
-                    $targetPath = $this->applyPathPrefix(rtrim($newPath, '/').'/');
+                    $targetPath = $this->applyPathPrefix(rtrim($newPath, '/') . '/');
 
                     $this->s3Client->deleteMatchingObjects($this->bucket, $targetPath);
 
                     return true;
                 }
 
-                $operation->updateStatus(['total' => $total, 'current' => ++$current]);
+                $operation->updateStatus(array('total' => $total, 'current' => ++$current));
             }
 
             $this->s3Client->deleteMatchingObjects($this->bucket, $sourcePath);
         }
 
         return true;
+    }
+
+    /**
+     * Helper method that replaces a part of the key (path).
+     *
+     * @param string $objectPath the bucket-relative object path
+     * @param string $path       the old backend-relative path
+     * @param string $newPath    the new backend-relative path
+     *
+     * @return string the new bucket-relative path
+     */
+    protected function replacePath($objectPath, $path, $newPath)
+    {
+        $objectPath = $this->removePathPrefix($objectPath);
+        $newPath = trim($newPath, '/') . '/';
+        $path = trim($path, '/') . '/';
+
+        return $this->applyPathPrefix($newPath . substr($objectPath, strlen($path)));
     }
 
     /**
@@ -111,7 +133,7 @@ class AwsS3 extends AwsS3Adapter implements ContainerAwareInterface, EmulateRena
      *
      * @param string $path
      *
-     * @return null|array|false|string
+     * @return array|false|null|string
      */
     public function getMimeType($path)
     {
@@ -119,24 +141,6 @@ class AwsS3 extends AwsS3Adapter implements ContainerAwareInterface, EmulateRena
 
         $mimeType = MimeType::detectByFileExtension(strtolower($ext));
 
-        return $mimeType ? ['mimetype' => $mimeType] : parent::getMimetype($path);
-    }
-
-    /**
-     * Helper method that replaces a part of the key (path).
-     *
-     * @param string $objectPath the bucket-relative object path
-     * @param string $path       the old backend-relative path
-     * @param string $newPath    the new backend-relative path
-     *
-     * @return string the new bucket-relative path
-     */
-    protected function replacePath($objectPath, $path, $newPath)
-    {
-        $objectPath = $this->removePathPrefix($objectPath);
-        $newPath = trim($newPath, '/').'/';
-        $path = trim($path, '/').'/';
-
-        return $this->applyPathPrefix($newPath.substr($objectPath, \strlen($path)));
+        return $mimeType ? array('mimetype' => $mimeType) : parent::getMimetype($path);
     }
 }

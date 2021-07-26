@@ -3,8 +3,8 @@
 /*
  * CKFinder
  * ========
- * https://ckeditor.com/ckfinder/
- * Copyright (c) 2007-2021, CKSource - Frederico Knabben. All rights reserved.
+ * https://ckeditor.com/ckeditor-4/ckfinder/
+ * Copyright (c) 2007-2018, CKSource - Frederico Knabben. All rights reserved.
  *
  * The software, this file and its contents are subject to the CKFinder
  * License. Please read the license.txt file before using, installing, copying,
@@ -27,18 +27,18 @@ class DeleteFolder extends CommandAbstract
 {
     protected $requestMethod = Request::METHOD_POST;
 
-    protected $requires = [Permission::FOLDER_DELETE];
+    protected $requires = array(Permission::FOLDER_DELETE);
 
     public function execute(WorkingFolder $workingFolder, EventDispatcher $dispatcher)
     {
         // The root folder cannot be deleted.
-        if ('/' === $workingFolder->getClientCurrentFolder()) {
+        if ($workingFolder->getClientCurrentFolder() === '/') {
             throw new InvalidRequestException('Cannot delete resource type root folder');
         }
 
         $deleteFolderEvent = new DeleteFolderEvent($this->app, $workingFolder);
 
-        $dispatcher->dispatch($deleteFolderEvent, CKFinderEvent::DELETE_FOLDER);
+        $dispatcher->dispatch(CKFinderEvent::DELETE_FOLDER, $deleteFolderEvent);
 
         $deleted = false;
 
@@ -50,6 +50,6 @@ class DeleteFolder extends CommandAbstract
             throw new AccessDeniedException();
         }
 
-        return ['deleted' => (int) $deleted];
+        return array('deleted' => (int) $deleted);
     }
 }

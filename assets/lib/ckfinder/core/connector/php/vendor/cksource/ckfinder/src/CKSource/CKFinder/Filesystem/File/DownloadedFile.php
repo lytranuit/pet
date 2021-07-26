@@ -3,8 +3,8 @@
 /*
  * CKFinder
  * ========
- * https://ckeditor.com/ckfinder/
- * Copyright (c) 2007-2021, CKSource - Frederico Knabben. All rights reserved.
+ * https://ckeditor.com/ckeditor-4/ckfinder/
+ * Copyright (c) 2007-2018, CKSource - Frederico Knabben. All rights reserved.
  *
  * The software, this file and its contents are subject to the CKFinder
  * License. Please read the license.txt file before using, installing, copying,
@@ -28,14 +28,15 @@ use CKSource\CKFinder\Filesystem\Folder\WorkingFolder;
 class DownloadedFile extends ExistingFile
 {
     /**
-     * @var WorkingFolder
+     * @var WorkingFolder $workingFolder
      */
     protected $workingFolder;
 
     /**
      * Constructor.
      *
-     * @param string $fileName
+     * @param string        $fileName
+     * @param CKFinder      $app
      */
     public function __construct($fileName, CKFinder $app)
     {
@@ -59,7 +60,7 @@ class DownloadedFile extends ExistingFile
      *
      * @throws \Exception
      *
-     * @return bool `true` if the file passed validation
+     * @return boolean `true` if the file passed validation.
      */
     public function isValid()
     {
@@ -81,10 +82,14 @@ class DownloadedFile extends ExistingFile
     /**
      * Checks if the file extension is allowed.
      *
-     * @return bool `true` if an extension is allowed
+     * @return bool `true` if an extension is allowed.
      */
     public function hasAllowedExtension()
     {
+        if (strpos($this->fileName, '.') === false) {
+            return true;
+        }
+
         $extension = $this->getExtension();
 
         return $this->workingFolder->getResourceType()->isAllowedExtension($extension);
@@ -93,7 +98,7 @@ class DownloadedFile extends ExistingFile
     /**
      * Checks if the file is hidden.
      *
-     * @return bool `true` if the file is hidden
+     * @return bool `true` if the file is hidden.
      */
     public function isHidden()
     {
@@ -103,7 +108,7 @@ class DownloadedFile extends ExistingFile
     /**
      * Checks if the file exists.
      *
-     * @return bool `true` if the file exists
+     * @return bool `true` if the file exists.
      */
     public function exists()
     {

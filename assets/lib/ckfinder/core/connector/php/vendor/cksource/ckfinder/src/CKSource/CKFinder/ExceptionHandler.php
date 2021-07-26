@@ -3,8 +3,8 @@
 /*
  * CKFinder
  * ========
- * https://ckeditor.com/ckfinder/
- * Copyright (c) 2007-2021, CKSource - Frederico Knabben. All rights reserved.
+ * https://ckeditor.com/ckeditor-4/ckfinder/
+ * Copyright (c) 2007-2018, CKSource - Frederico Knabben. All rights reserved.
  *
  * The software, this file and its contents are subject to the CKFinder
  * License. Please read the license.txt file before using, installing, copying,
@@ -15,31 +15,34 @@
 namespace CKSource\CKFinder;
 
 use CKSource\CKFinder\Exception\CKFinderException;
-use CKSource\CKFinder\Response\JsonResponse;
 use Psr\Log\LoggerInterface;
+use Symfony\Component\Debug;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpKernel\Event\ExceptionEvent;
-use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
+use CKSource\CKFinder\Response\JsonResponse;
+use \Symfony\Component\HttpKernel\Exception\HttpException;
 
 /**
  * The exception handler class.
  *
  * All errors are resolved here and passed to the response.
+ *
+ * @copyright 2016 CKSource - Frederico Knabben
  */
 class ExceptionHandler implements EventSubscriberInterface
 {
     /**
      * Flag used to enable the debug mode.
      *
-     * @var bool
+     * @var bool $debug
      */
     protected $debug;
 
     /**
-     * LoggerInterface.
+     * LoggerInterface
      *
-     * @var LoggerInterface
+     * @var LoggerInterface $logger
      */
     protected $logger;
 
@@ -59,42 +62,42 @@ class ExceptionHandler implements EventSubscriberInterface
         $this->logger = $logger;
 
         if ($debug) {
-            set_error_handler([$this, 'errorHandler']);
+            set_error_handler(array($this, 'errorHandler'));
         }
     }
 
-    public function onCKFinderError(ExceptionEvent $event)
+    public function onCKFinderError(GetResponseForExceptionEvent $event)
     {
-        $throwable = $event->getThrowable();
+        $exception = $event->getException();
 
-        $exceptionCode = $throwable->getCode() ?: Error::UNKNOWN;
+        $exceptionCode = $exception->getCode() ?: Error::UNKNOWN;
 
-        $replacements = [];
+        $replacements = array();
 
         $httpStatusCode = 200;
 
-        if ($throwable instanceof CKFinderException) {
-            $replacements = $throwable->getParameters();
-            $httpStatusCode = $throwable->getHttpStatusCode();
+        if ($exception instanceof CKFinderException) {
+            $replacements = $exception->getParameters();
+            $httpStatusCode = $exception->getHttpStatusCode();
         }
 
         $message =
-            Error::CUSTOM_ERROR === $exceptionCode
-                ? $throwable->getMessage()
+            $exceptionCode === Error::CUSTOM_ERROR
+                ? $exception->getMessage()
                 : $this->translator->translateErrorMessage($exceptionCode, $replacements);
 
         $response = JsonResponse::create()->withError($exceptionCode, $message);
 
-        $event->setThrowable(new HttpException($httpStatusCode));
+        $event->setException(new HttpException($httpStatusCode));
 
         $event->setResponse($response);
 
         if ($this->debug && $this->logger) {
-            $this->logger->error($throwable);
+            $this->logger->error($exception);
         }
 
         if (filter_var(ini_get('display_errors'), FILTER_VALIDATE_BOOLEAN)) {
-            throw $throwable;
+            throw $exception;
         }
     }
 
@@ -127,6 +130,6 @@ class ExceptionHandler implements EventSubscriberInterface
      */
     public static function getSubscribedEvents()
     {
-        return [KernelEvents::EXCEPTION => ['onCKFinderError', -255]];
+        return array(KernelEvents::EXCEPTION => array('onCKFinderError', -255));
     }
 }

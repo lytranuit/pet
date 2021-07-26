@@ -3,8 +3,8 @@
 /*
  * CKFinder
  * ========
- * https://ckeditor.com/ckfinder/
- * Copyright (c) 2007-2021, CKSource - Frederico Knabben. All rights reserved.
+ * https://ckeditor.com/ckeditor-4/ckfinder/
+ * Copyright (c) 2007-2018, CKSource - Frederico Knabben. All rights reserved.
  *
  * The software, this file and its contents are subject to the CKFinder
  * License. Please read the license.txt file before using, installing, copying,
@@ -18,28 +18,30 @@ use CKSource\CKFinder\CKFinder;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * The AfterCommandEvent event class.
+ * The BeforeCommandEvent event class.
  */
 class AfterCommandEvent extends CKFinderEvent
 {
     /**
      * The command name.
      *
-     * @var string
+     * @var string $commandObject
      */
     protected $commandName;
 
     /**
      * The response object received from the command.
      *
-     * @var Response
+     * @var Response $response
      */
     protected $response;
 
     /**
      * Constructor.
      *
-     * @param string $commandName
+     * @param CKFinder $app
+     * @param string   $commandName
+     * @param Response $response
      */
     public function __construct(CKFinder $app, $commandName, Response $response)
     {
@@ -61,6 +63,8 @@ class AfterCommandEvent extends CKFinderEvent
 
     /**
      * Sets the response to be returned.
+     *
+     * @param Response $response
      */
     public function setResponse(Response $response)
     {

@@ -3,8 +3,8 @@
 /*
  * CKFinder
  * ========
- * https://ckeditor.com/ckfinder/
- * Copyright (c) 2007-2021, CKSource - Frederico Knabben. All rights reserved.
+ * https://ckeditor.com/ckeditor-4/ckfinder/
+ * Copyright (c) 2007-2018, CKSource - Frederico Knabben. All rights reserved.
  *
  * The software, this file and its contents are subject to the CKFinder
  * License. Please read the license.txt file before using, installing, copying,
@@ -28,6 +28,8 @@ class CacheManager
 
     /**
      * Constructor.
+     *
+     * @param AdapterInterface $adapter
      */
     public function __construct(AdapterInterface $adapter)
     {
@@ -40,7 +42,7 @@ class CacheManager
      * @param string $key
      * @param mixed  $value
      *
-     * @return bool `true` if successful
+     * @return bool `true` if successful.
      */
     public function set($key, $value)
     {
@@ -64,7 +66,7 @@ class CacheManager
      *
      * @param string $key
      *
-     * @return bool `true` if successful
+     * @return bool `true` if successful.
      */
     public function delete($key)
     {
@@ -77,7 +79,7 @@ class CacheManager
      * @param string $sourceKey
      * @param string $targetKey
      *
-     * @return bool `true` if successful
+     * @return bool `true` if successful.
      */
     public function copy($sourceKey, $targetKey)
     {
@@ -96,7 +98,7 @@ class CacheManager
      * @param string $sourceKey
      * @param string $targetKey
      *
-     * @return bool `true` if successful
+     * @return bool `true` if successful.
      */
     public function move($sourceKey, $targetKey)
     {
@@ -108,7 +110,7 @@ class CacheManager
      *
      * @param string $keyPrefix
      *
-     * @return bool `true` if successful
+     * @return bool `true` if successful.
      */
     public function deleteByPrefix($keyPrefix)
     {
@@ -121,7 +123,7 @@ class CacheManager
      * @param string $sourcePrefix
      * @param string $targetPrefix
      *
-     * @return bool `true` if successful
+     * @return bool `true` if successful.
      */
     public function changePrefix($sourcePrefix, $targetPrefix)
     {

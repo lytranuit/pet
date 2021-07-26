@@ -3,8 +3,8 @@
 /*
  * CKFinder
  * ========
- * https://ckeditor.com/ckfinder/
- * Copyright (c) 2007-2021, CKSource - Frederico Knabben. All rights reserved.
+ * https://ckeditor.com/ckeditor-4/ckfinder/
+ * Copyright (c) 2007-2018, CKSource - Frederico Knabben. All rights reserved.
  *
  * The software, this file and its contents are subject to the CKFinder
  * License. Please read the license.txt file before using, installing, copying,
@@ -18,9 +18,9 @@ use CKSource\CKFinder\Backend\Backend;
 use CKSource\CKFinder\CKFinder;
 use CKSource\CKFinder\Error;
 use CKSource\CKFinder\Exception\InvalidRequestException;
-use CKSource\CKFinder\Filesystem\Folder\WorkingFolder;
 use CKSource\CKFinder\Filesystem\Path;
 use CKSource\CKFinder\ResourceType\ResourceType;
+use CKSource\CKFinder\Filesystem\Folder\WorkingFolder;
 
 /**
  * The CopiedFile class.
@@ -35,10 +35,10 @@ class CopiedFile extends ExistingFile
     protected $targetFolder;
 
     /**
-     * @var string defines copy options in case a file already exists
-     *             in the target directory:
-     *             - autorename - Renames the current file (see File::autorename()).
-     *             - overwrite - Overwrites the existing file.
+     * @var string $copyOptions defines copy options in case a file already exists
+     *                          in the target directory:
+     *                          - autorename - Renames the current file (see File::autorename()).
+     *                          - overwrite - Overwrites the existing file.
      */
     protected $copyOptions;
 
@@ -96,10 +96,14 @@ class CopiedFile extends ExistingFile
     /**
      * Checks if the file has an extension allowed in both source and target ResourceTypes.
      *
-     * @return bool `true` if the file has an extension allowed in source and target directories
+     * @return bool `true` if the file has an extension allowed in source and target directories.
      */
     public function hasAllowedExtension()
     {
+        if (strpos($this->fileName, '.') === false) {
+            return true;
+        }
+
         $extension = $this->getExtension();
 
         return parent::hasAllowedExtension() &&
@@ -135,8 +139,6 @@ class CopiedFile extends ExistingFile
 
     /**
      * @copydoc File::autorename()
-     *
-     * @param mixed $path
      */
     public function autorename(Backend $backend = null, $path = '')
     {
@@ -146,9 +148,9 @@ class CopiedFile extends ExistingFile
     /**
      * Copies the current file.
      *
-     * @throws \Exception
+     * @return bool `true` if the file was copied successfully.
      *
-     * @return bool `true` if the file was copied successfully
+     * @throws \Exception
      */
     public function doCopy()
     {
@@ -164,7 +166,7 @@ class CopiedFile extends ExistingFile
 
         $targetFilename = $this->getTargetFilename();
 
-        if ($this->targetFolder->containsFile($targetFilename) && false === strpos($this->copyOptions, 'overwrite')) {
+        if ($this->targetFolder->containsFile($targetFilename) && strpos($this->copyOptions, 'overwrite') === false) {
             $this->addError(Error::ALREADY_EXIST);
 
             return false;
@@ -173,12 +175,8 @@ class CopiedFile extends ExistingFile
         if ($this->targetFolder->putStream($targetFilename, $originalFileStream)) {
             $resizedImageRepository = $this->resourceType->getResizedImageRepository();
             $resizedImageRepository->copyResizedImages(
-                $this->resourceType,
-                $this->folder,
-                $this->sourceFileName,
-                $this->targetFolder->getResourceType(),
-                $this->targetFolder->getClientCurrentFolder(),
-                $targetFilename
+                $this->resourceType, $this->folder, $this->sourceFileName,
+                $this->targetFolder->getResourceType(), $this->targetFolder->getClientCurrentFolder(), $targetFilename
             );
 
             $this->getCache()->copy(
@@ -187,10 +185,11 @@ class CopiedFile extends ExistingFile
             );
 
             return true;
-        }
-        $this->addError(Error::ACCESS_DENIED);
+        } else {
+            $this->addError(Error::ACCESS_DENIED);
 
-        return false;
+            return false;
+        }
     }
 
     /**
@@ -201,8 +200,8 @@ class CopiedFile extends ExistingFile
     public function getTargetFilename()
     {
         if ($this->targetFolder->containsFile($this->getFilename()) &&
-            false === strpos($this->copyOptions, 'overwrite') &&
-            false !== strpos($this->copyOptions, 'autorename')) {
+            strpos($this->copyOptions, 'overwrite') === false &&
+            strpos($this->copyOptions, 'autorename') !== false) {
             $this->autorename();
         }
 
@@ -242,9 +241,9 @@ class CopiedFile extends ExistingFile
     /**
      * Validates the copied file.
      *
-     * @throws \Exception
+     * @return bool `true` if the copied file is valid and ready to be copied.
      *
-     * @return bool `true` if the copied file is valid and ready to be copied
+     * @throws \Exception
      */
     public function isValid()
     {
