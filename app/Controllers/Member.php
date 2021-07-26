@@ -12,14 +12,14 @@ class Member extends BaseController
         // the session to be started - so fire it up!
 
         $id_user = user_id();
-        $user_model = model("Usermodel");
+        $user_model = model("UserModel");
         $user =  $user_model->where(array('id' => $id_user))->asObject()->first();
         $this->data['user'] = $user;
     }
     public function index()
     {
         $id_user = user_id();
-        $user_model = model("Usermodel");
+        $user_model = model("UserModel");
         if (isset($_POST['edit_user'])) {
             $additional_data = array(
                 'name' => $this->request->getPost('name'),
