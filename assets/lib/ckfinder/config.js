@@ -5,6 +5,9 @@
 
 var config = {};
 
+config['authentication'] = function() {
+    return true;
+};
 // Set your configuration options below.
 
 // Examples:
