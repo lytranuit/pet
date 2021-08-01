@@ -823,8 +823,8 @@
     }
     /*NAV HORI*/
     #nav-hori {
-        height: 50px;
-        background: #ffffff;
+        height: 52px;
+        background: black;
         border-top: solid 1px #ececec;
         border-bottom: solid 1px #ececec;
     }
@@ -881,7 +881,7 @@
     .navone>ul>li>a {
         line-height: 40px;
         text-decoration: none;
-        color: #e51f28;
+        color: white;
         padding: 0 15px;
         display: block;
     }
@@ -1011,7 +1011,7 @@
         text-transform: uppercase;
     }
     .default .navone>ul>li>a:hover, .default .navone>ul>li:hover>a {
-        background: #ffffff;
+        background: #CC99CC;
     }
     .default .navone .primary .level2 {
         left: 0;

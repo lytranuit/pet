@@ -55,27 +55,21 @@
                 <a href="/" id="logo" class="col-3">
                     <h1 class="format inline-block"><img src="<?= base_url("assets/images/logo.png") ?>" alt=""></h1>
                 </a>
-                <div id="search" class="col-5">
+                <div id="search" class="col-6">
                     <form method="get" name="searchForm" action="<?= base_url("product/search") ?>">
                         <input type="text" class="text-search" name="q" autocomplete="off" placeholder="<?= lang("Custom.search_text") ?>">
                         <button class="submit-search"><i class="fa fa-search"></i></button>
                     </form>
                     <div id="suggestions" class="autocomplete-suggestions"></div>
                 </div>
-                <div class="new-user-box col-2">
-                    <a class="box-icon" href="<?= route_to("history") ?>">
-                        <img src="<?= base_url("assets/images/icon-new-user-petcity.png") ?>" alt="Icon kiem tra don hang">
-                        <span><?= lang("Custom.history_order") ?></span>
-                    </a>
-                </div>
-                <div class="cart-box col-1">
+                <div class="cart-box col-1 offset-2">
                     <a id="cart-header" href="<?= base_url("cart") ?>" class="newicon iconnew-cart" rel="nofollow">
                         <b id="count_shopping_cart_store" class="cartCount">0</b>
                     </a>
                 </div>
-                <div class="icon_hotline col-1">
+                <!-- <div class="icon_hotline col-1">
                     <a href="tel:028 7770 4567"><img src="<?= base_url("assets/images/hotline.png") ?>" alt="hotline" class="img"></a>
-                </div>
+                </div> -->
             </div>
 
         </div>
@@ -90,9 +84,9 @@
                     <?php foreach ($list_menu as $row) : ?>
                         <li class="is-pro">
                             <?php if ($row->type == 1) : ?>
-                                <a href="<?= $row->link ?>"><span class="span-root"><?= $row->{pick_language($row, 'name_')}  ?><?= (!empty($row->child)) ? '<i class="fa fa-angle-down"></i>' : '' ?></span></a>
+                                <a href="<?= $row->link ?>"><span class=""><?= $row->{pick_language($row, 'name_')}  ?><?= (!empty($row->child)) ? '<i class="fa fa-angle-down" style="margin-left: 5px;"></i>' : '' ?></span></a>
                             <?php elseif ($row->type == 6) : ?>
-                                <a href="<?= base_url("khuyen-mai.html") ?>"><span class="span-root"><?= $row->{pick_language($row, 'name_')}  ?> <i class="fa fa-star text-red" style="color:#f4b514;"></i><?= (!empty($row->child)) ? '<i class="fa fa-angle-down"></i>' : '' ?></span></a>
+                                <a href="<?= base_url("khuyen-mai.html") ?>"><span class=""><?= $row->{pick_language($row, 'name_')}  ?> <i class="fa fa-star text-red" style="color:#f4b514;"></i><?= (!empty($row->child)) ? '<i class="fa fa-angle-down" style="margin-left: 5px;"></i>' : '' ?></span></a>
                             <?php endif ?>
                             <?php if (!empty($row->child)) : ?>
                                 <div class="level2">
