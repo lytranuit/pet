@@ -1,7 +1,7 @@
 <section id="banner">
     <div class="container">
         <div class="row g-1">
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <div class="slide-box">
                     <?php foreach ($sliders as $row) : ?>
                         <div class="banner-item ">
@@ -10,20 +10,6 @@
                             </a>
                         </div>
                     <?php endforeach ?>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="row g-1">
-                    <div class="col-md-12 col-6">
-                        <a target="_blank" href="<?= $banners[0]->url ?>" title="<?= $banners[0]->text ?>">
-                            <img alt="<?= $banners[0]->text ?>" src="<?= base_url($banners[0]->image_url) ?>" class="img-responsive w-100">
-                        </a>
-                    </div>
-                    <div class="col-md-12 col-6">
-                        <a target="_blank" href="<?= $banners[1]->url ?>" title="<?= $banners[1]->text ?>">
-                            <img alt="<?= $banners[1]->text ?>" src="<?= base_url($banners[1]->image_url) ?>" class="img-responsive w-100">
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -49,7 +35,7 @@
     <div class="container">
         <div class="row g-1">
             <div class="category-box">
-                <?php for ($i = 2; $i < count($banners); $i++) : ?>
+                <?php for ($i = 0; $i < count($banners); $i++) : ?>
                     <div class="col-3">
                         <a target="_blank" href="<?= $banners[$i]->url ?>" title="<?= $banners[$i]->text ?>">
                             <img alt="<?= $banners[$i]->text ?>" src="<?= base_url($banners[$i]->image_url) ?>" class="img-responsive w-100">

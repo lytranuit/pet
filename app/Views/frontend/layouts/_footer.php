@@ -4,21 +4,8 @@
 
         <div class="clear hr"></div>
         <div class="clear space10px d-none d-lg-block"></div>
-
-        <div class="box-footer first">
-            <p data-bs-toggle="collapse" href="#collapse1" role="button" aria-expanded="false" aria-controls="collapse1">
-                Danh mục mua sắm
-            </p>
-            <ul class="ul" id="collapse1">
-                <li><a href="/cho-131.html">Shop cho Chó</a></li>
-                <li><a href="/meo-55.html">Shop cho Mèo</a></li>
-                <li><a href="/thong-tin-huu-ich-ve-thu-cung/ac7.html">Hướng dẫn chăm sóc thú cưng</a></li>
-                <li><a href="/page/trung-tam-ban-buon-petnet">Trung tâm bán buôn, sỉ</a></li>
-                <li><a href="/hop-tac-cung-cap-hang-cho-petcity.html">Hợp tác cấp hàng cho PetCity</a></li>
-            </ul>
-        </div>
         <!--box-footer-->
-        <div class="box-footer ">
+        <div class="box-footer first">
             <p data-bs-toggle="collapse" href="#collapse2" role="button" aria-expanded="false" aria-controls="collapse2">
                 Thông tin
             </p>
@@ -80,59 +67,6 @@
         </div>
         <!--box-footer-->
 
-        <div class="clear hr space10px"></div>
-        <div class="clear space10px"></div>
-
-        <div class="fAbout">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3">
-                        <p class="txt_u txt_b"><span>Hà Nội</span></p>
-
-                        <div class="line_h22" style="font-size: 13px;color: #8c8c8c;">
-                            1. 10 Hàm Long, Q.Hoàn Kiếm
-                            <br>
-
-                            Tel: 024 3933 2727 <br>
-
-                            2. 101 Núi Trúc, Kim Mã, Q.Ba Đình
-                            <br>
-                            Tel: 024 32444824 <br>
-
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <p class="txt_u txt_b"><span>Hồ Chí Minh</span></p>
-
-                        <div class="line_h22" style="font-size: 13px;color: #8c8c8c;">
-
-                            1. 222 Lý Chính Thắng, Quận 3 <br>
-                            (Ngã tư Lý Chính Thắng giao Nguyễn Thông) <br>
-                            Tel: 028 3526 0717 <br>
-                            2. 174 Cộng Hòa, Q.Tân Bình <br>
-
-                            Tel: 028 3811 2799<br>
-
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <p class="txt_u txt_b"><span>ĐÀ NẴNG</span></p>
-
-                        <div class="line_h22" style="font-size: 13px;color: #8c8c8c;">
-                            1. Tại Đà Nẵng: 255 Trưng Nữ Vương, Q.Hải Châu<br>
-                            Tel: 023 6364 6727- 056 547 8159 <br>
-
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-
-                    </div>
-                </div>
-            </div>
-
-
-
-        </div>
         <div class="clear hr space10px"></div>
         <div class="clear"></div>
         <div class="clear text-center space10px" style="
