@@ -347,6 +347,19 @@ if (!function_exists('url_product')) {
     }
 }
 
+if (!function_exists('url_product_byid')) {
+
+    function url_product_byid($id)
+    {
+        $url = base_url();
+        if ($id) {
+            $model = model("TagModel");
+            $object = $model->find($id);
+            $url = base_url("san-pham/c$object->id.html");
+        }
+        return $url;
+    }
+}
 if (!function_exists('url_page')) {
 
     function url_page($id)
@@ -373,6 +386,19 @@ if (!function_exists('url_tag')) {
         return $url;
     }
 }
+if (!function_exists('url_tag_byid')) {
+
+    function url_tag_byid($id = NULL)
+    {
+        $url = base_url();
+        if ($id) {
+            $model = model("TagModel");
+            $object = $model->find($id);
+            $url = base_url("tin-tuc/c$object->id.html");
+        }
+        return $url;
+    }
+}
 if (!function_exists('url_news')) {
 
     function url_news($news)
@@ -380,6 +406,19 @@ if (!function_exists('url_news')) {
         $url = base_url();
         if ($news) {
             $url = base_url("post/c$news->id.html");
+        }
+        return $url;
+    }
+}
+if (!function_exists('url_news_byid')) {
+
+    function url_news_byid($id = NULL)
+    {
+        $url = base_url();
+        if ($id) {
+            $model = model("ProductModel");
+            $object = $model->find($id);
+            $url = base_url("post/c$object->id.html");
         }
         return $url;
     }
@@ -406,6 +445,19 @@ if (!function_exists('url_category')) {
         $url = base_url();
         if ($category) {
             $url = base_url("danh-muc/c$category->id.html");
+        }
+        return $url;
+    }
+}
+if (!function_exists('url_category_byid')) {
+
+    function url_category_byid($id = NULL)
+    {
+        $url = base_url();
+        if ($id) {
+            $model = model("CategoryModel");
+            $object = $model->find($id);
+            $url = base_url("danh-muc/c$object->id.html");
         }
         return $url;
     }

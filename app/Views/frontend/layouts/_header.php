@@ -85,6 +85,14 @@
                         <li class="is-pro">
                             <?php if ($row->type == 1) : ?>
                                 <a href="<?= $row->link ?>"><span class=""><?= $row->{pick_language($row, 'name_')}  ?><?= (!empty($row->child)) ? '<i class="fa fa-angle-down" style="margin-left: 5px;"></i>' : '' ?></span></a>
+                            <?php elseif ($row->type == 2) : ?>
+                                <a href="<?= url_category_byid($row->related_id) ?>"><span class=""><?= $row->{pick_language($row, 'name_')}  ?><?= (!empty($row->child)) ? '<i class="fa fa-angle-down" style="margin-left: 5px;"></i>' : '' ?></span></a>
+                            <?php elseif ($row->type == 3) : ?>
+                                <a href="<?= url_tag_byid($row->related_id) ?>"><span class=""><?= $row->{pick_language($row, 'name_')}  ?><?= (!empty($row->child)) ? '<i class="fa fa-angle-down" style="margin-left: 5px;"></i>' : '' ?></span></a>
+                            <?php elseif ($row->type == 4) : ?>
+                                <a href="<?= url_product_byid($row->related_id) ?>"><span class=""><?= $row->{pick_language($row, 'name_')}  ?><?= (!empty($row->child)) ? '<i class="fa fa-angle-down" style="margin-left: 5px;"></i>' : '' ?></span></a>
+                            <?php elseif ($row->type == 5) : ?>
+                                <a href="<?= url_news_byid($row->related_id) ?>"><span class=""><?= $row->{pick_language($row, 'name_')}  ?><?= (!empty($row->child)) ? '<i class="fa fa-angle-down" style="margin-left: 5px;"></i>' : '' ?></span></a>
                             <?php elseif ($row->type == 6) : ?>
                                 <a href="<?= base_url("khuyen-mai.html") ?>"><span class=""><?= $row->{pick_language($row, 'name_')}  ?> <i class="fa fa-star text-red" style="color:#f4b514;"></i><?= (!empty($row->child)) ? '<i class="fa fa-angle-down" style="margin-left: 5px;"></i>' : '' ?></span></a>
                             <?php endif ?>
@@ -94,15 +102,31 @@
                                         <div class="box-sub-nav">
                                             <?php if ($row2->type == 1) : ?>
                                                 <a class='cat1' href="<?= $row->link ?>"><?= $row2->{pick_language($row2, 'name_')}  ?></a>
+                                            <?php elseif ($row2->type == 2) : ?>
+                                                <a class='cat1' href="<?= url_category_byid($row2->related_id) ?>"><?= $row2->{pick_language($row2, 'name_')}  ?></a>
+                                            <?php elseif ($row2->type == 3) : ?>
+                                                <a class='cat1' href="<?= url_tag_byid($row2->related_id) ?>"><?= $row2->{pick_language($row2, 'name_')}  ?></a>
+                                            <?php elseif ($row2->type == 4) : ?>
+                                                <a class='cat1' href="<?= url_product_byid($row2->related_id) ?>"><?= $row2->{pick_language($row2, 'name_')}  ?></a>
+                                            <?php elseif ($row2->type == 5) : ?>
+                                                <a class='cat1' href="<?= url_news_byid($row2->related_id) ?>"><?= $row2->{pick_language($row2, 'name_')}  ?></a>
                                             <?php elseif ($row2->type == 6) : ?>
-                                                <a class='cat1' href="<?= base_url("khuyen-mai.html") ?>"><?= $row->{pick_language($row, 'name_')}  ?> <i class="fa fa-star text-red" style="color:#f4b514;"></i></a>
+                                                <a class='cat1' href="<?= base_url("khuyen-mai.html") ?>"><?= $row2->{pick_language($row2, 'name_')}  ?> <i class="fa fa-star text-red" style="color:#f4b514;"></i></a>
                                             <?php endif ?>
                                             <?php if (!empty($row2->child)) : ?>
                                                 <?php foreach ($row2->child as $row3) : ?>
                                                     <?php if ($row3->type == 1) : ?>
-                                                        <a class='cat2' href="<?= $row->link ?>"><?= $row3->{pick_language($row3, 'name_')}  ?></a>
+                                                        <a class='cat2' href="<?= $row3->link ?>"><?= $row3->{pick_language($row3, 'name_')}  ?></a>
+                                                    <?php elseif ($row3->type == 2) : ?>
+                                                        <a class='cat2' href="<?= url_category_byid($row3->related_id) ?>"><?= $row3->{pick_language($row3, 'name_')}  ?></a>
+                                                    <?php elseif ($row3->type == 3) : ?>
+                                                        <a class='cat2' href="<?= url_tag_byid($row3->related_id) ?>"><?= $row3->{pick_language($row3, 'name_')}  ?></a>
+                                                    <?php elseif ($row3->type == 4) : ?>
+                                                        <a class='cat2' href="<?= url_product_byid($row3->related_id) ?>"><?= $row3->{pick_language($row3, 'name_')}  ?></a>
+                                                    <?php elseif ($row3->type == 5) : ?>
+                                                        <a class='cat2' href="<?= url_news_byid($row3->related_id) ?>"><?= $row3->{pick_language($row3, 'name_')}  ?></a>
                                                     <?php elseif ($row3->type == 6) : ?>
-                                                        <a class='cat2' href="<?= base_url("khuyen-mai.html") ?>"><?= $row->{pick_language($row, 'name_')}  ?> <i class="fa fa-star text-red" style="color:#f4b514;"></i></a>
+                                                        <a class='cat2' href="<?= base_url("khuyen-mai.html") ?>"><?= $row3->{pick_language($row3, 'name_')}  ?> <i class="fa fa-star text-red" style="color:#f4b514;"></i></a>
                                                     <?php endif ?>
                                                 <?php endforeach ?>
                                             <?php endif ?>
