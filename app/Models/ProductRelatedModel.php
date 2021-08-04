@@ -10,7 +10,7 @@ class ProductRelatedModel extends Model
     protected $table      = 'pet_product_related';
     protected $primaryKey = 'id';
 
-    protected $returnType     = 'array';
+    protected $returnType     = 'object';
     protected $useSoftDeletes = false;
 
     protected $allowedFields = ['product_id', 'product_related_id'];
