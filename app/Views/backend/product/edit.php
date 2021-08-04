@@ -262,7 +262,7 @@
                                             <label class="text-danger">Sản phẩm liên quan</label>
                                             <select class="chosen" name="related[]" style="width: 200px;" multiple>
                                                 <?php foreach ($product as $row) : ?>
-                                                    <option value="<?= $row->id ?> "><?= $row->code ?> - <?= $row->name_vi ?> </option>
+                                                    <option value="<?= $row->id ?>"><?= $row->code ?> - <?= $row->name_vi ?> </option>
                                                 <?php endforeach ?>
                                             </select>
                                         </div>
