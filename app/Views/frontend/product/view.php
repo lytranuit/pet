@@ -22,21 +22,21 @@
 
             </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-6">
 
             <section id="content" class="">
                 <div id="img-detail" class="row">
                     <ul id="img-thumbs" class="slider-nav-view ul productThumb col-md-2">
                         <li>
-                            <a class="img_thumb mz-thumb" title="Bọt tắm khô dưỡng lông hương phấn thơm 130ml ">
-                                <img src="https://simbaeshop.com/<?= $info->image_url ?>" alt="Bọt tắm khô dưỡng lông hương phấn thơm 130ml ">
+                            <a class="img_thumb mz-thumb" title="<?= $info->{pick_language($info)} ?>">
+                                <img src="https://simbaeshop.com/<?= $info->image_url ?>" alt="<?= $info->{pick_language($info)} ?>">
                             </a>
                         </li>
                         <?php if (!empty($info->image_other)) : ?>
                             <?php foreach ($info->image_other as $row) : ?>
                                 <li>
-                                    <a class="img_thumb mz-thumb" title="Bọt tắm khô dưỡng lông hương phấn thơm 130ml " rel="zoom-id:Zoomer;">
-                                        <img src="<?= base_url($row->image_url) ?>" alt="Bọt tắm khô dưỡng lông hương phấn thơm 130ml ">
+                                    <a class="img_thumb mz-thumb" title="<?= $info->{pick_language($info)} ?>" rel="zoom-id:Zoomer;">
+                                        <img src="<?= base_url($row->image_url) ?>" alt="<?= $info->{pick_language($info)} ?>">
                                     </a>
                                 </li>
                             <?php endforeach ?>
@@ -46,14 +46,14 @@
                     <div id="img-large" class="slider-for-view col-md-10">
                         <a class="fancybox" data-fancybox="group2" id="Zoomer" href="https://simbaeshop.com/<?= $info->image_url ?>">
                             <figure class="mz-figure mz-hover-zoom mz-ready">
-                                <img src="https://simbaeshop.com/<?= $info->image_url ?>" title="Bọt tắm khô dưỡng lông hương phấn thơm 130ml " alt="Bọt tắm khô dưỡng lông hương phấn thơm 130ml ">
+                                <img style="max-height:500px;" src="https://simbaeshop.com/<?= $info->image_url ?>" title="<?= $info->{pick_language($info)} ?>" alt="<?= $info->{pick_language($info)} ?>">
                             </figure>
                         </a>
                         <?php if (!empty($info->image_other)) : ?>
                             <?php foreach ($info->image_other as $row) : ?>
                                 <a class="fancybox" data-fancybox="group2" id="Zoomer" href="<?= base_url($row->image_url) ?>">
                                     <figure class="mz-figure mz-hover-zoom mz-ready">
-                                        <img src="<?= base_url($row->image_url) ?>" title="Bọt tắm khô dưỡng lông hương phấn thơm 130ml " alt="Bọt tắm khô dưỡng lông hương phấn thơm 130ml ">
+                                        <img style="max-height:500px;" src="<?= base_url($row->image_url) ?>" title="<?= $info->{pick_language($info)} ?>" alt="<?= $info->{pick_language($info)} ?>">
                                     </figure>
                                 </a>
                             <?php endforeach ?>
@@ -66,7 +66,7 @@
             <div class="clear space10px"></div>
         </div>
         <!--pDetail-->
-        <div class="col-md-4" style="">
+        <div class="col-md-6" style="">
             <div id="overview" class="product">
                 <h1 id="detail-name" class="txt_20 txt_pink"><?= $info->{pick_language($info)} ?></h1>
 
@@ -127,32 +127,12 @@
                                         <option value="9">9</option>
                                         <option value="10">10</option>
                                     </select>
-                                    <p style="font-size: 14px;color: #e51f28;font-weight: 600;">
-                                        <?= lang("Custom.policy_delivery") ?>
-                                    </p>
                                 </div>
                             </td>
                         </tr>
                     </tbody>
                 </table>
 
-                <div class="offset-top-10">
-                    <?php if ($info->{pick_language($info, "volume_")} != "") : ?>
-                        <div>
-                            - <?= lang('qui_cach') ?>: <?= $info->{pick_language($info, 'volume_')}  ?>
-                        </div>
-                    <?php endif ?>
-                    <?php if (isset($info->origin) && !empty($info->origin)) : ?>
-                        <div>
-                            - <?= lang('xuat_xu') ?>: <?= $info->origin->{pick_language($info->origin, 'name_')}  ?>
-                        </div>
-                    <?php endif ?>
-                    <?php if (isset($info->preservation) && !empty($info->preservation)) : ?>
-                        <div>
-                            - <?= lang('bao_quan') ?>: <?= $info->preservation->{pick_language($info->preservation, 'name_')}  ?>
-                        </div>
-                    <?php endif ?>
-                </div>
                 <div class="buy" style="margin-top:10px">
                     <a href="javascript:;" class="addCartConfig btn-violet addCart mr-2 add-cart">
                         <?= lang("Custom.add_to_cart") ?>
@@ -162,16 +142,29 @@
                 </div>
 
 
-                <div style="margin-top: 30px;">
-                    <!-- <div id="services-sp">
-                    <a href="/page/phuong-thuc-thanh-toan" class="item-services"><i class="newicon icon-services1"></i><span>Nhận hàng <br>Thanh toán</span></a>
-                    <a href="/page/chinh-sach-giao-hang" class="item-services"><i class="newicon icon-services2"></i><span style="margin-left: 57px;">Giao hàng <br> Miễn phí</span></a>
-                    <a href="/page/chinh-sach-doi-tra-hang" class="item-services"><i class="newicon icon-services3"></i><span>30 Ngày <br>Đổi trả</span></a>
-
-                </div> -->
-                </div>
 
             </div>
+            <!--//-->
+            <div class="clear space10px"></div>
+
+            <div class="offset-top-10">
+                <?php if ($info->{pick_language($info, "volume_")} != "") : ?>
+                    <div>
+                        - <?= lang('qui_cach') ?>: <?= $info->{pick_language($info, 'volume_')}  ?>
+                    </div>
+                <?php endif ?>
+                <?php if (isset($info->origin) && !empty($info->origin)) : ?>
+                    <div>
+                        - <?= lang('xuat_xu') ?>: <?= $info->origin->{pick_language($info->origin, 'name_')}  ?>
+                    </div>
+                <?php endif ?>
+                <?php if (isset($info->preservation) && !empty($info->preservation)) : ?>
+                    <div>
+                        - <?= lang('bao_quan') ?>: <?= $info->preservation->{pick_language($info->preservation, 'name_')}  ?>
+                    </div>
+                <?php endif ?>
+            </div>
+            
             <!--//-->
             <div class="clear space10px"></div>
         </div>
@@ -190,8 +183,8 @@
 
                 </div>
                 <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><?= $info->{pick_language($info, 'detail_')} ?></div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"> <?= $info->{pick_language($info, 'guide_')} ?></div>
+                    <div class="tab-pane py-2 fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><?= $info->{pick_language($info, 'detail_')} ?></div>
+                    <div class="tab-pane py-2 fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"> <?= $info->{pick_language($info, 'guide_')} ?></div>
                 </div>
             </div>
 

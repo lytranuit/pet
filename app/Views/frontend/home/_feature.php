@@ -1,4 +1,4 @@
-<div class="feature_sections">
+<div class="feature_sections py-2 py-md-5">
     <div class="container">
         <div class="row text-center an_box">
             <div class="col-md-3">
@@ -85,7 +85,6 @@
     <style type="text/css">
         .feature_sections {
             position: relative;
-            margin-top: 30px;
             z-index: 1;
         }
 

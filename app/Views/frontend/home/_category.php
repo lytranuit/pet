@@ -6,19 +6,16 @@
                 <div class="container">
                     <div class="row">
                         <?php if ($category->type == 1) : ?>
-
                             <div class="home-product">
                                 <div class="tieude_petfood">
                                     <a href="<?= url_category($category) ?>"><?= $category->{pick_language($category)} ?> (<?= $category->count_product ?>)</a>
                                 </div>
                                 <div class="product-list-home py-3">
-
                                     <?php foreach ($category->products as $product) : ?>
                                         <div class="p_container product text-center" data-id="<?= $product->id ?>">
                                             <a href="<?= url_product($product) ?>" class="newp-img">
                                                 <img src="https://simbaeshop.com<?= $product->image_url ?>" alt="<?= $product->{pick_language($product)} ?>">
                                             </a>
-
                                             <a href="<?= url_product($product) ?>" class="p-code text-dark fw-bold"><?= $product->code ?></a>
                                             <a href="<?= url_product($product) ?>" class="p-name"><?= $product->{pick_language($product)} ?></a>
                                             <div class="d-inline-block" style="min-width: 130px;">

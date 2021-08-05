@@ -34,35 +34,30 @@
                 <?php else : ?>
                     <div class="container">
                         <dl class="clear row g-0">
-                            <dt class="col-md-3" style="background: #F48133;
+                            <dt class="col-md-3" style="background: #fabec0;
     text-align: center;
     position: relative;">
                                 <div style="display: block;padding-top: 100%;"></div>
                                 <h2 style="width: 100%;
     background-size: contain;
     position: absolute;
-    top: 50%;
+    top: 0;
     left: 0;
-    margin-top: -38px;"><img src="<?= base_url($tag->image_url) ?>" alt="Topics"></h2>
+    height: 100%;
+    margin: 0;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    display: flex;"><img src="<?= base_url($tag->image_url) ?>" alt="Topics"></h2>
                             </dt>
                             <dd class="col-md-9" style="    background: #fff;
     text-align: left;
     padding: 25px 50px;
-    min-height: 300px;
     margin: 0;">
                                 <ul>
                                     <?php foreach ($tag->news as $news) : ?>
                                         <li style="list-style:none">
-                                            <a href="<?= url_news($news) ?>" style="display: block;
-    color: #4B4443;
-    line-height: 30px;
-    font-size: 14px;
-    font-weight: bold;
-    text-decoration: none;
-    width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;">
+                                            <a href="<?= url_news($news) ?>" style="display: block;color: #4B4443;line-height: 30px;font-size: 14px;font-weight: bold;text-decoration: none;width: 100%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
                                                 <span class="date" style="    display: inline-block;
     color: #4B4443;
     line-height: 30px;
@@ -74,6 +69,21 @@
                                 </ul>
                             </dd>
                         </dl>
+                        <div class="moreBtn text-center">
+                            <a href="https://www.inaba-petfood.co.jp/topics/" style="display: inline-block;
+    text-align: center;
+    padding: 10px 25px;
+    background: #fabec0;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 30px;
+    border-radius: 25px;
+    transition: all .3s ease;">
+                                <?= lang("Custom.more"); ?>
+                            </a>
+                        </div>
                     </div>
                 <?php endif ?>
             </div>

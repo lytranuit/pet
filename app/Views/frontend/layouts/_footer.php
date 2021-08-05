@@ -1,76 +1,50 @@
-<footer>
+<footer class="">
 
     <div class="container">
-
-        <div class="clear hr"></div>
-        <div class="clear space10px d-none d-lg-block"></div>
-        <!--box-footer-->
-        <div class="box-footer first">
-            <p data-bs-toggle="collapse" href="#collapse2" role="button" aria-expanded="false" aria-controls="collapse2">
-                Thông tin
-            </p>
-            <ul class="ul" id="collapse2">
-                <li><a href="/gioi-thieu">Về Petcity.vn</a></li>
-                <li><a href="/tin-tuc">Tin tức Petcity</a></li>
-                <li><a href="/tin-tuyen-dung/ac2.html">Petcity tuyển dụng</a></li>
-                <li><a href="/lien-he">Liên hệ với Petcity</a></li>
-                <li><a href="/sitemap">Sitemap</a></li>
-            </ul>
-        </div>
-        <!--box-footer-->
-        <div class="box-footer">
-            <p data-bs-toggle="collapse" href="#collapse3" role="button" aria-expanded="false" aria-controls="collapse3">Dịch vụ &amp; Hỗ trợ</p>
-            <ul class="ul" id="collapse3">
-                <li><a href="/page/huong-dan-dat-hang">Hướng dẫn đặt hàng</a></li>
-                <li><a href="/page/chuong-trinh-gioi-thieu-ban-be">Giới thiệu bạn bè</a></li>
-                <li><a href="/page/chuong-trinh-tang-the-coupon">Tặng thẻ Coupon</a></li>
-                <li><a href="/page/trung-tam-cskh">Trung tâm CSKH</a></li>
-                <li><a href="/dieu-khoan-su-dung.html">Điều khoản sử dụng</a></li>
-            </ul>
-        </div>
-        <!--box-footer-->
-        <div class="box-footer">
-            <p data-bs-toggle="collapse" href="#collapse4" role="button" aria-expanded="false" aria-controls="collapse4">Chính sách chung</p>
-            <ul class="ul" id="collapse4">
-                <li><a href="/page/chinh-sach-giao-hang">Chính sách giao hàng</a></li>
-                <li><a href="/page/phuong-thuc-thanh-toan">Phương thức thanh toán</a></li>
-                <li><a href="/page/chinh-sach-bao-hanh">Chính sách bảo hành</a></li>
-                <li><a href="/page/chinh-sach-doi-tra-hang">Chính sách đổi hàng</a></li>
-                <li><a href="/page/tich-tem-doi-qua">Tích tem đổi quà</a></li>
-
-            </ul>
-        </div>
-        <!--box-footer-->
-        <div class="box-footer end">
-            <p data-bs-toggle="collapse" href="#collapse5" role="button" aria-expanded="false" aria-controls="collapse5">Kết nối với chúng tôi</p>
-            <ul class="ul" id="collapse5">
-
-                <li>
-                    <div class="clear social ico">
-                        <a rel="nofollow" href="https://www.youtube.com/channel/UCgvGTBk4LtRc-3-xZ5pK0jA" target="_blank"></a>
-                        <a rel="nofollow" href="https://www.facebook.com/PetCity.vn" target="_blank"></a>
-                        <a rel="nofollow" href="https://plus.google.com/107687032006918001995" target="_blank"></a>
-
-                        <a rel="nofollow" href="https://www.instagram.com/petcity.vn_official/" target="_blank"></a>
-                    </div>
-                </li>
-
-                <div class="clear space10px text-18">
-                    <i class="fa fa-phone"></i> 1900 2214
+        <div class="row py-2 py-md-5">
+            <!--box-footer-->
+            <div class="box-footer col-md-6">
+                <a class="brand brand-inverse" href="http://foodzone.vn/">
+                    <img src="http://foodzone.vn/public/image/logo.png?v=1" width="200">
+                </a>
+                <div class="header_footer"> Công Ty Cổ Phần Thương Mại Sim Ba</div>
+                <div>Trụ sở chính: <span class="text-dark">R1-08-03, Tòa nhà Everich, số 968 Ba Tháng Hai, Phường 15, Quận 11, Thành phố Hồ Chí Minh</span></div>
+                <div>Liên hệ: <a class="text-dark" href="tel:028 7770 4567">028 7770 4567</a></div>
+                <div>Giấy chứng nhận Đăng ký Kinh doanh số 0303582244 do Phòng Đăng Ký Kinh Doanh - Kế hoạch và Đầu tư
+                    Thành phố Hồ Chí Minh cấp đăng ký thay đổi lần thứ 11 ngày 07/02/2020</div>
+            </div>
+            <!--box-footer-->
+            <div class="box-footer col-md-3">
+                <div class="header_footer">Liên kết</div>
+                <ul class="ul" id="collapse3">
+                    <li><a href="/page/huong-dan-dat-hang">Hướng dẫn mua hàng</a></li>
+                    <li><a href="/page/chuong-trinh-gioi-thieu-ban-be">Chính sách về thanh toán, giao nhận, vận chuyển</a></li>
+                    <li><a href="/page/chuong-trinh-tang-the-coupon">Chính sách đổi hàng, trả hàng, hoàn tiền</a></li>
+                    <li><a href="/page/trung-tam-cskh">Chính sách bảo mật</a></li>
+                </ul>
+            </div>
+            <!--box-footer-->
+            <div class="box-footer col-md-3">
+                <div class="open-door clear">
+                    <span class="open-text">Giờ mở cửa</span>
+                    <span class="open-time text-dark">8h - 18h</span>
                 </div>
-            </ul>
-
-
-
-            <div class="clear"></div>
-
+                <div class="customer">
+                    <span>Chăm sóc Khách hàng: </span>
+                    <span class="phone text-dark">028 7770 4567</span>
+                </div>
+                <div>
+                    <a href="http://online.gov.vn/Home/WebDetails/70661" target="_blank" class="bocongthuong">
+                        <div class="text-dark">Chứng nhận SGD TMĐT</div>
+                        <img src="http://foodzone.vn/public/image/bct.png" alt="TMĐT">
+                    </a>
+                </div>
+            </div>
+            <!--box-footer-->
         </div>
-        <!--box-footer-->
-
         <div class="clear hr space10px"></div>
         <div class="clear"></div>
-        <div class="clear text-center space10px" style="
-    color: #4c4c4c;font-size: 13px;">
+        <div class="clear text-center space10px" style="color: #4c4c4c;font-size: 13px;">
             Sim Ba - trụ sở chính tại R1-08-03 Tòa nhà EverRich, số 968 Ba Tháng Hai, Phường 15, Quận 11, Tp.HCM. GPĐKKD số .... do Sở KHĐT cấp ngày ....5<br>
 
         </div>

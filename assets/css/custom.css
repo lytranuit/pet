@@ -289,3 +289,50 @@ div.tieude_petfood a {
 #category_product .wrap-category:nth-child(2n - 1) {
     background: #fff9ee;
 }
+footer {
+    background-color: #fabec0;
+}
+footer .header_footer {
+    color: black;
+    font-weight: bold;
+    font-size: 17px;
+    padding: 5px 0 10px;
+    text-transform: uppercase;
+    margin: 10px 0px;
+}
+
+.open-door .open-time {
+    font-size: 20px;
+    color: #fbaf17;
+    font-weight: bold;
+}
+
+.open-door span {
+    display: block;
+}
+
+.customer {
+}
+
+.customer span {
+    display: block;
+    padding: 3px 0;
+}
+
+.customer .phone {
+    font-size: 20px;
+    color: #fbaf17;
+    font-weight: bold;
+}
+
+footer .footer-bottom {
+    color: white;
+    border-top: 1px solid #333;
+    padding: 10px 0px;
+}
+footer .bocongthuong img {
+    width: 125px;
+}
+.slick-list,.slick-track {
+    height: auto !important;
+}

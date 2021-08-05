@@ -1698,7 +1698,7 @@
     color: #8c8c8c;
   }
   .box-footer li {
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid black;
     padding: 3px 10px;
   }
   .box-footer li.divider {
@@ -1732,7 +1732,7 @@
   .box-footer a {
     text-decoration: none;
     line-height: 25px;
-    color: #666;
+    color: black;
   }
   /*BREADCRUMB*/
   #breadcrumb div {

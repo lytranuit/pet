@@ -21,7 +21,7 @@
                 wigoID = opt.id
             if (opt.multiple == false) {
                 this.input = $('<input class="form-control form-control-sm" type="hidden" name="image_url" required="" value="/assets/images/placeholder.png"/>').appendTo(el);
-                this.image = $('<img style="max-width:100%;cursor:pointer;border:1px solid #dadada;"  src="/assets/images/placeholder.png" class="image_feature" />').appendTo(el);
+                this.image = $('<img style="max-width:100%;cursor:pointer;border:1px solid #dadada;background: #b4b4b447;"  src="/assets/images/placeholder.png" class="image_feature" />').appendTo(el);
             }
             this.modal = $('<div aria-hidden="true" aria-labelledby="image-modalLabel" class="modal fade" id="image-modal-' + wigoID + '" role="dialog" tabindex="-1">' +
                 '<div class="modal-dialog modal-xl" role="document">' +
