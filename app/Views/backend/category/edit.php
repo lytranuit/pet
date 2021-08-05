@@ -41,6 +41,18 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <b class="col-12 col-lg-2 col-form-label">Hiển thị ở Favorite:</b>
+                                <div class="col-12 col-lg-4 pt-1">
+                                    <div class="switch-button switch-button-xs switch-button-success">
+                                        <input type="hidden" class="input-tmp" checked="" name="is_favorite" value="0">
+                                        <input type="checkbox" checked="" id="switch4" name="is_favorite" value="1">
+                                        <span>
+                                            <label for="switch4"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                             <ul class="nav nav-tabs">
                                 <li class="nav-item">
                                     <a class="nav-link active" data-toggle="tab" href="#menu0">Tiếng Việt</a>

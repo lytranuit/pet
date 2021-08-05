@@ -62,14 +62,14 @@
                     </form>
                     <div id="suggestions" class="autocomplete-suggestions"></div>
                 </div>
-                <div class="cart-box col-1 offset-2">
+                <div class="icon_hotline col-1">
+                    <a href="tel:028 7770 4567"><img src="<?= base_url("assets/images/hotline.png") ?>" alt="hotline" class="img"></a>
+                </div>
+                <div class="cart-box col-1 offset-1">
                     <a id="cart-header" href="<?= base_url("cart") ?>" class="newicon iconnew-cart" rel="nofollow">
                         <b id="count_shopping_cart_store" class="cartCount">0</b>
                     </a>
                 </div>
-                <!-- <div class="icon_hotline col-1">
-                    <a href="tel:028 7770 4567"><img src="<?= base_url("assets/images/hotline.png") ?>" alt="hotline" class="img"></a>
-                </div> -->
             </div>
 
         </div>

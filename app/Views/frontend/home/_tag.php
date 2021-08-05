@@ -1,67 +1,82 @@
-<div class="clear">
-    <div class="container">
-        <div class="row">
-            <?php foreach ($tags as $tag) : ?>
+<section id="tag">
+    <?php foreach ($tags as $tag) : ?>
+        <?php if ($tag->count > 0) : ?>
 
-                <?php if ($tag->count > 0) : ?>
-                    <div class="">
-                        <div class="clear">
-                            <h4 class="home-title ocean"><a href="<?= url_tag($tag) ?>"><span class="text-white"><?= $tag->{pick_language($tag)} ?></span></a></h4>
-                        </div>
-                        <section id="row_ar7" class="ajax-home">
-                            <article class="news-box">
-                                <?php foreach ($tag->news as $news) : ?>
-                                    <div class=" pull-left p-2">
-                                        <div class="img hover-2">
-                                            <a href="<?= url_news($news) ?>">
-                                                <img class="img-responsive" src="<?= $news->image_url ?>" alt="<?= $news->{pick_language($news, 'title_')} ?>">
+            <div class="topics py-2 py-md-5" style="background: #FFF9EE;">
+                <?php if ($tag->type == 1) : ?>
+                    <div class="container">
+                        <div class="row">
+                            <div class="clear">
+                                <h4 class="home-title ocean"><a href="<?= url_tag($tag) ?>"><span class="text-white"><?= $tag->{pick_language($tag)} ?></span></a></h4>
+                            </div>
+                            <div class="ajax-home">
+                                <article class="news-box">
+                                    <?php foreach ($tag->news as $news) : ?>
+                                        <div class=" pull-left p-2">
+                                            <div class="img hover-2">
+                                                <a href="<?= url_news($news) ?>">
+                                                    <img class="img-responsive" src="<?= base_url($news->image_url) ?>" alt="<?= $news->{pick_language($news, 'title_')} ?>">
+                                                </a>
+                                            </div>
+                                            <a href="<?= url_news($news) ?>" class="txt_000 txt_u space10px block">
+                                                <?= $news->{pick_language($news, 'title_')} ?>
                                             </a>
+                                            <p>
+                                                <?= split_string($news->{pick_language($news, 'content_')}, 100) ?>
+                                            </p>
                                         </div>
-                                        <a href="<?= url_news($news) ?>" class="txt_000 txt_u space10px block">
-                                            <?= $news->{pick_language($news, 'title_')} ?>
-                                        </a>
-                                        <p>
-                                            <?= split_string($news->{pick_language($news, 'content_')}, 100) ?>
-                                        </p>
-                                    </div>
-                                <?php endforeach ?>
+                                    <?php endforeach ?>
 
-                            </article>
-                        </section>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                <?php else : ?>
+                    <div class="container">
+                        <dl class="clear row g-0">
+                            <dt class="col-md-3" style="background: #F48133;
+    text-align: center;
+    position: relative;">
+                                <div style="display: block;padding-top: 100%;"></div>
+                                <h2 style="width: 100%;
+    background-size: contain;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -38px;"><img src="<?= base_url($tag->image_url) ?>" alt="Topics"></h2>
+                            </dt>
+                            <dd class="col-md-9" style="    background: #fff;
+    text-align: left;
+    padding: 25px 50px;
+    min-height: 300px;
+    margin: 0;">
+                                <ul>
+                                    <?php foreach ($tag->news as $news) : ?>
+                                        <li style="list-style:none">
+                                            <a href="<?= url_news($news) ?>" style="display: block;
+    color: #4B4443;
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;">
+                                                <span class="date" style="    display: inline-block;
+    color: #4B4443;
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-right: 50px;"><?= date("Y.m.d", strtotime($news->date)) ?></span><?= $news->{pick_language($news, 'title_')} ?></a>
+                                        </li>
+                                    <?php endforeach ?>
+                                </ul>
+                            </dd>
+                        </dl>
                     </div>
                 <?php endif ?>
-            <?php endforeach ?>
-        </div>
-    </div>
-    <script>
-        $('.news-box').slick({
-            dots: false,
-            infinite: false,
-            speed: 300,
-            slidesToShow: 4,
-            slidesToScroll: 1,
-            adaptiveHeight: true,
-            arrows: true,
-            prevArrow: '<div class="slick-prev"><i class="fa fa-angle-left" aria-hidden="true"></i></div>',
-            nextArrow: '<div class="slick-next"><i class="fa fa-angle-right" aria-hidden="true"></i></div>',
-            responsive: [{
-                    breakpoint: 1024,
-                    settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 3,
-                    }
-                },
-                {
-                    breakpoint: 600,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 2
-                    }
-                },
-                // You can unslick at a given breakpoint now by adding:
-                // settings: "unslick"
-                // instead of a settings object
-            ]
-        });
-    </script>
-</div>
+            </div>
+        <?php endif ?>
+    <?php endforeach ?>
+</section>

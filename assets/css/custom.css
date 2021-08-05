@@ -13,9 +13,9 @@
     box-shadow: 0 0 4px 0 rgb(0 0 0 / 20%);
     color: #707070;
     top: 40%;
-    transition: .3s;
+    transition: 0.3s;
     outline: none;
-    opacity: .9;
+    opacity: 0.9;
     position: absolute;
     padding-left: 7px;
     border-radius: 100px 0 0 100px;
@@ -33,14 +33,59 @@
     box-shadow: 0 0 4px 0 rgb(0 0 0 / 20%);
     color: #707070;
     top: 40%;
-    transition: .3s;
+    transition: 0.3s;
     outline: none;
-    opacity: .9;
+    opacity: 0.9;
     position: absolute;
     padding-right: 7px;
     border-radius: 0 100px 100px 0;
     left: 0;
     z-index: 1;
+    cursor: pointer;
+}
+.slick-slider:hover .slick-next-1,
+.slick-slider:hover .slick-prev-1 {
+    opacity: 1;
+}
+.slick-next-1 {
+    transition: all 1s;
+    opacity: 0;
+    width: 30px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fabec0;
+    color: #ffffff;
+    top: 40%;
+    transition: 0.3s;
+    outline: none;
+    position: absolute;
+    padding-left: 7px;
+    right: 0;
+    z-index: 1;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.slick-prev-1 {
+    transition: all 1s;
+    opacity: 0;
+    width: 30px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fabec0;
+    color: #ffffff;
+    top: 40%;
+    transition: 0.3s;
+    outline: none;
+    position: absolute;
+    padding-right: 7px;
+    left: 0;
+    z-index: 1;
+    font-size: 30px;
     cursor: pointer;
 }
 
@@ -119,15 +164,18 @@
     border-radius: 0;
 }
 
-#tab-pro-info .title-tab-pro button:nth-child(1) {}
+#tab-pro-info .title-tab-pro button:nth-child(1) {
+}
 
-#tab-pro-info .title-tab-pro button.current, #tab-pro-info .title-tab-pro button.active {
+#tab-pro-info .title-tab-pro button.current,
+#tab-pro-info .title-tab-pro button.active {
     color: #fff;
     font-weight: bold;
     background: #e51f28;
 }
 
-#tab-pro-info {}
+#tab-pro-info {
+}
 
 #tab-pro-info .content-tab-pro {
     padding: 10px 0;
@@ -135,4 +183,109 @@
 
 #tab-pro-info .content-tab-pro * {
     max-width: 100%;
+}
+/* Tieu DE */
+div.tieude_giua {
+    margin: 15px 0;
+    position: relative;
+    text-align: center;
+}
+
+div.tieude_giua div {
+    font-size: 16px;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: Roboto-Regular;
+    display: inline-block;
+    background: #e50101;
+    padding: 5px 20px;
+    position: relative;
+    border-radius: 5px;
+}
+
+div.tieude_giua div a {
+    text-decoration: none;
+    color: #fff;
+}
+
+div.tieude_giua div::before {
+    content: "";
+    width: 52px;
+    height: 46px;
+    background: url(assets/images/red-tiile.png) top left no-repeat;
+    margin: 0 auto;
+    position: absolute;
+    top: -15px;
+    left: -20px;
+    z-index: 99;
+}
+
+div.tieude_giua div::after {
+    content: "";
+    width: 45px;
+    height: 63px;
+    background: url(assets/images/icon-cho.png) top right no-repeat;
+    margin: 0 auto;
+    position: absolute;
+    top: -11px;
+    right: -25px;
+    z-index: 99;
+}
+
+.tieude_giua ul {
+    list-style: none;
+    display: inline-block;
+    list-style: none;
+    display: inline-block;
+    max-width: 80%;
+    text-align: center;
+}
+
+div.tieude_giua ul li {
+    display: inline-block;
+    vertical-align: top;
+}
+
+div.tieude_giua ul li a {
+    text-decoration: none;
+    color: #696969;
+    padding: 0px 15px;
+    font-size: 14px;
+    border-left: 1px solid #b3b3b3;
+    font-weight: bold;
+    position: relative;
+}
+
+div.tieude_giua ul li a:before {
+    background: #fff;
+    height: 3px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+}
+
+div.tieude_giua ul li a:hover {
+    color: red;
+}
+
+div.tieude_giua ul li a:hover:before {
+    content: "";
+}
+div.tieude_petfood {
+    margin: 0 auto;
+    text-align: center;
+    font-weight: bold;
+    line-height: 1.5;
+    vertical-align: middle;
+    padding: 10px;
+    border-bottom: 2px solid #f48133;
+}
+
+div.tieude_petfood a {
+    font-size: 30px;
+    color: black;
+}
+#category_product .wrap-category:nth-child(2n - 1) {
+    background: #fff9ee;
 }

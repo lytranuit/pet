@@ -446,7 +446,7 @@
         color: #fff;
     }
     .btn-violet {
-        background: #e51f28;
+        background: #98d3bf;
         color: #fff;
     }
     .btn-yellow {
@@ -781,7 +781,7 @@
         font-size: 12px;
         line-height: 10px;
         float: left;
-        margin-top: 10px;
+        margin-top: 5px;
         position: relative;
     }
     .location a {
@@ -824,7 +824,7 @@
     /*NAV HORI*/
     #nav-hori {
         height: 52px;
-        background: black;
+        background: #fabec0;
         border-top: solid 1px #ececec;
         border-bottom: solid 1px #ececec;
     }
@@ -3917,7 +3917,7 @@
     }
     #new-menu-top {
         height: 45px;
-        line-height: 44px;
+        line-height: 36px;
         background: #f5f5f5 url(../images/new_bg_top.png) center bottom repeat-x
     }
     #new-menu-top a {

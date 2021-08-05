@@ -1,7 +1,7 @@
 <section id="banner">
-    <div class="container">
-        <div class="row g-1">
-            <div class="col-md-12">
+    <div class="">
+        <div class="">
+            <div class="">
                 <div class="slide-box">
                     <?php foreach ($sliders as $row) : ?>
                         <div class="banner-item ">
@@ -18,13 +18,15 @@
     <script>
         $('.slide-box').slick({
             dots: false,
-            arrows: false,
+            arrows: true,
             infinite: true,
             speed: 300,
             slidesToShow: 1,
-            autoplay: true,
-            autoplaySpeed: 2000,
-            adaptiveHeight: true
+            autoplay: false,
+            adaptiveHeight: true,
+            prevArrow: '<div class="slick-prev-1"><i class="fa fa-angle-left" aria-hidden="true"></i></div>',
+            nextArrow: '<div class="slick-next-1"><i class="fa fa-angle-right" aria-hidden="true"></i></div>',
+
         });
     </script>
 </section>

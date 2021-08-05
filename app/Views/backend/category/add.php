@@ -19,8 +19,8 @@
                                 <b class="col-12 col-lg-2 col-form-label">Hiển thị ở trang chủ:</b>
                                 <div class="col-12 col-lg-4 pt-1">
                                     <div class="switch-button switch-button-xs switch-button-success">
-                                        <input type="hidden" class="input-tmp" checked="" name="is_home" value="0">
-                                        <input type="checkbox" checked="" id="switch3" name="is_home" value="1">
+                                        <input type="hidden" class="input-tmp" name="is_home" value="0">
+                                        <input type="checkbox" id="switch3" name="is_home" value="1">
                                         <span>
                                             <label for="switch3"></label>
                                         </span>
@@ -32,6 +32,19 @@
                                         <option value="1">Loại 1</option>
                                         <option value="2">Loại 2</option>
                                     </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <b class="col-12 col-lg-2 col-form-label">Hiển thị ở Favorite:</b>
+                                <div class="col-12 col-lg-4 pt-1">
+                                    <div class="switch-button switch-button-xs switch-button-success">
+                                        <input type="hidden" class="input-tmp" name="is_favorite" value="0">
+                                        <input type="checkbox" id="switch4" name="is_favorite" value="1">
+                                        <span>
+                                            <label for="switch4"></label>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                             <ul class="nav nav-tabs">

@@ -135,12 +135,8 @@ class ProductModel extends Model
         $builder = $this->db->table('product')->join("pet_product_category", "pet_product_category.product_id = product.id");
         $count = $builder->where("status = 1 and is_pet = 1 and FIND_IN_SET('$my_region',region) AND category_id = $category_id")->orderBy("pet_product_category.order", "ASC")->countAllResults();
 
-
-
-
         $builder = $this->db->table('product')->join("pet_product_category", "pet_product_category.product_id = product.id")->select("product.*");
         if ($sort == "price-asc") {
-
             $builder->orderBy('product.retail_price', "ASC");
         } elseif ($sort == "price-desc") {
             $builder->orderBy('product.retail_price', "DESC");
@@ -164,6 +160,38 @@ class ProductModel extends Model
             'count_product' => $count,
             'products' => $products,
             'child' => $category
+        );
+        return $return;
+    }
+    function get_product_promotion($perPage = 20, $page = 1, $sort = "")
+    {
+
+        $offset = ($page - 1) * $perPage;
+        $my_region = area_current();
+        $builder = $this->db->table('product')->join("pet_product_price", "pet_product_price.product_id = product.id");
+        $count = $builder->where("status = 1 and is_pet = 1 and FIND_IN_SET('$my_region',region)")->orderBy("product.sort", "DESC")->countAllResults();
+
+        $builder = $this->db->table('product')->join("pet_product_price", "pet_product_price.product_id = product.id")->select("product.*");
+        if ($sort == "price-asc") {
+            $builder->orderBy('product.retail_price', "ASC");
+        } elseif ($sort == "price-desc") {
+            $builder->orderBy('product.retail_price', "DESC");
+        } else {
+            $builder->orderBy("product.sort", "DESC");
+        }
+        $products = $builder->where("status = 1 and is_pet = 1 and FIND_IN_SET('$my_region',region)")->groupBy("product.id")->limit($perPage, $offset)->get()->getResult();
+
+
+        foreach ($products as &$product) {
+            $this->format_product($product);
+        }
+
+        // echo "<pre>";
+        // print_r($count);
+        // die();
+        $return = array(
+            'count_product' => $count,
+            'products' => $products
         );
         return $return;
     }
