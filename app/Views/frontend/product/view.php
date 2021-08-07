@@ -67,87 +67,60 @@
         </div>
         <!--pDetail-->
         <div class="col-md-6" style="">
-            <div id="overview" class="product">
-                <h1 id="detail-name" class="txt_20 txt_pink"><?= $info->{pick_language($info)} ?></h1>
+            <div id="overview" class="product" data-id="<?= $info->id ?>">
+                <h1 id="detail-name" class="txt_20 fw-bold"><?= $info->{pick_language($info)} ?></h1>
 
                 <div class="row">
 
                     <div class="col-md-6 pull-left">
-                        <p> <?= lang("Custom.code") ?>: <span class="pink"><?= $info->code ?></span></p>
+                        <p> <?= lang("Custom.code") ?>: <span class=""><?= $info->code ?></span></p>
                     </div>
                 </div>
                 <!--//-->
-                <div class="clear"></div>
-                <table>
-                    <tr>
-                        <?php if (!empty($info->units)) : ?>
-                            <td style="vertical-align: middle;">
-                                <span class="txt_red txt_30 txt_b p-price" id="price_config"><?= number_format($info->units[0]->price, 0, ",", ".") ?>đ</span>
-                                <span class="price-prev txt_30">
-                                    <?php if (isset($info->units[0]->prev_price) && $info->units[0]->prev_price > 0) : ?>
-                                        <?= number_format($info->units[0]->prev_price, 0, ",", ".") ?>đ
-                                    <?php endif ?>
-                                </span>
-                            </td>
-                            <td class="dropdown" style="vertical-align: middle;">
-                                /
-                                <span class="dropdown-toggle dvt" id="dropdownMenuButtonsb<?= $info->id ?>" data-bs-toggle="dropdown">
-                                    <?= $info->units[0]->{pick_language($info->units[0])} ?>
-                                </span>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonsb<?= $info->id ?>">
-                                    <?php foreach ($info->units as $key => $unit) : ?>
-                                        <a class="dropdown-item unit_product <?= $key == 0 ? "active" : "" ?>" data-id="<?= $unit->id ?>" data-price="<?= $unit->price ?>" data-prev_price="<?= isset($unit->prev_price) && $unit->prev_price > 0 ? $unit->prev_price : '' ?>"><?= $unit->{pick_language($unit)} ?></a>
-                                    <?php endforeach ?>
-                                </div>
-                            </td>
-
-                        <?php else : ?>
-                            <span class="txt_red txt_30 txt_b p-price" id="price_config"><?= number_format($info->price, 0, ",", ".") ?>đ</span>
-                        <?php endif ?>
-                    </tr>
-                </table>
-                <div class="clear"></div>
-
-                <table width="100%">
-                    <tbody>
-                        <tr>
-                            <td valign="top">
-
-                                <div class="clear space5px">
-                                    <b><?= lang("Custom.quantity") ?></b>
-                                    <select class="number" id="s_quantity" class="cor5px" style="padding:5px;margin:0 5px;">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                    </select>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div class="buy" style="margin-top:10px">
-                    <a href="javascript:;" class="addCartConfig btn-violet addCart mr-2 add-cart">
+                <div class="clear hr my-3"></div>
+                <div>
+                    <?php if (!empty($info->units)) : ?>
+                        <div>
+                            <span class="txt_red txt_30  p-price" id="price_config"><?= number_format($info->units[0]->price, 0, ",", ".") ?>đ</span>
+                            <span class="price-prev txt_30">
+                                <?php if (isset($info->units[0]->prev_price) && $info->units[0]->prev_price > 0) : ?>
+                                    <?= number_format($info->units[0]->prev_price, 0, ",", ".") ?>đ
+                                <?php endif ?>
+                            </span>
+                        </div>
+                        <div class="">
+                            <span class="text-uppercase"><?= lang("dvt") ?>:</span>
+                            <div class="unit_list">
+                                <?php foreach ($info->units as $key => $unit) : ?>
+                                    <button class="mr-2 btn-sm btn unit_product <?= $key == 0 ? "btn-primary active" : "" ?>" data-id="<?= $unit->id ?>" data-price="<?= $unit->price ?>" data-prev_price="<?= isset($unit->prev_price) && $unit->prev_price > 0 ? $unit->prev_price : '' ?>">
+                                        <?= $unit->{pick_language($unit)} ?>
+                                    </button>
+                                <?php endforeach ?>
+                            </div>
+                        </div>
+                    <?php else : ?>
+                        <span class="txt_red txt_30  p-price" id="price_config"><?= number_format($info->price, 0, ",", ".") ?>đ</span>
+                    <?php endif ?>
+                </div>
+                <div class="mt-3">
+                    <div class="stepper-type-1 d-inline-block me-3">
+                        <div class="stepper number-widget">
+                            <input class="form-control form-control-sm stepper-input number text-center" type="text" data-zeros="true" value="1" min="1" max="20" readonly="">
+                            <span class="stepper-arrow up">
+                            </span>
+                            <span class="stepper-arrow down">
+                            </span>
+                        </div>
+                    </div>
+                    <a href="#" class="btn-violet mr-2 add-cart add home">
                         <?= lang("Custom.add_to_cart") ?>
                     </a>
-                    <a href="tel:098 761 2727" class="clear space10px txt_red text-bold txt_18 text-center" style="border: solid 0px #ddd;"><i class="fa fa-phone"></i> 098 761 2727 </a>
-
                 </div>
-
-
-
             </div>
             <!--//-->
             <div class="clear space10px"></div>
 
-            <div class="offset-top-10">
+            <div class="mt-3">
                 <?php if ($info->{pick_language($info, "volume_")} != "") : ?>
                     <div>
                         - <?= lang('qui_cach') ?>: <?= $info->{pick_language($info, 'volume_')}  ?>
@@ -164,7 +137,7 @@
                     </div>
                 <?php endif ?>
             </div>
-            
+
             <!--//-->
             <div class="clear space10px"></div>
         </div>

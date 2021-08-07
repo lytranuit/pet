@@ -182,6 +182,7 @@ $lang['product_menu'] = "Danh mục thực đơn";
 $lang['feedback'] = "Feedback";
 $lang['more'] = "Xem thêm";
 $lang['news_lien_quan'] = "Bài viết liên quan";
+$lang['cate_favorite'] = "Danh mục";
 return $lang;
 
 

@@ -412,7 +412,7 @@
         background: #e51f28;
     }
     .bg-red {
-        background: #ed4747;
+        background: #ed4747 !important;
     }
     .btn-default-o {
         border: 1px solid #ddd;
@@ -433,7 +433,7 @@
         border: 1px solid #959595;
     }
     .btn-red {
-        background: #ed4747;
+        background: #ed4747 !important;
         color: #fff;
     }
     .btn-aqua {
@@ -632,10 +632,7 @@
         top: 5px;
     }
     .icon_hotline {
-        display: block;
-        right: 105px;
-        top: -100px;
-        right: 0;
+        padding: 10px;
     }
     .hotline {
         position: absolute;
@@ -1446,6 +1443,7 @@
         position: relative;
         font-size: 14px;
         text-align: center;
+        padding: 10px 0;
     }
     .type {
         font-size: 0;
@@ -1530,7 +1528,6 @@
         margin: 0px 0;
     }
     .p-price {
-        font-weight: 700;
         color: #f00;
         margin: 0 0 0px;
         overflow: hidden;
@@ -2116,7 +2113,7 @@
         width: 100%;
         text-align: center;
     }
-    #overview .fa-phone {
+    .fa-phone {
         border: 2px solid #f00;
         border-radius: 50%;
         padding: 5px 7px;

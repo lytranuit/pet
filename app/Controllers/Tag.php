@@ -21,7 +21,7 @@ class Tag extends BaseController
         // die();
 
         $pager = service('pager');
-        $perPage =  2;
+        $perPage =  10;
         $page = (int)(($this->request->getVar('page') !== null) ? $this->request->getVar('page') : 1);
         $info = $news_model->get_news_by_tag($id, $perPage, $page);
 

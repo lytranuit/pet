@@ -37,7 +37,8 @@
                             <dt class="col-md-3" style="background: #fabec0;
     text-align: center;
     position: relative;">
-                                <div style="display: block;padding-top: 100%;"></div>
+                                <div style="display: block;
+    padding-top: 20%;"></div>
                                 <h2 style="width: 100%;
     background-size: contain;
     position: absolute;
@@ -70,7 +71,7 @@
                             </dd>
                         </dl>
                         <div class="moreBtn text-center">
-                            <a href="https://www.inaba-petfood.co.jp/topics/" style="display: inline-block;
+                            <a href="<?= url_tag($tag) ?>" style="display: inline-block;
     text-align: center;
     padding: 10px 25px;
     background: #fabec0;

@@ -10,7 +10,7 @@
                     </div>
                     <h2><?= $dinh_duong->{pick_language($dinh_duong)} ?></h2>
                     <p><?= $dinh_duong->{pick_language($dinh_duong, 'description_')} ?></p>
-                    <a class="red_button wide" href="<?= url_tag($dinh_duong) ?>">Mời đọc</a>
+                    <a class="red_button wide" href="<?= url_tag($dinh_duong) ?>"><span class="text-white">Mời đọc</span></a>
                 </div>
             </div>
             <div class="col-md-3">
@@ -22,7 +22,7 @@
                     </div>
                     <h2><?= $huan_luyen->{pick_language($huan_luyen)} ?></h2>
                     <p><?= $huan_luyen->{pick_language($huan_luyen, 'description_')} ?></p>
-                    <a class="red_button wide" href="<?= url_tag($huan_luyen) ?>">Mời đọc</a>
+                    <a class="red_button wide" href="<?= url_tag($huan_luyen) ?>"><span class="text-white">Mời đọc</span></a>
                 </div>
             </div>
             <div class="col-md-3">
@@ -34,7 +34,7 @@
                     </div>
                     <h2><?= $doi_song->{pick_language($doi_song)} ?></h2>
                     <p><?= $doi_song->{pick_language($doi_song, 'description_')} ?></p>
-                    <a class="red_button wide" href="<?= url_tag($doi_song) ?>">Mời đọc</a>
+                    <a class="red_button wide" href="<?= url_tag($doi_song) ?>"><span class="text-white">Mời đọc</span></a>
                 </div>
             </div>
             <div class="col-md-3">
@@ -46,7 +46,7 @@
                     </div>
                     <h2><?= $hoi_dap->{pick_language($hoi_dap)} ?></h2>
                     <p><?= $hoi_dap->{pick_language($hoi_dap, 'description_')} ?></p>
-                    <a class="red_button wide" href="<?= url_tag($hoi_dap) ?>">Mời đọc</a>
+                    <a class="red_button wide" href="<?= url_tag($hoi_dap) ?>"><span class="text-white">Mời đọc</span></a>
                 </div>
             </div>
         </div>

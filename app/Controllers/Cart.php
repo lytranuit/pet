@@ -17,7 +17,6 @@ class Cart extends BaseController
     public function total_order()
     {
         $this->data['cart'] = sync_cart();
-
         return view($this->data['content'], $this->data);
     }
 
@@ -125,7 +124,7 @@ class Cart extends BaseController
             } else {
 
                 $data = $address_model->create_object($array);
-                
+
                 // echo "<pre>";
                 // print_r($data);
                 // die();

@@ -225,10 +225,11 @@ $(document).ready(function () {
     var input_qty = $(".quantity", parent);
 
     var currentVal = parseInt(input_qty.val());
-    if (!isNaN(currentVal) && currentVal > 0) {
+    if (!isNaN(currentVal) && currentVal > 1) {
       input_qty.val(currentVal - 1);
     } else {
       input_qty.val(1);
+      return;
     }
     input_qty.trigger("change");
   });
@@ -292,6 +293,31 @@ $(document).ready(function () {
     $(".loading-modal").addClass("show");
     $("#cboxOverlay").show();
     location.reload();
+  });
+
+  $(".up").click(function (e) {
+    e.preventDefault();
+    var parent = $(this).parents(".product");
+    var input_qty = $(".number", parent);
+    var currentVal = parseInt(input_qty.val());
+    if (!isNaN(currentVal)) {
+      input_qty.val(currentVal + 1);
+    } else {
+      input_qty.val(1);
+    }
+  });
+
+  $(".down").click(function (e) {
+    e.preventDefault();
+    var parent = $(this).parents(".product");
+    var input_qty = $(".number", parent);
+
+    var currentVal = parseInt(input_qty.val());
+    if (!isNaN(currentVal) && currentVal > 0) {
+      input_qty.val(currentVal - 1);
+    } else {
+      input_qty.val(1);
+    }
   });
   init_cart_icon();
   // alert(cart_alert);

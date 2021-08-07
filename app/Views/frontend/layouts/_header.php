@@ -62,10 +62,31 @@
                     </form>
                     <div id="suggestions" class="autocomplete-suggestions"></div>
                 </div>
-                <div class="icon_hotline col-1">
-                    <a href="tel:028 7770 4567"><img src="<?= base_url("assets/images/hotline.png") ?>" alt="hotline" class="img"></a>
+                <div class="icon_hotline col-2">
+                    <a href="tel:098 761 2727" class="clear txt_red text-center" style="border: solid 0px #ddd;display: flex;
+    min-width: 180px;
+    justify-content: center;color:#e51f28;">
+                        <div style="
+    margin-right: 2px;
+    font-size: 25px;
+"><i class="fa fa-phone"></i></div>
+                        <div style="
+    padding: 4px 0px;
+">
+                            <div style="
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 10px;
+">HOTLINE ĐẶT HÀNG</div>
+                            <div style="
+    font-size: 20px;
+    font-weight: bolder;
+    line-height: 27px;
+">098 761 2727</div>
+                        </div>
+                    </a>
                 </div>
-                <div class="cart-box col-1 offset-1">
+                <div class="cart-box col-1">
                     <a id="cart-header" href="<?= base_url("cart") ?>" class="newicon iconnew-cart" rel="nofollow">
                         <b id="count_shopping_cart_store" class="cartCount">0</b>
                     </a>

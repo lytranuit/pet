@@ -12,7 +12,6 @@
 <?= view_cell("\App\Libraries\HomeWidget::tag") ?>
 
 
-
 <?= view_cell("\App\Libraries\HomeWidget::feature") ?>
 
 <?= $this->endSection() ?>
