@@ -82,7 +82,7 @@
                     <?php if (!empty($info->units)) : ?>
                         <div>
                             <span class="txt_red txt_30  p-price" id="price_config"><?= number_format($info->units[0]->price, 0, ",", ".") ?>đ</span>
-                            <span class="price-prev txt_30">
+                            <span class="price-prev txt_20">
                                 <?php if (isset($info->units[0]->prev_price) && $info->units[0]->prev_price > 0) : ?>
                                     <?= number_format($info->units[0]->prev_price, 0, ",", ".") ?>đ
                                 <?php endif ?>

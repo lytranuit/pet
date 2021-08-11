@@ -84,8 +84,9 @@
         <!-- Site Header -->
         <?= $this->include('frontend/layouts/_footer') ?>
 
-        <?= $this->renderSection('script') ?>
     </div>
+    <?= $this->include('frontend/layouts/_cartPopup') ?>
+    <?= $this->renderSection('script') ?>
 </body>
 
 </html>

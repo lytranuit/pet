@@ -33,7 +33,7 @@ class News extends BaseController
         // //die();
         // $this->data['news'] = $news_model->get_news_related($id, $tags);
 
-        $this->data['news'] = $news_model->where("id <>", $id)->orderby("id", "DESC")->limit(10)->findAll();
+        $this->data['news'] = $news_model->where("id <>", $id)->orderby("id", "DESC")->findAll(10);
         // echo "<pre>";
         // print_r($this->data['news']);
         // die();

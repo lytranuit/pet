@@ -14,7 +14,7 @@ class SideBarWidget
         $my_region = area_current();
         $product_model = model("ProductModel");
 
-        $products = $product_model->where("status = 1 and is_pet = 1 and FIND_IN_SET('$my_region',region)")->limit(8)->asObject()->findAll();
+        $products = $product_model->where("status = 1 and is_pet = 1 and FIND_IN_SET('$my_region',region)")->asObject()->findAll(8);
         foreach ($products as &$product) {
             $product_model->format_product($product);
         }

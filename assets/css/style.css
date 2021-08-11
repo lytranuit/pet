@@ -2132,7 +2132,7 @@
     #img-thumbs li img {
         width: 100%;
         height: auto;
-        border: 1px solid gray;
+        border: 1px solid #d7d7d7;
         border-radius: 5px;
     }
     #img-thumbs li .active {

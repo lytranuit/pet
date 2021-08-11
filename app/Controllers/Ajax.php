@@ -19,7 +19,11 @@ class Ajax extends BaseController
         $product_model->relation($this->data['products'], array("image"));
         return view("lib/ajax/product", $this->data);
     }
-
+    function cart()
+    {
+        $this->data['cart'] = sync_cart();
+        return view($this->data['content'], $this->data);
+    }
     function news()
     {
         $tag_id = $this->request->getVar("tag_id");

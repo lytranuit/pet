@@ -36,15 +36,15 @@
             <div class="card mt-2 product" data-id="<?= $row->id ?>">
                 <div class="card-body">
                     <div class="row no-gutters">
-                        <div class="col-lg-1 col-3">
-                            <img class="img-responsive" src="http://simbaeshop.com<?= $row->image_url ?>" />
+                        <div class="col-lg-1 col-3 text-center">
+                            <img class="img-responsive" src="http://simbaeshop.com<?= $row->image_url ?>" style="max-height: 100px;"/>
                         </div>
                         <div class="col-lg-11 col-9">
                             <div class="row no-gutters">
                                 <div class="col-lg-4">
-                                    <a href="<?= base_url() ?>index/details/<?= $row->id ?>" class="text-dark font-weight-bold"><?= $row->{pick_language($row, 'name_')}  ?></a>
-                                    <div><?= lang("Custom.code") ?>: <span class="font-weight-bold"><?= $row->code ?></span></div>
-                                    <div><?= lang("Custom.qui_cach") ?>: <span class="font-weight-bold"><?= $row->{pick_language($row, 'volume_')}  ?></span></div>
+                                    <a href="<?= base_url() ?>index/details/<?= $row->id ?>" class="text-dark fw-bold"><?= $row->{pick_language($row, 'name_')}  ?></a>
+                                    <div><?= lang("Custom.code") ?>: <span class="fw-bold"><?= $row->code ?></span></div>
+                                    <div><?= lang("Custom.qui_cach") ?>: <span class="fw-bold"><?= $row->{pick_language($row, 'volume_')}  ?></span></div>
                                 </div>
                                 <div class="col-lg-2 text-lg-center mt-3">
 
@@ -146,89 +146,7 @@
     </div>
 </section>
 <style>
-    .form-control-custom {
-        display: block;
-        line-height: 14px;
-        color: #495057;
-        background-color: #fff;
-        background-clip: padding-box;
-        border: 1px solid #f4f4f4;
-        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-        position: relative;
-        -ms-flex: 1 1 auto;
-        flex: 1 1 auto;
-        width: 1%;
-        margin-bottom: 0;
-    }
-
-    .input-group-prepend {
-        margin-right: -1px;
-    }
-
-    .input-group-prepend,
-    .input-group-append {
-        display: -ms-flexbox;
-        display: flex;
-        background-color: #80808045;
-    }
-
-    .btn-up,
-    .btn-down {
-        font-size: 20px;
-        padding: 0px 10px;
-        line-height: 1px;
-    }
-
-
-    .order-cart-policy .content-block {
-        text-decoration: none;
-        box-sizing: border-box;
-        list-style: none;
-        display: block;
-        padding: 0;
-        margin: 0;
-    }
-
-    ul.content-block li {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        box-sizing: border-box;
-        padding: 15px 15px 10px;
-        border: 1px solid #dee2e6;
-        border-top: none;
-    }
-
-    ul.content-block li:first-child {
-        border-top: 1px solid #dee2e6;
-    }
-
-    ul.content-block li p {
-        display: inline-block;
-        font-size: 15px;
-        font-weight: 600;
-        margin-bottom: 0;
-        margin-left: 10px;
-        flex: 1;
-    }
-
-    ul.content-block li p>span.text-highlight {
-        color: #e62a2b;
-    }
-
-    ul.content-block li>span {
-        flex: 0 0 40px;
-        width: 40px;
-        height: 40px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: 1px solid #e62a2b;
-        background-color: #e62a2b;
-        border-radius: 100%;
-        color: #fff;
-        font-size: 20px;
-    }
+    
 </style>
 <?= $this->endSection() ?>
 

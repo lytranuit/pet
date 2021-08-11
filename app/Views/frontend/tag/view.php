@@ -58,7 +58,7 @@
                                     <img src="<?= base_url($row->image_url) ?>" alt="<?= $row->{pick_language($row, "title_")} ?>">
                                 </a>
                                 <div class="right-side">
-                                    <a href="/cach-lam-thuc-an-cho-meo-don-gian-du-dinh-duong-tai-nha.html" class="name"><?= $row->{pick_language($row, "title_")} ?></a>
+                                    <a href="<?= url_news($row) ?>" class="name"><?= $row->{pick_language($row, "title_")} ?></a>
                                     <span class="time"> <?= date("Y-m-d H:i:s", strtotime($row->date)) ?></span>
                                     <span class="summary"><?= split_string($row->{pick_language($row, "content_")}, 500) ?></span>
                                 </div>

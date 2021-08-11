@@ -2,8 +2,8 @@
     color: gray;
     text-decoration: line-through;
 }
-.btn{
-    background:#e3e3e3;
+.btn {
+    background: #e3e3e3;
 }
 .stepper {
     position: relative;
@@ -433,6 +433,90 @@ footer .footer-bottom {
 footer .bocongthuong img {
     width: 125px;
 }
-.slick-list,.slick-track {
+.slick-list,
+.slick-track {
     height: auto !important;
+}
+/*CART*/
+.form-control-custom {
+    display: block;
+    line-height: 14px;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #f4f4f4;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    position: relative;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    width: 1%;
+    margin-bottom: 0;
+}
+
+.input-group-prepend {
+    margin-right: -1px;
+}
+
+.input-group-prepend,
+.input-group-append {
+    display: -ms-flexbox;
+    display: flex;
+    background-color: #80808045;
+}
+
+.btn-up,
+.btn-down {
+    font-size: 20px;
+    padding: 0px 10px;
+    line-height: 1px;
+}
+
+.order-cart-policy .content-block {
+    text-decoration: none;
+    box-sizing: border-box;
+    list-style: none;
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
+ul.content-block li {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px 15px 10px;
+    border: 1px solid #dee2e6;
+    border-top: none;
+}
+
+ul.content-block li:first-child {
+    border-top: 1px solid #dee2e6;
+}
+
+ul.content-block li p {
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 0;
+    margin-left: 10px;
+    flex: 1;
+}
+
+ul.content-block li p > span.text-highlight {
+    color: #e62a2b;
+}
+
+ul.content-block li > span {
+    flex: 0 0 40px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #e62a2b;
+    background-color: #e62a2b;
+    border-radius: 100%;
+    color: #fff;
+    font-size: 20px;
 }
