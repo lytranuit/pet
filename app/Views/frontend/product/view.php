@@ -89,7 +89,7 @@
                             </span>
                         </div>
                         <div class="">
-                            <span class="text-uppercase"><?= lang("dvt") ?>:</span>
+                            <span class="text-uppercase"><?= lang("Custom.dvt") ?>:</span>
                             <div class="unit_list">
                                 <?php foreach ($info->units as $key => $unit) : ?>
                                     <button class="mr-2 btn-sm btn unit_product <?= $key == 0 ? "btn-primary active" : "" ?>" data-id="<?= $unit->id ?>" data-price="<?= $unit->price ?>" data-prev_price="<?= isset($unit->prev_price) && $unit->prev_price > 0 ? $unit->prev_price : '' ?>">
@@ -123,17 +123,17 @@
             <div class="mt-3">
                 <?php if ($info->{pick_language($info, "volume_")} != "") : ?>
                     <div>
-                        - <?= lang('qui_cach') ?>: <?= $info->{pick_language($info, 'volume_')}  ?>
+                        - <?= lang('Custom.qui_cach') ?>: <?= $info->{pick_language($info, 'volume_')}  ?>
                     </div>
                 <?php endif ?>
                 <?php if (isset($info->origin) && !empty($info->origin)) : ?>
                     <div>
-                        - <?= lang('xuat_xu') ?>: <?= $info->origin->{pick_language($info->origin, 'name_')}  ?>
+                        - <?= lang('Custom.xuat_xu') ?>: <?= $info->origin->{pick_language($info->origin, 'name_')}  ?>
                     </div>
                 <?php endif ?>
                 <?php if (isset($info->preservation) && !empty($info->preservation)) : ?>
                     <div>
-                        - <?= lang('bao_quan') ?>: <?= $info->preservation->{pick_language($info->preservation, 'name_')}  ?>
+                        - <?= lang('Custom.bao_quan') ?>: <?= $info->preservation->{pick_language($info->preservation, 'name_')}  ?>
                     </div>
                 <?php endif ?>
             </div>

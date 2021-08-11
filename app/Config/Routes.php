@@ -38,7 +38,7 @@ $routes->add('lang/(:any)', 'Language::index/$1');
 $routes->add('gioi-thieu', 'Home::about');
 $routes->add('lien-he', 'Home::contact');
 $routes->add('thu-vien', 'Home::library');
-$routes->add('khuyen-mai.html', 'Product::promotion');
+$routes->add('khuyen-mai.html', 'Product::promotion', ['as' => 'promotion']);
 
 $routes->add('dang-nhap.html', 'Home::login', ['as' => 'loginhome']);
 $routes->add('dang-ky.html', 'Home::register', ['as' => 'registerhome']);

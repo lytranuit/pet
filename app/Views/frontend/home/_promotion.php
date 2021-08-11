@@ -3,7 +3,7 @@
         <div class="row">
             <div class="km-product py-2 py-md-5">
                 <div class="tieude_petfood">
-                    <a href="#"><?= lang("Custom.khuyen_mai") ?> (<?= $info->count_product ?>)</a>
+                    <a href="<?= route_to("promotion") ?>"><?= lang("Custom.khuyen_mai") ?> (<?= $info->count_product ?>)</a>
                 </div>
                 <div class="product-list-km">
                     <?php foreach ($info->products as $product) : ?>
@@ -55,7 +55,7 @@
     </div>
     <style>
 
-      
+
     </style>
     <script>
         $(document).ready(function() {
