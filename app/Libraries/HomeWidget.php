@@ -67,6 +67,23 @@ class HomeWidget
         // die();
         return view("frontend/home/_" . __FUNCTION__, $this->data);
     }
+
+    public function product_hot()
+    {
+        //return 1;
+        $category_model = model("CategoryModel");
+        $product_model = model("ProductModel");
+        $row = $category_model->find(135);
+        $proudct_info = $product_model->get_product_by_category($row->id);
+        $row->products = $proudct_info['products'];
+        $row->count_product = $proudct_info['count_product'];
+
+        $this->data['category'] = $row;
+        // echo "<pre>";
+        // print_r($list_category);
+        // die();
+        return view("frontend/home/_" . __FUNCTION__, $this->data);
+    }
     public function tag()
     {
         //return 1;

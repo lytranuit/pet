@@ -37,7 +37,7 @@
                 <div class="card-body">
                     <div class="row no-gutters">
                         <div class="col-lg-1 col-3 text-center">
-                            <img class="img-responsive" src="http://simbaeshop.com<?= $row->image_url ?>" style="max-height: 100px;"/>
+                            <img class="img-responsive" src="http://simbaeshop.com<?= $row->image_url ?>" style="max-height: 100px;" />
                         </div>
                         <div class="col-lg-11 col-9">
                             <div class="row no-gutters">
@@ -132,8 +132,11 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2" class="text-center border-0">
+                                        <a class="btn btn-red txt_center txt_u addCart" href="<?= base_url() ?>">
+                                            <span class="text-white">Mua tiếp</span>
+                                        </a>
                                         <a class="btn btn-red txt_center txt_u addCart" href="<?= base_url("cart/checkout") ?>">
-                                            <span><?= lang("Custom.order_btn") ?></span>
+                                            <span class="text-white"><?= lang("Custom.order_btn") ?></span>
                                         </a>
                                     </td>
                                 </tr>
@@ -146,7 +149,7 @@
     </div>
 </section>
 <style>
-    
+
 </style>
 <?= $this->endSection() ?>
 

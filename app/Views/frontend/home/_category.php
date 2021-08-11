@@ -1,4 +1,4 @@
-<section id="category_product">
+<section clas="category_product">
 
     <?php foreach ($categories as $category) : ?>
         <?php if ($category->count_product > 0) : ?>
