@@ -390,20 +390,54 @@ div.tieude_petfood a {
     background: #fff9ee;
 }
 footer {
-    background-color: #fabec0;
+    color: white;
+    position: relative;
+    background-image: linear-gradient(21deg, #ff05c969 10%, #fd6a086b 100%);
+    margin-top: 100px;
 }
 footer .header_footer {
-    color: black;
+    color: white;
     font-weight: bold;
     font-size: 17px;
     padding: 5px 0 10px;
     text-transform: uppercase;
     margin: 10px 0px;
 }
+.bg-footer {
+    position: absolute;
+    width: 100%;
+    top: -159px;
+    left: -50px;
+}
+
+.bg-footer .bg-img {
+    width: 100%;
+    height: 250px;
+    background: url("../images/bg-footer-2.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+@media (max-width: 1401px) {
+    .bg-footer {
+        position: absolute;
+        width: 100%;
+        top: -137px;
+        left: -50px;
+    }
+}
+
+@media (max-width: 1201px) {
+    .bg-footer {
+        position: absolute;
+        width: 100%;
+        top: -115px;
+        left: -50px;
+    }
+}
 
 .open-door .open-time {
     font-size: 20px;
-    color: #fbaf17;
+    color: black;
     font-weight: bold;
 }
 
@@ -421,7 +455,7 @@ footer .header_footer {
 
 .customer .phone {
     font-size: 20px;
-    color: #fbaf17;
+    color: black;
     font-weight: bold;
 }
 

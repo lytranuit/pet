@@ -1,6 +1,18 @@
 <footer class="">
 
+    <div class="bg-footer d-none d-lg-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="bg-img">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container">
+
         <div class="row py-2 py-md-5">
             <!--box-footer-->
             <div class="box-footer col-md-6">
@@ -8,8 +20,8 @@
                     <img src="http://foodzone.vn/public/image/logo.png?v=1" width="200">
                 </a>
                 <div class="header_footer"> Công Ty Cổ Phần Thương Mại Sim Ba</div>
-                <div>Trụ sở chính: <span class="text-dark">R1-08-03, Tòa nhà Everich, số 968 Ba Tháng Hai, Phường 15, Quận 11, Thành phố Hồ Chí Minh</span></div>
-                <div>Liên hệ: <a class="text-dark" href="tel:028 7770 4567">028 7770 4567</a></div>
+                <div>Trụ sở chính: <span class="">R1-08-03, Tòa nhà Everich, số 968 Ba Tháng Hai, Phường 15, Quận 11, Thành phố Hồ Chí Minh</span></div>
+                <div>Liên hệ: <a class="" href="tel:028 7770 4567">028 7770 4567</a></div>
                 <div>Giấy chứng nhận Đăng ký Kinh doanh số 0303582244 do Phòng Đăng Ký Kinh Doanh - Kế hoạch và Đầu tư
                     Thành phố Hồ Chí Minh cấp đăng ký thay đổi lần thứ 11 ngày 07/02/2020</div>
             </div>
@@ -27,15 +39,15 @@
             <div class="box-footer col-md-3">
                 <div class="open-door clear">
                     <span class="open-text">Giờ mở cửa</span>
-                    <span class="open-time text-dark">8h - 18h</span>
+                    <span class="open-time ">8h - 18h</span>
                 </div>
                 <div class="customer">
                     <span>Chăm sóc Khách hàng: </span>
-                    <span class="phone text-dark">028 7770 4567</span>
+                    <span class="phone ">028 7770 4567</span>
                 </div>
                 <div>
                     <a href="http://online.gov.vn/Home/WebDetails/70661" target="_blank" class="bocongthuong">
-                        <div class="text-dark">Chứng nhận SGD TMĐT</div>
+                        <div class="">Chứng nhận SGD TMĐT</div>
                         <img src="http://foodzone.vn/public/image/bct.png" alt="TMĐT">
                     </a>
                 </div>
