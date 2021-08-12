@@ -407,7 +407,7 @@ footer .header_footer {
     position: absolute;
     width: 100%;
     top: -84px;
-    left: -50px;
+    left: 30px;
 }
 
 .bg-footer .bg-img {
@@ -422,7 +422,6 @@ footer .header_footer {
         position: absolute;
         width: 100%;
         top: -71px;
-        left: -50px;
     }
 }
 
