@@ -169,7 +169,7 @@ class ProductModel extends Model
         $offset = ($page - 1) * $perPage;
         $my_region = area_current();
         $builder = $this->db->table('product')->join("pet_product_price", "pet_product_price.product_id = product.id");
-        $count = $builder->where("status = 1 and is_pet = 1 and FIND_IN_SET('$my_region',region)")->orderBy("product.sort", "DESC")->countAllResults();
+        $count = $builder->where("status = 1 and is_pet = 1 and FIND_IN_SET('$my_region',region) and NOW() BETWEEN pet_product_price.date_from AND pet_product_price.date_to AND pet_product_price.deleted_at IS NULL")->orderBy("product.sort", "DESC")->countAllResults();
 
         $builder = $this->db->table('product')->join("pet_product_price", "pet_product_price.product_id = product.id")->select("product.*");
         if ($sort == "price-asc") {
@@ -179,7 +179,7 @@ class ProductModel extends Model
         } else {
             $builder->orderBy("product.sort", "DESC");
         }
-        $products = $builder->where("status = 1 and is_pet = 1 and FIND_IN_SET('$my_region',region)")->groupBy("product.id")->limit($perPage, $offset)->get()->getResult();
+        $products = $builder->where("status = 1 and is_pet = 1 and FIND_IN_SET('$my_region',region) and NOW() BETWEEN pet_product_price.date_from AND pet_product_price.date_to AND pet_product_price.deleted_at IS NULL")->groupBy("product.id")->limit($perPage, $offset)->get()->getResult();
 
 
         foreach ($products as &$product) {
