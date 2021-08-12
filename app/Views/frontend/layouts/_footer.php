@@ -17,7 +17,7 @@
             <!--box-footer-->
             <div class="box-footer col-md-6">
                 <a class="brand brand-inverse" href="http://foodzone.vn/">
-                    <img src="http://foodzone.vn/public/image/logo.png?v=1" width="200">
+                    <img src="<?= base_url("assets/images/logo.png") ?>">
                 </a>
                 <div class="header_footer"> Công Ty Cổ Phần Thương Mại Sim Ba</div>
                 <div>Trụ sở chính: <span class="">R1-08-03, Tòa nhà Everich, số 968 Ba Tháng Hai, Phường 15, Quận 11, Thành phố Hồ Chí Minh</span></div>

@@ -67,7 +67,7 @@ $config['backends'][] = array(
     'name'         => 'default',
     'adapter'      => 'local',
     'baseUrl'      => '/assets/userfiles/',
-//  'root'         => '', // Can be used to explicitly set the CKFinder user files directory.
+    //  'root'         => '', // Can be used to explicitly set the CKFinder user files directory.
     'chmodFiles'   => 0777,
     'chmodFolders' => 0755,
     'filesystemEncoding' => 'UTF-8',
@@ -157,7 +157,7 @@ $config['cache'] = array(
 /*============================ Temp Directory settings ================================*/
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_tempDirectory
 
-$config['tempDirectory'] = sys_get_temp_dir();
+$config['tempDirectory'] = '/assets/tmp/';
 
 /*============================ Session Cause Performance Issues =======================*/
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_sessionWriteClose

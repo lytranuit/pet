@@ -406,31 +406,22 @@ footer .header_footer {
 .bg-footer {
     position: absolute;
     width: 100%;
-    top: -159px;
+    top: -84px;
     left: -50px;
 }
 
 .bg-footer .bg-img {
     width: 100%;
-    height: 250px;
+    height: 121px;
     background: url("../images/bg-footer-2.png");
     background-size: contain;
     background-repeat: no-repeat;
 }
-@media (max-width: 1401px) {
-    .bg-footer {
-        position: absolute;
-        width: 100%;
-        top: -137px;
-        left: -50px;
-    }
-}
-
 @media (max-width: 1201px) {
     .bg-footer {
         position: absolute;
         width: 100%;
-        top: -115px;
+        top: -71px;
         left: -50px;
     }
 }
