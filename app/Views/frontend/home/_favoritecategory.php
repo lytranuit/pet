@@ -11,11 +11,14 @@
                     <?php foreach ($categories as $category) : ?>
                         <div class="col-md-2 col-6">
                             <div class="item" style="padding:10px;">
-                                <a href="<?= url_category($category) ?>" style="border: 1px solid #dddddd;padding: 20px;display: block;text-align: center;">
+                                <a href="<?= url_category($category) ?>" style="border: 1px solid #dddddd;padding: 0;display: block;text-align: center;">
                                     <img src="<?= base_url($category->image_url) ?>" class="img-fluid">
-                                    <p style="text-align: center;
-    font-size: 16px;
-    padding-top: 20px;color:black;"><?= $category->{pick_language($category)} ?></p>
+                                    <p style="
+    text-align: center;
+    font-size: 12px;
+    padding-top: 20px;
+    color: black;
+    text-transform: uppercase;"><?= $category->{pick_language($category)} ?></p>
                                 </a>
                             </div>
                         </div>

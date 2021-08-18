@@ -53,6 +53,17 @@ class ProductModel extends Model
                 $builder = $this->db->table('pet_product');
                 $row_a->pet = $builder->where('code', $product_code)->get()->getFirstRow();
             }
+            if (in_array("origin", $relation)) {
+                $origin = $row_a->origin_country_id;
+                $builder = $this->db->table('origin_country');
+                $row_a->origin = $builder->where('id', $origin)->get()->getFirstRow();
+            }
+
+            if (in_array("preservation", $relation)) {
+                $preservation = $row_a->preservation_id;
+                $builder = $this->db->table('preservation');
+                $row_a->preservation = $builder->where('id', $preservation)->get()->getFirstRow();
+            }
         } else {
             if (in_array("image_other", $relation)) {
                 $product_id = $row_a['id'];
@@ -73,6 +84,17 @@ class ProductModel extends Model
                 $product_code = $row_a['code'];
                 $builder = $this->db->table('pet_product');
                 $row_a['pet'] = $builder->where('code', $product_code)->get()->getFirstRow("array");
+            }
+            if (in_array("origin", $relation)) {
+                $origin = $row_a['origin_country_id'];
+                $builder = $this->db->table('origin_country');
+                $row_a['origin'] = $builder->where('id', $origin)->get()->getFirstRow();
+            }
+
+            if (in_array("preservation", $relation)) {
+                $preservation = $row_a['preservation_id'];
+                $builder = $this->db->table('preservation');
+                $row_a['preservation'] = $builder->where('id', $preservation)->get()->getFirstRow();
             }
         }
         return $row_a;

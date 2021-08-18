@@ -22,7 +22,7 @@ class Category extends BaseController
         // die();
 
         $pager = service('pager');
-        $perPage =  2;
+        $perPage = 20;
         $page = (int)(($this->request->getVar('page') !== null) ? $this->request->getVar('page') : 1);
         $info = $product_model->get_product_by_category($id, $perPage, $page, $sort);
 

@@ -8,7 +8,7 @@
                         <?php if ($category->type == 1) : ?>
                             <div class="home-product">
                                 <div class="tieude_petfood">
-                                    <a href="<?= url_category($category) ?>"><?= $category->{pick_language($category)} ?> (<?= $category->count_product ?>)</a>
+                                    <a href="<?= url_category($category) ?>"><?= $category->{pick_language($category)} ?></a>
                                 </div>
                                 <div class="product-list-home py-3">
                                     <?php foreach ($category->products as $product) : ?>

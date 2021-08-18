@@ -41,7 +41,7 @@ class Product extends BaseController
         $product_model = model("ProductModel");
         $product_category_model = model("ProductCategoryModel");
         $this->data['info'] = $product_model->asObject()->find($id);
-        $product_model->relation($this->data['info'], array("image_other"));
+        $product_model->relation($this->data['info'], array("image_other",'origin','preservation'));
         $product_model->format_product($this->data['info']);
         $categories = $product_category_model->where("product_id", $id)->asArray()->findAll();
         $categories = array_map(function ($item) {

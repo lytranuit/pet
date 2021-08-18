@@ -169,6 +169,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="card bg-light">
+                        <div class="card-header text-right"><a class="btn bg-red text-white btn-sm" href="<?= base_url("cart") ?>">Quay lại giỏ hàng</a></div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12">
@@ -185,7 +186,7 @@
 
                                                 </td>
                                                 <td class="product__description">
-                                                    <a href='' class="fw-bold text-dark"><?= $row->{pick_language($row, 'name_')}  ?> </a>
+                                                    <a href='<?= url_product($row) ?>' class="fw-bold text-dark"><?= $row->{pick_language($row, 'name_')}  ?> </a>
                                                     <div><?= lang("Custom.code") ?> : <span class="fw-bold"><?= $row->code ?> </span> </div>
                                                     <div><?= lang('Custom.qui_cach') ?> : <span class="fw-bold"><?= $row->{pick_language($row, 'volume_')}  ?> </span></div>
                                                 </td>

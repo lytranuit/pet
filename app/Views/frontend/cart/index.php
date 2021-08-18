@@ -42,7 +42,7 @@
                         <div class="col-lg-11 col-9">
                             <div class="row no-gutters">
                                 <div class="col-lg-4">
-                                    <a href="<?= base_url() ?>index/details/<?= $row->id ?>" class="text-dark fw-bold"><?= $row->{pick_language($row, 'name_')}  ?></a>
+                                    <a href="<?= url_product($row) ?>" class="text-dark fw-bold"><?= $row->{pick_language($row, 'name_')}  ?></a>
                                     <div><?= lang("Custom.code") ?>: <span class="fw-bold"><?= $row->code ?></span></div>
                                     <div><?= lang("Custom.qui_cach") ?>: <span class="fw-bold"><?= $row->{pick_language($row, 'volume_')}  ?></span></div>
                                 </div>

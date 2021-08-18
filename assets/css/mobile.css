@@ -395,23 +395,6 @@
     margin-right: 0;
     vertical-align: middle;
   }
-  .btn {
-    border: none;
-    padding: 16px 15px;
-    display: inline-block;
-    cursor: pointer;
-    border-radius: 6px;
-    color: #000;
-    font-size: 16px;
-    text-transform: uppercase;
-    outline: none;
-    font-weight: 700;
-  }
-  .btn:hover {
-    opacity: 0.8;
-    color: #000;
-    box-shadow: 0 0 10px #555;
-  }
   .bg_pink {
     background: #ffc72c;
   }
@@ -435,14 +418,6 @@
   }
   .bg-red {
     background: #ed4747 !important;
-  }
-  .btn {
-    font-size: 14px;
-    padding: 10px 12px;
-    -webkit-transition: all 0.8s ease;
-    -moz-transition: all 0.8s ease;
-    -o-transition: all 0.8s ease;
-    transition: all 0.8s ease;
   }
   .btn-default-o {
     border: 1px solid #ddd;

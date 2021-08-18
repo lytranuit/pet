@@ -215,9 +215,9 @@
 }
 
 .border-product {
-    padding-bottom: 10px;
+    /* padding-bottom: 10px;
     border-right: 1px solid #eee;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #eee; */
 }
 
 .pagination {

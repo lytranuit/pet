@@ -37,6 +37,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-sm" data-bs-dismiss="modal">Mua tiếp</button>
+                <a href="<?= base_url("cart/") ?>" type="button" class="btn btn-sm">Giỏ hàng</a>
                 <a href="<?= base_url("cart/checkout") ?>" type="button" class="btn btn-sm">Thanh toán</a>
             </div>
         </div>

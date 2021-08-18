@@ -55,7 +55,7 @@
                 </div>
                 <!--//-->
 
-                <div class="product-list row">
+                <div class="product-list row g-0">
                     <?php foreach ($products as $product) : ?>
                         <div class="col-md-3 col-6 border-product">
                             <div class="p_container product text-center" data-id="<?= $product->id ?>">

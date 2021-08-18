@@ -54,12 +54,6 @@
             </div>
             <!--box-footer-->
         </div>
-        <div class="clear hr space10px"></div>
-        <div class="clear"></div>
-        <div class="clear text-center space10px" style="color: #4c4c4c;font-size: 13px;">
-            Sim Ba - trụ sở chính tại R1-08-03 Tòa nhà EverRich, số 968 Ba Tháng Hai, Phường 15, Quận 11, Tp.HCM. GPĐKKD số .... do Sở KHĐT cấp ngày ....5<br>
-
-        </div>
     </div>
     <!--//-->
 

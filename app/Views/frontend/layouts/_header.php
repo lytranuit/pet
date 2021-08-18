@@ -63,7 +63,7 @@
                     <div id="suggestions" class="autocomplete-suggestions"></div>
                 </div>
                 <div class="icon_hotline col-2">
-                    <a href="tel:098 761 2727" class="clear txt_red text-center" style="border: solid 0px #ddd;display: flex;
+                    <a href="tel:028 777 04567" class="clear txt_red text-center" style="border: solid 0px #ddd;display: flex;
     min-width: 180px;
     justify-content: center;color:#e51f28;">
                         <div style="
@@ -82,7 +82,7 @@
     font-size: 20px;
     font-weight: bolder;
     line-height: 27px;
-">098 761 2727</div>
+">028 777 04567</div>
                         </div>
                     </a>
                 </div>
