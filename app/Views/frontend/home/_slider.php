@@ -39,7 +39,7 @@
             <div class="category-box">
                 <?php for ($i = 0; $i < count($banners); $i++) : ?>
                     <div class="col-3 m-2">
-                        <a class="d-inline-block" target="_blank" href="<?= $banners[$i]->url ?>" title="<?= $banners[$i]->text ?>">
+                        <a class="d-inline-block w-100" target="_blank" href="<?= $banners[$i]->url ?>" title="<?= $banners[$i]->text ?>">
                             <img alt="<?= $banners[$i]->text ?>" src="<?= base_url($banners[$i]->image_url) ?>" class="img-responsive w-100">
                         </a>
                     </div>
