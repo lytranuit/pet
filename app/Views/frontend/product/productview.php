@@ -32,7 +32,6 @@
                 <div class="category-products products f-left w_100 margin-top-70" wfd-id="78">
                     <section class="products-view products-view-grid" wfd-id="79">
                         <div class="row">
-
                             <?php foreach ($products as $row) : ?>
                                 <div class="clear_ col-xs-6 col-sm-6 col-md-4 col-lg-3">
                                     <div class="product-item position-relative product-item-main">

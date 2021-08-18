@@ -11,7 +11,7 @@
                     <h2 style="font-size:33px;" class="text-center txt_violet space10px hr">Tìm kiếm : <b><?= $search ?></b></h2>
                 </div>
                 <div class="collection product-list">
-                    <div class="row">
+                    <div class="row g-0">
                         <?php foreach ($products as $product) : ?>
                             <div class="col-md-2 col-6 border-product">
                                 <div class="p_container product text-center" data-id="<?= $product->id ?>">

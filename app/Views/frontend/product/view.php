@@ -169,7 +169,7 @@
             <div class="clear"></div>
             <div class="bestView">
                 <p class="txt_blue new-title title-product-list"><?= lang("Custom.details_sp_lien_quan") ?></p>
-                <div class="row border-start">
+                <div class="row border-start g-0">
                     <?php foreach ($products as $product) : ?>
                         <div class="col-6 border-product">
                             <div class="p_container product text-center" data-id="<?= $product->id ?>">
