@@ -51,9 +51,9 @@ class AuthController extends Controller
 			return redirect()->to($redirectURL);
 		}
 
-		$next = $this->request->getVar('next');
+		// print_r($_SESSION['redirect_url']);
 		// Set a return URL if none is specified
-		$_SESSION['redirect_url'] = $next ?? previous_url() ?? site_url('/');
+		$_SESSION['redirect_url'] = $_SESSION['redirect_url'] ?? previous_url() ?? site_url('/');
 
 		return $this->_render($this->config->views['login'], ['config' => $this->config]);
 	}
@@ -79,7 +79,6 @@ class AuthController extends Controller
 		$login = $this->request->getPost('login');
 		$password = $this->request->getPost('password');
 		$remember = (bool)$this->request->getPost('remember');
-
 		// Determine credential type
 		$type = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 
