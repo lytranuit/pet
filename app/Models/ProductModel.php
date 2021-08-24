@@ -127,11 +127,11 @@ class ProductModel extends Model
 
     public function get_product($category_id = 0, $keyword = "", $offset = 0, $limit = 20)
     {
-        $builder = $this->db->table("cf_product");
+        $builder = $this->db->table("pet_product");
 
         if ($category_id > 0) {
             $builder->whereIn('id', function (BaseBuilder $builder) use ($category_id) {
-                return $builder->select('product_id')->from('cf_product_category')->where('category_id', $category_id);
+                return $builder->select('product_id')->from('pet_product_category')->where('category_id', $category_id);
             });
         }
         if ($keyword != "") {

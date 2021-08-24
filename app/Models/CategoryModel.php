@@ -26,19 +26,19 @@ class CategoryModel extends Model
 
                     if (in_array("product", $relation)) {
                         $category_id = $row->id;
-                        $builder = $this->db->table('cf_product_category')->join("cf_category", "cf_product_category.category_id = cf_category.id");
+                        $builder = $this->db->table('pet_product_category')->join("pet_category", "pet_product_category.category_id = pet_category.id");
                         $row->products = $builder->where('category_id', $category_id)->get()->getResult();
                     }
                 } else {
 
                     //if (in_array("image_other", $relation)) {
                     //    $news_id = $row['id'];
-                    //    $builder = $this->db->table('cf_news_image')->join("cf_file", "cf_news_image.image_id = cf_file.id");
+                    //    $builder = $this->db->table('pet_news_image')->join("pet_file", "pet_news_image.image_id = pet_file.id");
                     //    $row['image_other'] = $builder->where('news_id', $news_id)->get()->getResult("array");
                     //}
                     if (in_array("product", $relation)) {
                         $category_id = $row['id'];
-                        $builder = $this->db->table('cf_product_category')->join("cf_category", "cf_product_category.category_id = cf_category.id");
+                        $builder = $this->db->table('pet_product_category')->join("pet_category", "pet_product_category.category_id = pet_category.id");
                         $row['products'] = $builder->where('category_id', $category_id)->get()->getResult("array");
                     }
                 }
@@ -47,24 +47,24 @@ class CategoryModel extends Model
 
             //if (in_array("image_other", $relation)) {
             //    $news_id = $data['id'];
-            //    $builder = $this->db->table('cf_news_image')->join("cf_file", "cf_news_image.image_id = cf_file.id");
+            //    $builder = $this->db->table('pet_news_image')->join("pet_file", "pet_news_image.image_id = pet_file.id");
             //    $data['image_other'] = $builder->where('news_id', $news_id)->get()->getResult("array");
             //}
             if (in_array("product", $relation)) {
                 $category_id = $data['id'];
-                $builder = $this->db->table('cf_product_category')->join("cf_category", "cf_product_category.category_id = cf_category.id");
+                $builder = $this->db->table('pet_product_category')->join("pet_category", "pet_product_category.category_id = pet_category.id");
                 $data['products'] = $builder->where('category_id', $category_id)->get()->getResult("array");
             }
         } else {
 
             //if (in_array("image_other", $relation)) {
             //    $news_id = $data->id;
-            //    $builder = $this->db->table('cf_news_image')->join("cf_file", "cf_news_image.image_id = cf_file.id");
+            //    $builder = $this->db->table('pet_news_image')->join("pet_file", "pet_news_image.image_id = pet_file.id");
             //    $data->image_other = $builder->where('news_id', $news_id)->get()->getResult();
             //}
             if (in_array("product", $relation)) {
                 $category_id = $data->id;
-                $builder = $this->db->table('cf_product_category')->join("cf_category", "cf_product_category.category_id = cf_category.id");
+                $builder = $this->db->table('pet_product_category')->join("pet_category", "pet_product_category.category_id = pet_category.id");
                 $data->products = $builder->where('category_id', $category_id)->get()->getResult();
             }
         }

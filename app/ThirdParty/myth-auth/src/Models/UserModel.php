@@ -130,7 +130,7 @@ class UserModel extends Model
                 if (gettype($row) == "object") {
                     if (in_array("image", $relation)) {
                         $image_id = $row->image_id;
-                        $builder = $this->db->table('cf_file');
+                        $builder = $this->db->table('pet_file');
                         $row->image = $builder->where('id', $image_id)->limit(1)->get()->getFirstRow();
                     }
                     if (in_array("groups", $relation)) {
@@ -144,7 +144,7 @@ class UserModel extends Model
                 } else {
                     if (in_array("image", $relation)) {
                         $image_id = $row['image_id'];
-                        $builder = $this->db->table('cf_file');
+                        $builder = $this->db->table('pet_file');
                         $row['image'] = $builder->where('id', $image_id)->limit(1)->get()->getFirstRow("array");
                     }
 
@@ -161,7 +161,7 @@ class UserModel extends Model
         } elseif ($type == "array" && isset($data['id'])) {
             if (in_array("image", $relation)) {
                 $image_id = $data['image_id'];
-                $builder = $this->db->table('cf_file');
+                $builder = $this->db->table('pet_file');
                 $data['image'] = $builder->where('id', $image_id)->limit(1)->get()->getFirstRow('array');
             }
             if (in_array("groups", $relation)) {
@@ -176,7 +176,7 @@ class UserModel extends Model
         } else {
             if (in_array("image", $relation)) {
                 $image_id = $data->image_id;
-                $builder = $this->db->table('cf_file');
+                $builder = $this->db->table('pet_file');
                 $data->image = $builder->where('id', $image_id)->limit(1)->get()->getFirstRow();
             }
             if (in_array("groups", $relation)) {

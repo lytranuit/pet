@@ -53,7 +53,7 @@ class NewsModel extends Model
         if (empty($tags)) {
             return array();
         }
-        $builder = $this->db->table("cf_news");
+        $builder = $this->db->table("pet_news");
         $builder->whereIn('id', function (BaseBuilder $builder) use ($tags) {
             return $builder->select('news_id')->from('pet_news_tag')->whereIn('tag_id', $tags);
         });
@@ -61,7 +61,7 @@ class NewsModel extends Model
     }
     public function get_news($tag_id = 0, $keyword = "", $offset = 0, $limit = 20)
     {
-        $builder = $this->db->table("cf_news");
+        $builder = $this->db->table("pet_news");
 
         if ($tag_id > 0) {
             $builder->whereIn('id', function (BaseBuilder $builder) use ($tag_id) {

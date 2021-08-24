@@ -28,7 +28,7 @@ class OptionModel extends Model
             $id = array($id);
         }
 
-        $builder = $this->db->table('cf_options');
+        $builder = $this->db->table('pet_options');
         $rows = $builder->whereIn('key', $id)->get()->getResult("array");
         $return = array();
         foreach ($rows as $row) {
